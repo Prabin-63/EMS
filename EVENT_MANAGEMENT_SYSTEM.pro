@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     placemanage.cpp \
+    profile.cpp \
     scheduling.cpp \
     signup.cpp
 
@@ -23,6 +24,7 @@ HEADERS += \
     login.h \
     mainwindow.h \
     placemanage.h \
+    profile.h \
     scheduling.h \
     sessionmanager.h \
     signup.h
@@ -32,6 +34,7 @@ FORMS += \
     login.ui \
     mainwindow.ui \
     placemanage.ui \
+    profile.ui \
     scheduling.ui \
     signup.ui
 
