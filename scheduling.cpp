@@ -17,8 +17,6 @@ scheduling::scheduling(QWidget *parent)
     , dashboardWindow(nullptr)
 {
     ui->setupUi(this);
-
-    // Connect the Save button
     connect(ui->Gotodash_subevent, &QPushButton::clicked, this, &scheduling::on_Gotodash_subevent_clicked);
 }
 
