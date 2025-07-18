@@ -608,15 +608,7 @@ color:white;
     </item>
     <item>
      <widget class="QWidget" name="Rightsidebar" native="true">
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="0">
-          <widget class="QTableWidget" name="table1"/>
-         </item>
-        </layout>
-       </item>
-      </layout>
+      <layout class="QGridLayout" name="gridLayout_2"/>
      </widget>
     </item>
    </layout>
@@ -627,7 +619,7 @@ color:white;
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>43</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
