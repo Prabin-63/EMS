@@ -407,48 +407,9 @@ QPushButton:hover{
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_12">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_11">
-              <item>
-               <widget class="QLabel" name="label_6">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="resources.qrc">:/resources/icons8-help-center-48.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="Help_Center">
-                <property name="font">
-                 <font>
-                  <family>Segoe Fluent Icons</family>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
+             <widget class="QPushButton" name="Volunteer">
+              <property name="styleSheet">
+               <string notr="true">QPushButton{
 color:white;
 	background-color: rgb(111, 111, 111);
 padding:5px;
@@ -458,16 +419,74 @@ border-radius:7px;
 QPushButton:hover{
 	background-color: rgb(188, 0, 188);
 }</string>
-                </property>
-                <property name="text">
-                 <string>Help Center</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
+              </property>
+              <property name="text">
+               <string>Volunteer</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resources.qrc">:/resources/icons8-help-center-48.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="Help_Center">
+             <property name="font">
+              <font>
+               <family>Segoe Fluent Icons</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+color:white;
+	background-color: rgb(111, 111, 111);
+padding:5px;
+border:none;
+border-radius:7px;
+}
+QPushButton:hover{
+	background-color: rgb(188, 0, 188);
+}</string>
+             </property>
+             <property name="text">
+              <string>Help Center</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
           <spacer name="verticalSpacer_4">
@@ -608,7 +627,7 @@ color:white;
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>43</height>
     </rect>
    </property>
   </widget>

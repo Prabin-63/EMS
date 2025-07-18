@@ -4,7 +4,8 @@
 #include <QMainWindow>
 #include <QVBoxLayout>
 #include <QLineEdit>
-#include<addvolunteername.h>
+#include "dashboard.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,7 +28,6 @@ private slots:
     void on_generateButton_clicked();
     void on_addSubEventButton_clicked();
     void on_addOneSubEventButton_clicked();
-
     void on_removeSubEventButton_clicked();
 
 private:
@@ -40,7 +40,7 @@ private:
     void removeSubEvent(QWidget* subEventWidget);
 
     void styleLineEdit(QLineEdit* lineEdit, const QString& placeholder);
-    AddVolunteerName *addvolunteername;
+    dashboard* dash_board;
 };
 
 #endif // PLACEMANAGE_H

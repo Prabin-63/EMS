@@ -119,6 +119,13 @@ void placemanage::on_addSubEventButton_clicked()
     if (!containerLayout) return;
 
     QSqlQuery query;
+
+    query.prepare("DELETE FROM places WHERE event_id = ?");
+    query.addBindValue(eventId);
+    if (!query.exec()) {
+        qDebug() << "Failed to clear old sub-events:" << query.lastError().text();
+    }
+
     int successCount = 0;
 
     for (int i = 0; i < containerLayout->count(); ++i) {
@@ -126,25 +133,27 @@ void placemanage::on_addSubEventButton_clicked()
         if (!rowWidget) continue;
 
         QList<QLineEdit*> edits = rowWidget->findChildren<QLineEdit*>();
-        if (edits.size() < 4) continue;
+        if (edits.size() < 5) continue;
 
         QString subEventName = edits[0]->text().trimmed();
         QString location = edits[1]->text().trimmed();
         QString time = edits[2]->text().trimmed();
         QString contact = edits[3]->text().trimmed();
+        QString volunteer = edits[4]->text().trimmed();
 
         if (subEventName.isEmpty() || location.isEmpty() || time.isEmpty() || contact.isEmpty()) {
             QMessageBox::warning(this, "Input Error", QString("Please fill all fields in row %1").arg(i + 1));
             return;
         }
 
-        query.prepare("INSERT INTO places(event_id, sub_event_name, location, time, contact_person) "
-                      "VALUES (?, ?, ?, ?, ?)");
+        query.prepare("INSERT INTO places(event_id, sub_event_name, location, time, contact_person,required_volunteers) "
+                      "VALUES (?, ?, ?, ?, ?,?)");
         query.addBindValue(eventId);
         query.addBindValue(subEventName);
         query.addBindValue(location);
         query.addBindValue(time);
         query.addBindValue(contact);
+        query.addBindValue(volunteer);
 
         if (!query.exec()) {
             qDebug() << "Insert failed for row" << i << ":" << query.lastError().text();
@@ -155,19 +164,12 @@ void placemanage::on_addSubEventButton_clicked()
 
     if (successCount > 0){
         QMessageBox::information(this, "Success", QString("%1 place(s) saved successfully.").arg(successCount));
-    QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "Manage Volunteers", "Do you want to manage your volunteers?",
-                                  QMessageBox::Yes | QMessageBox::No);
-
-    if (reply == QMessageBox::Yes) {
-        addvolunteername=new AddVolunteerName(this);
-        addvolunteername->show();
-
+        dashboard *dash = new dashboard();
+        dash->show();
+        this->close();
     }
-
     else
         QMessageBox::warning(this, "No Data Saved", "No valid place data to save.");
-    }
 }
 
 void placemanage::on_addOneSubEventButton_clicked()

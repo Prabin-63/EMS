@@ -1,5 +1,6 @@
 #include "dashboard.h"
 #include "ui_dashboard.h"
+#include "addvolunteername.h"
 #include "scheduling.h"
 #include"QSqlQuery"
 #include"database.h"
@@ -63,6 +64,12 @@ void dashboard::on_Managing_clicked()
         schedulingWindow = new scheduling(this);
     }
     schedulingWindow->show();
+}
+
+void dashboard::on_Volunteer_clicked()
+{
+    vt = new AddVolunteerName();
+    vt->show();
 }
 
 void dashboard::on_Profile_clicked()

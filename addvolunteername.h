@@ -2,13 +2,13 @@
 #define ADDVOLUNTEERNAME_H
 
 #include <QMainWindow>
+#include <QLineEdit>
 #include <QVBoxLayout>
 #include <QVector>
-#include <QLineEdit>
 
-namespace Ui {
-class AddVolunteerName;
-}
+QT_BEGIN_NAMESPACE
+namespace Ui { class AddVolunteerName; }
+QT_END_NAMESPACE
 
 class AddVolunteerName : public QMainWindow
 {
@@ -19,14 +19,16 @@ public:
     ~AddVolunteerName();
 
 private slots:
-    void generateVolunteers();
-    void addVolunteer();
-    void removeVolunteer();
+
 
 private:
     Ui::AddVolunteerName *ui;
+
     QVBoxLayout *volunteerLayout;
     QVector<QLineEdit*> volunteerLineEdits;
+
+    void loadEvents();
+
 };
 
 #endif // ADDVOLUNTEERNAME_H

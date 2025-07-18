@@ -30,8 +30,7 @@ bool connectDatabase()
                                "email TEXT NOT NULL, "
                                "username TEXT UNIQUE NOT NULL, "
                                "password TEXT NOT NULL, "
-                               "phone TEXT, "
-                               "created_at DATETIME DEFAULT CURRENT_TIMESTAMP)";
+                               "phone TEXT)";
     if (!query.exec(createUsersTable)) {
         qDebug() << "Failed to create users table:" << query.lastError().text();
         QMessageBox::critical(nullptr, "Database Error",
@@ -50,7 +49,6 @@ bool connectDatabase()
                                 "date TEXT NOT NULL, "
                                 "time TEXT NOT NULL, "
                                 "organizer_contact TEXT NOT NULL, "
-                                "created_at DATETIME DEFAULT CURRENT_TIMESTAMP, "
                                 "FOREIGN KEY(user_id) REFERENCES users(id))";
     if (!query.exec(createEventsTable)) {
         qDebug() << "Failed to create events table:" << query.lastError().text();
@@ -66,8 +64,8 @@ bool connectDatabase()
                                "location TEXT NOT NULL, "
                                "time TEXT NOT NULL, "
                                "contact_person TEXT NOT NULL, "
-                               "created_at DATETIME DEFAULT CURRENT_TIMESTAMP, "
-                               "FOREIGN KEY(event_id) REFERENCES event(id))";
+                               "required_volunteers INTEGER,"
+                               "FOREIGN KEY(event_id) REFERENCES events(id))";
     if (!query.exec(createPlaceTable)) {
         qDebug() << "Failed to create events table:" << query.lastError().text();
         QMessageBox::critical(nullptr, "Database Error",
@@ -76,6 +74,20 @@ bool connectDatabase()
     }
 
     qDebug() << "Sub-Events table ready.";
-
+    QString createvolunteerTable = "CREATE TABLE IF NOT EXISTS volunteers("
+                                   "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                                   "name TEXT NOT NULL,"
+                                   "event_id INTEGER NOT NULL,"
+                                   "assigned_place_id INTEGER,"
+                                   "FOREIGN KEY(event_id) REFERENCES events(id),"
+                                   "FOREIGN KEY(assigned_place_id) REFERENCES places(id))";
+    if (!query.exec(createvolunteerTable))
+    {
+        qDebug() << "Failed to create volunteer table:" << query.lastError().text();
+        QMessageBox::critical(nullptr, "Database Error",
+                              "Failed to create volunteer table: " + query.lastError().text());
+        return false;
+    }
+      qDebug() << "Volunteer table ready.";
     return true;
 }

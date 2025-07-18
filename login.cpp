@@ -40,6 +40,7 @@ void login::on_Gotodash_clicked()
     if(email == "admin" && pass == "Admin")
     {
         dashboard *dash = new dashboard();
+        SessionManager::instance().setUserId(0);
         dash->show();
         this->close();
         return;

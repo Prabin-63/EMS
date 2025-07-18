@@ -159,13 +159,8 @@ border:none;
               <rect>
                <x>0</x>
                <y>0</y>
-<<<<<<< HEAD
-               <width>798</width>
-               <height>104</height>
-=======
                <width>778</width>
                <height>460</height>
->>>>>>> 5d061450fde78a1fbe13816cbeed794a70f51e98
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_5">

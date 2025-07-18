@@ -1,5 +1,11 @@
 #include "addvolunteername.h"
 #include "ui_addvolunteername.h"
+#include "database.h"
+
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QMessageBox>
+#include <QDebug>
 
 AddVolunteerName::AddVolunteerName(QWidget *parent)
     : QMainWindow(parent)
@@ -7,18 +13,16 @@ AddVolunteerName::AddVolunteerName(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Proper scroll area setup
     ui->scrollArea->setWidget(ui->scrollAreaWidgetContents);
     ui->scrollArea->setWidgetResizable(true);
 
-    // Vertical layout on scrollAreaWidgetContents
     volunteerLayout = new QVBoxLayout();
     ui->scrollAreaWidgetContents->setLayout(volunteerLayout);
 
-    // Connect buttons
-    connect(ui->generateButton, &QPushButton::clicked, this, &AddVolunteerName::generateVolunteers);
-    connect(ui->addButton, &QPushButton::clicked, this, &AddVolunteerName::addVolunteer);
-    connect(ui->removeButton, &QPushButton::clicked, this, &AddVolunteerName::removeVolunteer);
+    // Load events into combo box
+    loadEvents();
+
+
 }
 
 AddVolunteerName::~AddVolunteerName()
@@ -26,70 +30,23 @@ AddVolunteerName::~AddVolunteerName()
     delete ui;
 }
 
-void AddVolunteerName::generateVolunteers()
+void AddVolunteerName::loadEvents()
 {
-    // Clear all previous line edits
-    for (QLineEdit *edit : volunteerLineEdits) {
-        QWidget *parentWidget = edit->parentWidget();
-        volunteerLayout->removeWidget(parentWidget);
-        delete parentWidget;
+    ui->eventComboBox->clear();
+
+    QSqlQuery query;
+    if (!query.exec("SELECT id, name FROM events ORDER BY name")) {
+        qDebug() << "Failed to load events:" << query.lastError().text();
+        return;
     }
-    volunteerLineEdits.clear();
 
-    int count = ui->spinBox->value();
-    for (int i = 0; i < count; ++i) {
-        QLineEdit *lineEdit = new QLineEdit();
-        lineEdit->setFixedWidth(300);  // fixed width
-        lineEdit->setPlaceholderText(QString("Volunteer %1 name").arg(i + 1));
-        lineEdit->setStyleSheet("background-color: #444444; color: white; "
-                                "font-size: 14px; padding: 5px; "
-                                "selection-background-color: #666666; "
-                                "border-radius: 5px; "
-                                "qproperty-placeholderTextColor: white;");
+    // Add a placeholder item
+    ui->eventComboBox->addItem("-- Select Event --", QVariant(-1));
 
-        // Center using horizontal layout
-        QHBoxLayout *hLayout = new QHBoxLayout();
-        hLayout->addStretch();
-        hLayout->addWidget(lineEdit);
-        hLayout->addStretch();
-
-        QWidget *container = new QWidget();
-        container->setLayout(hLayout);
-        volunteerLayout->addWidget(container);
-
-        volunteerLineEdits.append(lineEdit);
+    while (query.next()) {
+        int id = query.value(0).toInt();
+        QString name = query.value(1).toString();
+        ui->eventComboBox->addItem(name, id);
     }
 }
 
-void AddVolunteerName::addVolunteer()
-{
-    QLineEdit *lineEdit = new QLineEdit();
-    lineEdit->setFixedWidth(300);
-    lineEdit->setPlaceholderText(QString("Volunteer %1 name").arg(volunteerLineEdits.size() + 1));
-    lineEdit->setStyleSheet("background-color: #444444; color: white; "
-                            "font-size: 14px; padding: 5px; "
-                            "selection-background-color: #666666; "
-                            "border-radius: 5px; "
-                            "qproperty-placeholderTextColor: white;");
-
-    QHBoxLayout *hLayout = new QHBoxLayout();
-    hLayout->addStretch();
-    hLayout->addWidget(lineEdit);
-    hLayout->addStretch();
-
-    QWidget *container = new QWidget();
-    container->setLayout(hLayout);
-    volunteerLayout->addWidget(container);
-
-    volunteerLineEdits.append(lineEdit);
-}
-
-void AddVolunteerName::removeVolunteer()
-{
-    if (!volunteerLineEdits.isEmpty()) {
-        QLineEdit *lastEdit = volunteerLineEdits.takeLast();
-        QWidget *parentWidget = lastEdit->parentWidget();
-        volunteerLayout->removeWidget(parentWidget);
-        delete parentWidget;
-    }
-}
