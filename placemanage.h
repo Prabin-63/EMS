@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 #include <QVBoxLayout>
+#include <QLineEdit>
+#include<addvolunteername.h>
 
-    QT_BEGIN_NAMESPACE
+QT_BEGIN_NAMESPACE
 namespace Ui {
 class placemanage;  // Capital P, must match ui_placemanage.h generated class
 }
@@ -20,9 +22,13 @@ public:
 
     void setEventId(int id) { eventId = id; }
     int eventId = -1;
+
 private slots:
     void on_generateButton_clicked();
     void on_addSubEventButton_clicked();
+    void on_addOneSubEventButton_clicked();
+
+    void on_removeSubEventButton_clicked();
 
 private:
     Ui::placemanage *ui;
@@ -32,7 +38,9 @@ private:
     void generatePlaceInputs();
     void savePlaceToDatabase();
     void removeSubEvent(QWidget* subEventWidget);
+
+    void styleLineEdit(QLineEdit* lineEdit, const QString& placeholder);
+    AddVolunteerName *addvolunteername;
 };
 
 #endif // PLACEMANAGE_H
-

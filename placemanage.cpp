@@ -11,7 +11,7 @@
 #include <QMessageBox>
 #include <QSqlError>
 #include <QDebug>
-
+#include<addvolunteername.h>
 
 placemanage::placemanage(QWidget *parent)
     : QMainWindow(parent)
@@ -19,21 +19,30 @@ placemanage::placemanage(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Set layout on subEventContainer if none set
     if (!ui->subEventContainer->layout()) {
         QVBoxLayout *layout = new QVBoxLayout(ui->subEventContainer);
         ui->subEventContainer->setLayout(layout);
     }
 
-    // Connect your buttons (if not connected in UI file)
     connect(ui->generateButton, &QPushButton::clicked, this, &placemanage::on_generateButton_clicked);
     connect(ui->addSubEventButton, &QPushButton::clicked, this, &placemanage::on_addSubEventButton_clicked);
-}
 
+}
 
 placemanage::~placemanage()
 {
     delete ui;
+}
+
+// Helper function to style a QLineEdit
+void placemanage::styleLineEdit(QLineEdit* lineEdit, const QString& placeholder)
+{
+    lineEdit->setPlaceholderText(placeholder);
+    lineEdit->setStyleSheet("color: white; background-color: #2e2e2e; border: 1px solid gray;");
+
+    QPalette palette = lineEdit->palette();
+    palette.setColor(QPalette::PlaceholderText, Qt::gray);
+    lineEdit->setPalette(palette);
 }
 
 void placemanage::on_generateButton_clicked()
@@ -44,7 +53,6 @@ void placemanage::on_generateButton_clicked()
         return;
     }
 
-    // Clear previous rows
     QLayoutItem *child;
     while ((child = layout->takeAt(0)) != nullptr) {
         if (child->widget()) {
@@ -70,21 +78,25 @@ void placemanage::on_generateButton_clicked()
         QHBoxLayout* rowLayout = new QHBoxLayout();
 
         QLineEdit* eventName = new QLineEdit();
-        eventName->setPlaceholderText("Sub Event Name");
+        styleLineEdit(eventName, "Sub Event Name");
 
         QLineEdit* location = new QLineEdit();
-        location->setPlaceholderText("Location");
+        styleLineEdit(location, "Location");
 
         QLineEdit* time = new QLineEdit();
-        time->setPlaceholderText("Time");
+        styleLineEdit(time, "Time");
 
         QLineEdit* contact = new QLineEdit();
-        contact->setPlaceholderText("Contact Person");
+        styleLineEdit(contact, "Contact Person");
+
+        QLineEdit* total = new QLineEdit();
+        styleLineEdit(total, "Total Number of Volunteers");
 
         rowLayout->addWidget(eventName);
         rowLayout->addWidget(location);
         rowLayout->addWidget(time);
         rowLayout->addWidget(contact);
+        rowLayout->addWidget(total);
 
         QWidget* rowWidget = new QWidget();
         rowWidget->setLayout(rowLayout);
@@ -141,8 +153,81 @@ void placemanage::on_addSubEventButton_clicked()
         successCount++;
     }
 
-    if (successCount > 0)
+    if (successCount > 0){
         QMessageBox::information(this, "Success", QString("%1 place(s) saved successfully.").arg(successCount));
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Manage Volunteers", "Do you want to manage your volunteers?",
+                                  QMessageBox::Yes | QMessageBox::No);
+
+    if (reply == QMessageBox::Yes) {
+        addvolunteername=new AddVolunteerName(this);
+        addvolunteername->show();
+
+    }
+
     else
         QMessageBox::warning(this, "No Data Saved", "No valid place data to save.");
+    }
 }
+
+void placemanage::on_addOneSubEventButton_clicked()
+{
+    auto layout = ui->subEventContainer->layout();
+    if (!layout) return;
+
+    QVBoxLayout* containerLayout = qobject_cast<QVBoxLayout*>(layout);
+    if (!containerLayout) return;
+
+    QHBoxLayout* rowLayout = new QHBoxLayout();
+
+    QLineEdit* eventName = new QLineEdit();
+    styleLineEdit(eventName, "Sub Event Name");
+
+    QLineEdit* location = new QLineEdit();
+    styleLineEdit(location, "Location");
+
+    QLineEdit* time = new QLineEdit();
+    styleLineEdit(time, "Time");
+
+    QLineEdit* contact = new QLineEdit();
+    styleLineEdit(contact, "Contact Person");
+
+    QLineEdit* total = new QLineEdit();
+    styleLineEdit(total, "Total Number of Volunteers");
+
+    rowLayout->addWidget(eventName);
+    rowLayout->addWidget(location);
+    rowLayout->addWidget(time);
+    rowLayout->addWidget(contact);
+    rowLayout->addWidget(total);
+
+
+    QWidget* rowWidget = new QWidget();
+    rowWidget->setLayout(rowLayout);
+
+    containerLayout->addWidget(rowWidget);
+}
+
+void placemanage::on_removeSubEventButton_clicked()
+{
+    auto layout = ui->subEventContainer->layout();
+    if (!layout) return;
+
+    QVBoxLayout* containerLayout = qobject_cast<QVBoxLayout*>(layout);
+    if (!containerLayout) return;
+
+    int count = containerLayout->count();
+    if (count == 0) {
+        QMessageBox::information(this, "Remove", "No more sub events to remove.");
+        return;
+    }
+
+    QLayoutItem* lastItem = containerLayout->takeAt(count - 1);
+    if (lastItem) {
+        if (QWidget* widget = lastItem->widget()) {
+            widget->deleteLater();
+        }
+        delete lastItem;
+    }
+}
+

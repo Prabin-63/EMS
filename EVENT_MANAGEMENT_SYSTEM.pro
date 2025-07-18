@@ -8,6 +8,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addvolunteername.cpp \
     dashboard.cpp \
     database.cpp \
     login.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
     signup.cpp
 
 HEADERS += \
+    addvolunteername.h \
     dashboard.h \
     database.h \
     login.h \
@@ -28,6 +30,7 @@ HEADERS += \
     signup.h
 
 FORMS += \
+    addvolunteername.ui \
     dashboard.ui \
     login.ui \
     mainwindow.ui \
