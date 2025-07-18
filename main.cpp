@@ -2,6 +2,7 @@
 #include "login.h"
 #include "database.h"
 #include "mainwindow.h"
+#include"dashboard.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

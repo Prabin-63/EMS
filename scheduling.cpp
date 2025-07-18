@@ -14,10 +14,9 @@
 scheduling::scheduling(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::scheduling)
+    , dashboardWindow(nullptr)
 {
     ui->setupUi(this);
-
-    // Connect the Save button
     connect(ui->Gotodash_subevent, &QPushButton::clicked, this, &scheduling::on_Gotodash_subevent_clicked);
 }
 
@@ -113,6 +112,19 @@ void scheduling::on_Gotodash_subevent_clicked()
         }
     }
 
+}
+
+
+
+void scheduling::on_dashboard_2_clicked()
+{
+    // Create dashboard window if it doesn't exist
+    if (!dashboardWindow) {
+        dashboardWindow = new dashboard(this);  // Pass 'this' as parent
+    }
+
+    dashboardWindow->show();  // Show the dashboard window
+    this->hide();            // Hide the current scheduling window
 }
 
 

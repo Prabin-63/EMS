@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include<placemanage.h>
+#include"dashboard.h"
 
 
 namespace Ui {
@@ -19,12 +20,12 @@ public:
     ~scheduling();
 private slots:
     void on_Gotodash_subevent_clicked();
-
-
+    void on_dashboard_2_clicked();
 
 private:
     Ui::scheduling *ui;
     placemanage *place_manage;
+       dashboard *dashboardWindow;
 
 };
 

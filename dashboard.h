@@ -1,11 +1,10 @@
 #ifndef DASHBOARD_H
 #define DASHBOARD_H
-
+#include"database.h"
+#include "profile.h"
 #include <QMainWindow>
-#include<scheduling.h>
-
+#include <QSqlQuery>
 namespace Ui {
-
 class dashboard;
 }
 
@@ -17,13 +16,13 @@ public:
     explicit dashboard(QWidget *parent = nullptr);
     ~dashboard();
 
-private:
-    Ui::dashboard *ui;
-   scheduling *schedulingWindow = nullptr;
-
 private slots:
     void on_Managing_clicked();
-
+    void on_Profile_clicked();
+private:
+    Ui::dashboard *ui;
+    class scheduling *schedulingWindow;
+    class profile *pt;
 };
 
 #endif // DASHBOARD_H

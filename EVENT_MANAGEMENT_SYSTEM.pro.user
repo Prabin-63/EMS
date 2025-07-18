@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 16.0.2, 2025-07-18T09:18:55. -->
+=======
+<!-- Written by QtCreator 16.0.2, 2025-07-17T18:44:03. -->
+>>>>>>> 5d061450fde78a1fbe13816cbeed794a70f51e98
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -243,6 +247,7 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
+<<<<<<< HEAD
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph &quot;dwarf,4096&quot; -F 250</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">EVENT_MANAGEMENT_SYSTEM2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
@@ -252,6 +257,17 @@
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/HP/OneDrive/Desktop/finalized ui/EVENT_MANAGEMENT_SYSTEM/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug</value>
+=======
+    <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/prabinbashyal/Desktop/PROJECT/EVENT_MANAGEMENT_SYSTEM.pro</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/Users/prabinbashyal/Desktop/EVENT_MANAGEMENT_SYSTEM/build/Qt_6_9_0_for_macOS-Debug/EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS</value>
+>>>>>>> 5d061450fde78a1fbe13816cbeed794a70f51e98
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
