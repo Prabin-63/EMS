@@ -1,28 +1,20 @@
 #include "addvolunteername.h"
 #include "ui_addvolunteername.h"
-#include "database.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
-#include <QMessageBox>
 #include <QDebug>
+#include <QMessageBox>
+#include <QRandomGenerator>
+#include <algorithm>
 
-AddVolunteerName::AddVolunteerName(QWidget *parent)
+AddVolunteerName::AddVolunteerName(int eventId, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::AddVolunteerName)
+    , currentEventId(eventId)
 {
     ui->setupUi(this);
-
-    ui->scrollArea->setWidget(ui->scrollAreaWidgetContents);
-    ui->scrollArea->setWidgetResizable(true);
-
-    volunteerLayout = new QVBoxLayout();
-    ui->scrollAreaWidgetContents->setLayout(volunteerLayout);
-
-    // Load events into combo box
-    loadEvents();
-
-
+    setupVolunteerFields();
 }
 
 AddVolunteerName::~AddVolunteerName()
@@ -30,23 +22,127 @@ AddVolunteerName::~AddVolunteerName()
     delete ui;
 }
 
-void AddVolunteerName::loadEvents()
+int AddVolunteerName::getTotalVolunteersFromDB()
 {
-    ui->eventComboBox->clear();
-
     QSqlQuery query;
-    if (!query.exec("SELECT id, name FROM events ORDER BY name")) {
-        qDebug() << "Failed to load events:" << query.lastError().text();
+    int total = 0;
+
+    query.prepare("SELECT SUM(required_volunteers) FROM places WHERE event_id = :eventId");
+    query.bindValue(":eventId", currentEventId);
+
+    if (query.exec()) {
+        if (query.next()) {
+            total = query.value(0).toInt();
+        }
+    } else {
+        qDebug() << "DB Error: " << query.lastError().text();
+    }
+
+    return total;
+}
+
+void AddVolunteerName::setupVolunteerFields()
+{
+    QWidget *container = ui->scrollContent;
+    layout = new QVBoxLayout();
+
+    int totalVolunteers = getTotalVolunteersFromDB();
+
+    for (int i = 0; i < totalVolunteers; ++i) {
+        QLineEdit *lineEdit = new QLineEdit(this);
+        lineEdit->setPlaceholderText(QString("Enter name of volunteer %1").arg(i + 1));
+        lineEdit->setStyleSheet("color: white; background-color: grey;");
+        layout->addWidget(lineEdit);
+        lineEdits.append(lineEdit);
+    }
+
+    container->setLayout(layout);
+    ui->scrollArea->setWidgetResizable(true);
+}
+
+void AddVolunteerName::assignVolunteersToSubevents()
+{
+    QVector<int> volunteerIds;
+    QSqlQuery query;
+
+    // 1. Get unassigned volunteers
+    query.prepare("SELECT id FROM volunteers WHERE event_id = :eventId AND assigned_place_id IS NULL");
+    query.bindValue(":eventId", currentEventId);
+    if (query.exec()) {
+        while (query.next()) {
+            volunteerIds.append(query.value(0).toInt());
+        }
+    } else {
+        qDebug() << "Error fetching volunteers:" << query.lastError().text();
         return;
     }
 
-    // Add a placeholder item
-    ui->eventComboBox->addItem("-- Select Event --", QVariant(-1));
-
-    while (query.next()) {
-        int id = query.value(0).toInt();
-        QString name = query.value(1).toString();
-        ui->eventComboBox->addItem(name, id);
+    if (volunteerIds.isEmpty()) {
+        QMessageBox::information(this, "No Volunteers", "No unassigned volunteers found.");
+        return;
     }
+
+    // 2. Shuffle volunteers
+    std::shuffle(volunteerIds.begin(), volunteerIds.end(), *QRandomGenerator::global());
+
+    // 3. Get places with volunteer needs
+    QVector<QPair<int, int>> places; // <place_id, required_count>
+    query.prepare("SELECT id, required_volunteers FROM places WHERE event_id = :eventId");
+    query.bindValue(":eventId", currentEventId);
+    if (query.exec()) {
+        while (query.next()) {
+            int placeId = query.value(0).toInt();
+            int required = query.value(1).toInt();
+            places.append(qMakePair(placeId, required));
+        }
+    } else {
+        qDebug() << "Error fetching places:" << query.lastError().text();
+        return;
+    }
+
+    // 4. Assign volunteers
+    int vIndex = 0;
+    QSqlQuery updateQuery;
+    for (const auto& place : places) {
+        int placeId = place.first;
+        int required = place.second;
+
+        for (int i = 0; i < required && vIndex < volunteerIds.size(); ++i) {
+            int volunteerId = volunteerIds[vIndex++];
+
+            updateQuery.prepare("UPDATE volunteers SET assigned_place_id = :placeId WHERE id = :volunteerId");
+            updateQuery.bindValue(":placeId", placeId);
+            updateQuery.bindValue(":volunteerId", volunteerId);
+
+            if (!updateQuery.exec()) {
+                qDebug() << "Error assigning volunteer:" << updateQuery.lastError().text();
+            }
+        }
+    }
+
+    QMessageBox::information(this, "Success", "Volunteers assigned randomly to subevents.");
 }
 
+void AddVolunteerName::on_Savevolunteers_clicked()
+{
+    QSqlQuery query;
+
+    for (QLineEdit* lineEdit : lineEdits) {
+        QString name = lineEdit->text().trimmed();
+
+        if (!name.isEmpty()) {
+            query.prepare("INSERT INTO volunteers (name, event_id) VALUES (:name, :eventId)");
+            query.bindValue(":name", name);
+            query.bindValue(":eventId", currentEventId);
+
+            if (!query.exec()) {
+                qDebug() << "Failed to insert volunteer:" << query.lastError().text();
+                QMessageBox::warning(this, "Database Error",
+                                     "Could not save volunteer: " + query.lastError().text());
+            }
+        }
+    }
+
+    QMessageBox::information(this, "Success", "Volunteers saved successfully. Now assigning...");
+    assignVolunteersToSubevents();
+}

@@ -15,5 +15,11 @@
         <file>resources/icons8-hierarchy-48.png</file>
         <file>resources/icons8-profile-48.png</file>
         <file>resources/icons8-log-out-48.png</file>
+        <file>resources/icons8-community-50.png</file>
+        <file>resources/USER LOGIN (1).png</file>
+        <file>resources/charity.png</file>
+        <file>resources/event.png</file>
+        <file>resources/event (1).png</file>
+        <file>resources/analysis.png</file>
     </qresource>
 </RCC>

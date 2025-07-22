@@ -11,16 +11,15 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -58,9 +57,13 @@ public:
     QHBoxLayout *horizontalLayout_9;
     QLabel *label_5;
     QPushButton *Managing;
+    QWidget *widget_8;
+    QHBoxLayout *horizontalLayout_17;
+    QHBoxLayout *horizontalLayout_16;
+    QLabel *label_8;
+    QPushButton *Volunteer;
     QWidget *widget_6;
     QHBoxLayout *horizontalLayout_12;
-    QPushButton *Volunteer;
     QHBoxLayout *horizontalLayout_11;
     QLabel *label_6;
     QPushButton *Help_Center;
@@ -72,10 +75,31 @@ public:
     QLabel *label_7;
     QPushButton *Log_out;
     QSpacerItem *verticalSpacer_3;
-    QWidget *Rightsidebar;
+    QWidget *RightSideBar;
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
-    QTableWidget *table1;
+    QWidget *widget_12;
+    QWidget *TOP;
+    QHBoxLayout *horizontalLayout_18;
+    QHBoxLayout *horizontalLayout_15;
+    QComboBox *eventComboBox;
+    QWidget *subeventSummaryWidget;
+    QHBoxLayout *horizontalLayout_22;
+    QHBoxLayout *horizontalLayout_21;
+    QLabel *logoLabel_2;
+    QLabel *totalSubeventsLabel;
+    QWidget *volunteerSummaryWidget;
+    QHBoxLayout *horizontalLayout_20;
+    QHBoxLayout *horizontalLayout_19;
+    QLabel *logoLabel;
+    QLabel *totalVolunteersLabel;
+    QWidget *Viewvolunteers;
+    QHBoxLayout *horizontalLayout_24;
+    QHBoxLayout *horizontalLayout_23;
+    QLabel *logoLabel_3;
+    QPushButton *pushButton;
+    QWidget *widget_10;
+    QWidget *chartContainer;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -87,7 +111,7 @@ public:
         centralwidget = new QWidget(dashboard);
         centralwidget->setObjectName("centralwidget");
         centralwidget->setStyleSheet(QString::fromUtf8("QWidget{\n"
-"	background-color: white;\n"
+"	background-color: black;\n"
 "}"));
         horizontalLayout_2 = new QHBoxLayout(centralwidget);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
@@ -314,15 +338,27 @@ public:
 
         verticalLayout_2->addWidget(widget_5);
 
-        widget_6 = new QWidget(Leftsidebar);
-        widget_6->setObjectName("widget_6");
-        sizePolicy1.setHeightForWidth(widget_6->sizePolicy().hasHeightForWidth());
-        widget_6->setSizePolicy(sizePolicy1);
-        widget_6->setMinimumSize(QSize(0, 40));
-        horizontalLayout_12 = new QHBoxLayout(widget_6);
-        horizontalLayout_12->setObjectName("horizontalLayout_12");
-        Volunteer = new QPushButton(widget_6);
+        widget_8 = new QWidget(Leftsidebar);
+        widget_8->setObjectName("widget_8");
+        sizePolicy1.setHeightForWidth(widget_8->sizePolicy().hasHeightForWidth());
+        widget_8->setSizePolicy(sizePolicy1);
+        widget_8->setMinimumSize(QSize(0, 40));
+        horizontalLayout_17 = new QHBoxLayout(widget_8);
+        horizontalLayout_17->setObjectName("horizontalLayout_17");
+        horizontalLayout_16 = new QHBoxLayout();
+        horizontalLayout_16->setObjectName("horizontalLayout_16");
+        label_8 = new QLabel(widget_8);
+        label_8->setObjectName("label_8");
+        label_8->setMinimumSize(QSize(20, 20));
+        label_8->setMaximumSize(QSize(20, 20));
+        label_8->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-community-50.png")));
+        label_8->setScaledContents(true);
+
+        horizontalLayout_16->addWidget(label_8);
+
+        Volunteer = new QPushButton(widget_8);
         Volunteer->setObjectName("Volunteer");
+        Volunteer->setFont(font1);
         Volunteer->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "color:white;\n"
 "	background-color: rgb(111, 111, 111);\n"
@@ -334,14 +370,24 @@ public:
 "	background-color: rgb(188, 0, 188);\n"
 "}"));
 
-        horizontalLayout_12->addWidget(Volunteer);
+        horizontalLayout_16->addWidget(Volunteer);
 
 
-        verticalLayout_2->addWidget(widget_6);
+        horizontalLayout_17->addLayout(horizontalLayout_16);
 
+
+        verticalLayout_2->addWidget(widget_8);
+
+        widget_6 = new QWidget(Leftsidebar);
+        widget_6->setObjectName("widget_6");
+        sizePolicy1.setHeightForWidth(widget_6->sizePolicy().hasHeightForWidth());
+        widget_6->setSizePolicy(sizePolicy1);
+        widget_6->setMinimumSize(QSize(0, 40));
+        horizontalLayout_12 = new QHBoxLayout(widget_6);
+        horizontalLayout_12->setObjectName("horizontalLayout_12");
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName("horizontalLayout_11");
-        label_6 = new QLabel(Leftsidebar);
+        label_6 = new QLabel(widget_6);
         label_6->setObjectName("label_6");
         sizePolicy2.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
         label_6->setSizePolicy(sizePolicy2);
@@ -352,7 +398,7 @@ public:
 
         horizontalLayout_11->addWidget(label_6);
 
-        Help_Center = new QPushButton(Leftsidebar);
+        Help_Center = new QPushButton(widget_6);
         Help_Center->setObjectName("Help_Center");
         Help_Center->setFont(font1);
         Help_Center->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -369,7 +415,10 @@ public:
         horizontalLayout_11->addWidget(Help_Center);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_11);
+        horizontalLayout_12->addLayout(horizontalLayout_11);
+
+
+        verticalLayout_2->addWidget(widget_6);
 
         verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -431,30 +480,149 @@ public:
 
         horizontalLayout->addWidget(Leftsidebar);
 
-
-        horizontalLayout_2->addLayout(horizontalLayout);
-
-        Rightsidebar = new QWidget(centralwidget);
-        Rightsidebar->setObjectName("Rightsidebar");
-        gridLayout_2 = new QGridLayout(Rightsidebar);
+        RightSideBar = new QWidget(centralwidget);
+        RightSideBar->setObjectName("RightSideBar");
+        gridLayout_2 = new QGridLayout(RightSideBar);
         gridLayout_2->setObjectName("gridLayout_2");
         gridLayout = new QGridLayout();
         gridLayout->setObjectName("gridLayout");
-        table1 = new QTableWidget(Rightsidebar);
-        table1->setObjectName("table1");
+        widget_12 = new QWidget(RightSideBar);
+        widget_12->setObjectName("widget_12");
+        widget_12->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
 
-        gridLayout->addWidget(table1, 0, 0, 1, 1);
+        gridLayout->addWidget(widget_12, 1, 3, 1, 1);
+
+        TOP = new QWidget(RightSideBar);
+        TOP->setObjectName("TOP");
+        sizePolicy1.setHeightForWidth(TOP->sizePolicy().hasHeightForWidth());
+        TOP->setSizePolicy(sizePolicy1);
+        TOP->setMinimumSize(QSize(0, 60));
+        TOP->setStyleSheet(QString::fromUtf8("border-radius:20px;\n"
+"background-color:rgb(55,55,55);"));
+        horizontalLayout_18 = new QHBoxLayout(TOP);
+        horizontalLayout_18->setObjectName("horizontalLayout_18");
+        horizontalLayout_15 = new QHBoxLayout();
+        horizontalLayout_15->setObjectName("horizontalLayout_15");
+        eventComboBox = new QComboBox(TOP);
+        eventComboBox->setObjectName("eventComboBox");
+        QFont font3;
+        font3.setPointSize(15);
+        eventComboBox->setFont(font3);
+        eventComboBox->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        horizontalLayout_15->addWidget(eventComboBox);
+
+
+        horizontalLayout_18->addLayout(horizontalLayout_15);
+
+
+        gridLayout->addWidget(TOP, 0, 0, 1, 4);
+
+        subeventSummaryWidget = new QWidget(RightSideBar);
+        subeventSummaryWidget->setObjectName("subeventSummaryWidget");
+        subeventSummaryWidget->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
+        horizontalLayout_22 = new QHBoxLayout(subeventSummaryWidget);
+        horizontalLayout_22->setObjectName("horizontalLayout_22");
+        horizontalLayout_21 = new QHBoxLayout();
+        horizontalLayout_21->setObjectName("horizontalLayout_21");
+        logoLabel_2 = new QLabel(subeventSummaryWidget);
+        logoLabel_2->setObjectName("logoLabel_2");
+
+        horizontalLayout_21->addWidget(logoLabel_2);
+
+        totalSubeventsLabel = new QLabel(subeventSummaryWidget);
+        totalSubeventsLabel->setObjectName("totalSubeventsLabel");
+
+        horizontalLayout_21->addWidget(totalSubeventsLabel);
+
+
+        horizontalLayout_22->addLayout(horizontalLayout_21);
+
+
+        gridLayout->addWidget(subeventSummaryWidget, 1, 1, 1, 1);
+
+        volunteerSummaryWidget = new QWidget(RightSideBar);
+        volunteerSummaryWidget->setObjectName("volunteerSummaryWidget");
+        sizePolicy1.setHeightForWidth(volunteerSummaryWidget->sizePolicy().hasHeightForWidth());
+        volunteerSummaryWidget->setSizePolicy(sizePolicy1);
+        volunteerSummaryWidget->setMinimumSize(QSize(0, 100));
+        volunteerSummaryWidget->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
+        horizontalLayout_20 = new QHBoxLayout(volunteerSummaryWidget);
+        horizontalLayout_20->setObjectName("horizontalLayout_20");
+        horizontalLayout_19 = new QHBoxLayout();
+        horizontalLayout_19->setObjectName("horizontalLayout_19");
+        logoLabel = new QLabel(volunteerSummaryWidget);
+        logoLabel->setObjectName("logoLabel");
+
+        horizontalLayout_19->addWidget(logoLabel);
+
+        totalVolunteersLabel = new QLabel(volunteerSummaryWidget);
+        totalVolunteersLabel->setObjectName("totalVolunteersLabel");
+
+        horizontalLayout_19->addWidget(totalVolunteersLabel);
+
+
+        horizontalLayout_20->addLayout(horizontalLayout_19);
+
+
+        gridLayout->addWidget(volunteerSummaryWidget, 1, 0, 1, 1);
+
+        Viewvolunteers = new QWidget(RightSideBar);
+        Viewvolunteers->setObjectName("Viewvolunteers");
+        Viewvolunteers->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
+        horizontalLayout_24 = new QHBoxLayout(Viewvolunteers);
+        horizontalLayout_24->setObjectName("horizontalLayout_24");
+        horizontalLayout_23 = new QHBoxLayout();
+        horizontalLayout_23->setObjectName("horizontalLayout_23");
+        logoLabel_3 = new QLabel(Viewvolunteers);
+        logoLabel_3->setObjectName("logoLabel_3");
+
+        horizontalLayout_23->addWidget(logoLabel_3);
+
+        pushButton = new QPushButton(Viewvolunteers);
+        pushButton->setObjectName("pushButton");
+        pushButton->setMinimumSize(QSize(0, 90));
+        pushButton->setFont(font3);
+        pushButton->setStyleSheet(QString::fromUtf8("color:white;\n"
+"padding-left:10px;"));
+
+        horizontalLayout_23->addWidget(pushButton);
+
+
+        horizontalLayout_24->addLayout(horizontalLayout_23);
+
+
+        gridLayout->addWidget(Viewvolunteers, 1, 2, 1, 1);
+
+        widget_10 = new QWidget(RightSideBar);
+        widget_10->setObjectName("widget_10");
+
+        gridLayout->addWidget(widget_10, 3, 0, 1, 1);
+
+        chartContainer = new QWidget(RightSideBar);
+        chartContainer->setObjectName("chartContainer");
+        chartContainer->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
+
+        gridLayout->addWidget(chartContainer, 2, 0, 1, 2);
 
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
 
 
-        horizontalLayout_2->addWidget(Rightsidebar);
+        horizontalLayout->addWidget(RightSideBar);
+
+
+        horizontalLayout_2->addLayout(horizontalLayout);
 
         dashboard->setCentralWidget(centralwidget);
         menubar = new QMenuBar(dashboard);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 43));
+        menubar->setGeometry(QRect(0, 0, 800, 18));
         dashboard->setMenuBar(menubar);
         statusbar = new QStatusBar(dashboard);
         statusbar->setObjectName("statusbar");
@@ -477,11 +645,19 @@ public:
         Booking->setText(QCoreApplication::translate("dashboard", "Booking", nullptr));
         label_5->setText(QString());
         Managing->setText(QCoreApplication::translate("dashboard", "Managing", nullptr));
+        label_8->setText(QString());
         Volunteer->setText(QCoreApplication::translate("dashboard", "Volunteer", nullptr));
         label_6->setText(QString());
         Help_Center->setText(QCoreApplication::translate("dashboard", "Help Center", nullptr));
         label_7->setText(QString());
         Log_out->setText(QCoreApplication::translate("dashboard", "LOG OUT", nullptr));
+        eventComboBox->setPlaceholderText(QCoreApplication::translate("dashboard", "Select Your Event", nullptr));
+        logoLabel_2->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
+        totalSubeventsLabel->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
+        logoLabel->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
+        totalVolunteersLabel->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
+        logoLabel_3->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
+        pushButton->setText(QCoreApplication::translate("dashboard", "View Volunteers", nullptr));
     } // retranslateUi
 
 };

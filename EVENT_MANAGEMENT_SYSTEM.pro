@@ -1,12 +1,11 @@
-QT += core gui widgets sql
+QT += core gui widgets sql charts
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
+QT += core gui widgets sql charts
 
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-
+# Sources
 SOURCES += \
     addvolunteername.cpp \
     dashboard.cpp \
@@ -19,6 +18,7 @@ SOURCES += \
     scheduling.cpp \
     signup.cpp
 
+# Headers
 HEADERS += \
     addvolunteername.h \
     dashboard.h \
@@ -31,6 +31,7 @@ HEADERS += \
     sessionmanager.h \
     signup.h
 
+# UI Forms
 FORMS += \
     addvolunteername.ui \
     dashboard.ui \
@@ -41,13 +42,15 @@ FORMS += \
     scheduling.ui \
     signup.ui
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
-
+# Resources
 RESOURCES += \
     resources.qrc
 
+# Dist files
 DISTFILES += \
     resources/icons8-play-100.png
+
+# Default rules for deployment
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target

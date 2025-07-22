@@ -5,6 +5,7 @@
 #include "signup.h"
 #include "dashboard.h"
 
+
 namespace Ui {
 class login;  // lowercase 'login' to match ui_login.h
 }
@@ -24,7 +25,7 @@ private slots:
 private:
     Ui::login *ui;  // match lowercase here
     signup* sign_up;
-    dashboard* dash_board;
+    dashboard *dash;
 
     QString hashPassword(const QString &password);
 };

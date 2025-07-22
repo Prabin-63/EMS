@@ -52,6 +52,7 @@ void profile::filterEvents(const QString &filterColumn, const QString &filterTex
         QMessageBox::critical(this, "Error", query.lastError().text());
         return;
     }
+      query.finish();
 
     populateTable(query);
 

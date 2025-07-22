@@ -68,4 +68,5 @@ void signup::onSignupClicked()
     } else {
         QMessageBox::critical(this, "Database Error", query.lastError().text());
     }
+      query.finish();
 }

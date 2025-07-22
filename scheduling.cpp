@@ -8,13 +8,15 @@
 #include <QDate>
 #include <QTime>
 #include "sessionmanager.h"
-#include<placemanage.h>
-#include<dashboard.h>
+#include <placemanage.h>
+#include <dashboard.h>
+#include<QTimer>
 
 scheduling::scheduling(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::scheduling)
-    , dashboardWindow(nullptr)
+    : QMainWindow(parent),
+    ui(new Ui::scheduling),
+    dashboardWindow(nullptr),
+    place_manage(nullptr)
 {
     ui->setupUi(this);
     connect(ui->Gotodash_subevent, &QPushButton::clicked, this, &scheduling::on_Gotodash_subevent_clicked);
@@ -23,6 +25,8 @@ scheduling::scheduling(QWidget *parent)
 scheduling::~scheduling()
 {
     delete ui;
+    delete dashboardWindow;
+    delete place_manage;
 }
 
 void scheduling::on_Gotodash_subevent_clicked()
@@ -51,8 +55,6 @@ void scheduling::on_Gotodash_subevent_clicked()
         return;
     }
 
-
-
     QRegularExpression contactRegex("^(98|97)\\d{8}$");
     if (!contactRegex.match(contact).hasMatch()) {
         QMessageBox::warning(this, "Invalid Contact", "Contact number must start with 98 or 97 and be 10 digits.");
@@ -63,6 +65,12 @@ void scheduling::on_Gotodash_subevent_clicked()
     int userId = SessionManager::instance().getUserId();
     if (userId == -1) {
         QMessageBox::critical(this, "Session Error", "No user is logged in.");
+        return;
+    }
+
+    // Ensure DB is open
+    if (!QSqlDatabase::database().isOpen()) {
+        QMessageBox::critical(this, "Database Error", "Database connection is not open.");
         return;
     }
 
@@ -80,51 +88,55 @@ void scheduling::on_Gotodash_subevent_clicked()
     if (!query.exec()) {
         qDebug() << "Insert failed:" << query.lastError().text();
         QMessageBox::critical(this, "Database Error", "Failed to save event: " + query.lastError().text());
-    } else {
-        QMessageBox::information(this, "Success", "Event scheduled successfully!");
-
-        // Clear inputs
-        ui->Name->clear();
-        ui->Location->clear();
-        ui->Date->clear();
-        ui->Time->clear();
-        ui->Contact->clear();
-
-        qint64 lastId = query.lastInsertId().toLongLong();
-
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(this,
-                                      "Manage Sub Event",
-                                      "Do you want to manage sub event?",
-                                      QMessageBox::Yes | QMessageBox::No);
-
-        if (reply == QMessageBox::Yes) {
-            place_manage = new placemanage(this);
-            place_manage->setEventId(static_cast<int>(lastId));
-            place_manage->show();
-
-        } else {
-            // You may just close or do something else here,
-            // but if you want to open placemanage anyway, pass eventId too:
-            place_manage = new placemanage(this);
-            place_manage->setEventId(static_cast<int>(lastId));
-            place_manage->show();
-        }
+        return;
     }
+      query.finish();
+      query.clear();
 
+    // Get last inserted ID
+    qint64 lastId = query.lastInsertId().toLongLong();
+    query.finish();  // 🔒 Ensure query finishes
+
+    // Show success message
+    QMessageBox::information(this, "Success", "Event scheduled successfully!");
+
+    // Clear input fields
+    ui->Name->clear();
+    ui->Location->clear();
+    ui->Date->clear();
+    ui->Time->clear();
+    ui->Contact->clear();
+
+    // Ask to manage subevent
+    QTimer::singleShot(200, this, [=]() {
+        QMessageBox::StandardButton reply = QMessageBox::question(this,
+                                                                  "Manage Sub Event",
+                                                                  "Do you want to manage sub event?",
+                                                                  QMessageBox::Yes | QMessageBox::No);
+
+        if (reply == QMessageBox::Yes || reply == QMessageBox::No) {
+            if (place_manage) {
+                delete place_manage;
+            }
+            place_manage = new placemanage(userId, static_cast<int>(lastId));
+            place_manage->show();
+            this->close();
+        }
+    });
 }
-
-
 
 void scheduling::on_dashboard_2_clicked()
 {
-    // Create dashboard window if it doesn't exist
-    if (!dashboardWindow) {
-        dashboardWindow = new dashboard(this);  // Pass 'this' as parent
+    int userId = SessionManager::instance().getUserId();
+    if (userId == -1) {
+        QMessageBox::critical(this, "Session Error", "No user is logged in.");
+        return;
     }
 
-    dashboardWindow->show();  // Show the dashboard window
-    this->hide();            // Hide the current scheduling window
+    if (!dashboardWindow) {
+        dashboardWindow = new dashboard(userId);
+    }
+
+    dashboardWindow->show();
+    this->hide();
 }
-
-

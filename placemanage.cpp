@@ -11,11 +11,14 @@
 #include <QMessageBox>
 #include <QSqlError>
 #include <QDebug>
-#include<addvolunteername.h>
+#include <dashboard.h>
 
-placemanage::placemanage(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::placemanage)
+placemanage::placemanage(int userId, int eventId, QWidget *parent)
+    : QMainWindow(parent),
+    ui(new Ui::placemanage),
+    userId(userId),
+    eventId(eventId),
+    dash(nullptr)
 {
     ui->setupUi(this);
 
@@ -26,11 +29,13 @@ placemanage::placemanage(QWidget *parent)
 
     connect(ui->generateButton, &QPushButton::clicked, this, &placemanage::on_generateButton_clicked);
     connect(ui->addSubEventButton, &QPushButton::clicked, this, &placemanage::on_addSubEventButton_clicked);
-
+    connect(ui->addOneSubEventButton, &QPushButton::clicked, this, &placemanage::on_addOneSubEventButton_clicked);
+    connect(ui->removeSubEventButton, &QPushButton::clicked, this, &placemanage::on_removeSubEventButton_clicked);
 }
 
 placemanage::~placemanage()
 {
+    delete dash;
     delete ui;
 }
 
@@ -53,10 +58,11 @@ void placemanage::on_generateButton_clicked()
         return;
     }
 
+    // Clear existing sub-event widgets
     QLayoutItem *child;
     while ((child = layout->takeAt(0)) != nullptr) {
         if (child->widget()) {
-            delete child->widget();
+            child->widget()->deleteLater();
         }
         delete child;
     }
@@ -125,6 +131,7 @@ void placemanage::on_addSubEventButton_clicked()
     if (!query.exec()) {
         qDebug() << "Failed to clear old sub-events:" << query.lastError().text();
     }
+      query.finish();
 
     int successCount = 0;
 
@@ -146,8 +153,8 @@ void placemanage::on_addSubEventButton_clicked()
             return;
         }
 
-        query.prepare("INSERT INTO places(event_id, sub_event_name, location, time, contact_person,required_volunteers) "
-                      "VALUES (?, ?, ?, ?, ?,?)");
+        query.prepare("INSERT INTO places(event_id, sub_event_name, location, time, contact_person, required_volunteers) "
+                      "VALUES (?, ?, ?, ?, ?, ?)");
         query.addBindValue(eventId);
         query.addBindValue(subEventName);
         query.addBindValue(location);
@@ -159,17 +166,18 @@ void placemanage::on_addSubEventButton_clicked()
             qDebug() << "Insert failed for row" << i << ":" << query.lastError().text();
             continue;
         }
+        query.finish();
         successCount++;
     }
 
-    if (successCount > 0){
+    if (successCount > 0) {
         QMessageBox::information(this, "Success", QString("%1 place(s) saved successfully.").arg(successCount));
-        dashboard *dash = new dashboard();
+        dash = new dashboard(userId);
         dash->show();
         this->close();
-    }
-    else
+    } else {
         QMessageBox::warning(this, "No Data Saved", "No valid place data to save.");
+    }
 }
 
 void placemanage::on_addOneSubEventButton_clicked()
@@ -203,7 +211,6 @@ void placemanage::on_addOneSubEventButton_clicked()
     rowLayout->addWidget(contact);
     rowLayout->addWidget(total);
 
-
     QWidget* rowWidget = new QWidget();
     rowWidget->setLayout(rowLayout);
 
@@ -232,4 +239,3 @@ void placemanage::on_removeSubEventButton_clicked()
         delete lastItem;
     }
 }
-

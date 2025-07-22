@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true">QWidget{
-	background-color: white;
+	background-color: black;
 }</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -392,6 +392,78 @@ QPushButton:hover{
           </widget>
          </item>
          <item>
+          <widget class="QWidget" name="widget_8" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_17">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_16">
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="minimumSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="resources.qrc">:/resources/icons8-community-50.png</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="Volunteer">
+                <property name="font">
+                 <font>
+                  <family>Segoe Fluent Icons</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+color:white;
+	background-color: rgb(111, 111, 111);
+padding:5px;
+border:none;
+border-radius:7px;
+}
+QPushButton:hover{
+	background-color: rgb(188, 0, 188);
+}</string>
+                </property>
+                <property name="text">
+                 <string>Volunteer</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
           <widget class="QWidget" name="widget_6" native="true">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -407,9 +479,48 @@ QPushButton:hover{
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_12">
             <item>
-             <widget class="QPushButton" name="Volunteer">
-              <property name="styleSheet">
-               <string notr="true">QPushButton{
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <widget class="QLabel" name="label_6">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="resources.qrc">:/resources/icons8-help-center-48.png</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="Help_Center">
+                <property name="font">
+                 <font>
+                  <family>Segoe Fluent Icons</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
 color:white;
 	background-color: rgb(111, 111, 111);
 padding:5px;
@@ -419,74 +530,16 @@ border-radius:7px;
 QPushButton:hover{
 	background-color: rgb(188, 0, 188);
 }</string>
-              </property>
-              <property name="text">
-               <string>Volunteer</string>
-              </property>
-             </widget>
+                </property>
+                <property name="text">
+                 <string>Help Center</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_11">
-           <item>
-            <widget class="QLabel" name="label_6">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>20</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>20</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="resources.qrc">:/resources/icons8-help-center-48.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="Help_Center">
-             <property name="font">
-              <font>
-               <family>Segoe Fluent Icons</family>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{
-color:white;
-	background-color: rgb(111, 111, 111);
-padding:5px;
-border:none;
-border-radius:7px;
-}
-QPushButton:hover{
-	background-color: rgb(188, 0, 188);
-}</string>
-             </property>
-             <property name="text">
-              <string>Help Center</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
          </item>
          <item>
           <spacer name="verticalSpacer_4">
@@ -604,12 +657,188 @@ color:white;
         </layout>
        </widget>
       </item>
+      <item>
+       <widget class="QWidget" name="RightSideBar" native="true">
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="1" column="3">
+            <widget class="QWidget" name="widget_12" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color:rgb(55,55,55);
+border-radius:20px;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="4">
+            <widget class="QWidget" name="TOP" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border-radius:20px;
+background-color:rgb(55,55,55);</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_18">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_15">
+                <item>
+                 <widget class="QComboBox" name="eventComboBox">
+                  <property name="font">
+                   <font>
+                    <pointsize>15</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color:white;</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Select Your Event</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QWidget" name="subeventSummaryWidget" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color:rgb(55,55,55);
+border-radius:20px;</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_22">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_21">
+                <item>
+                 <widget class="QLabel" name="logoLabel_2">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="totalSubeventsLabel">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QWidget" name="volunteerSummaryWidget" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color:rgb(55,55,55);
+border-radius:20px;</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_20">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_19">
+                <item>
+                 <widget class="QLabel" name="logoLabel">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="totalVolunteersLabel">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QWidget" name="Viewvolunteers" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color:rgb(55,55,55);
+border-radius:20px;</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_24">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_23">
+                <item>
+                 <widget class="QLabel" name="logoLabel_3">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>90</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>15</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color:white;
+padding-left:10px;</string>
+                  </property>
+                  <property name="text">
+                   <string>View Volunteers</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QWidget" name="widget_10" native="true"/>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QWidget" name="chartContainer" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color:rgb(55,55,55);
+border-radius:20px;</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
      </layout>
-    </item>
-    <item>
-     <widget class="QWidget" name="Rightsidebar" native="true">
-      <layout class="QGridLayout" name="gridLayout_2"/>
-     </widget>
     </item>
    </layout>
   </widget>

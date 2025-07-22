@@ -6,29 +6,31 @@
 #include <QVBoxLayout>
 #include <QVector>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class AddVolunteerName; }
-QT_END_NAMESPACE
+namespace Ui {
+class AddVolunteerName;
+}
 
 class AddVolunteerName : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit AddVolunteerName(QWidget *parent = nullptr);
+    explicit AddVolunteerName(int eventId, QWidget *parent = nullptr); // ✅ add eventId
     ~AddVolunteerName();
 
 private slots:
-
+    void on_Savevolunteers_clicked();
+    void assignVolunteersToSubevents();
 
 private:
     Ui::AddVolunteerName *ui;
+    QVector<QLineEdit*> lineEdits;
 
-    QVBoxLayout *volunteerLayout;
-    QVector<QLineEdit*> volunteerLineEdits;
+    QVBoxLayout *layout;
+    int currentEventId; // ✅ to store the event ID
 
-    void loadEvents();
-
+    void setupVolunteerFields();
+    int getTotalVolunteersFromDB(); // Now uses event_id
 };
 
 #endif // ADDVOLUNTEERNAME_H
