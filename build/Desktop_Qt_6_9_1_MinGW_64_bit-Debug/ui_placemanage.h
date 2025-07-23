@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'placemanage.ui'
 **
-** Created by: Qt User Interface Compiler version 6.9.1
+** Created by: Qt User Interface Compiler version 6.9.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -65,7 +65,7 @@ public:
         centralwidget = new QWidget(placemanage);
         centralwidget->setObjectName("centralwidget");
         centralwidget->setStyleSheet(QString::fromUtf8("QWidget{\n"
-"background-color:white;\n"
+"background-color:black;\n"
 "}"));
         horizontalLayout_2 = new QHBoxLayout(centralwidget);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
@@ -177,7 +177,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 778, 460));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 798, 104));
         verticalLayout_5 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_5->setObjectName("verticalLayout_5");
         subEventContainer = new QWidget(scrollAreaWidgetContents);
@@ -240,7 +240,7 @@ public:
         placemanage->setCentralWidget(centralwidget);
         menubar = new QMenuBar(placemanage);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1022, 22));
+        menubar->setGeometry(QRect(0, 0, 1022, 18));
         placemanage->setMenuBar(menubar);
         statusbar = new QStatusBar(placemanage);
         statusbar->setObjectName("statusbar");

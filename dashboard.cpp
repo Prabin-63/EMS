@@ -14,7 +14,6 @@
 #include <QtCharts/QChart>
 
 
-using namespace QtCharts;
 
 dashboard::dashboard(int userId, QWidget *parent)
     : QMainWindow(parent),
