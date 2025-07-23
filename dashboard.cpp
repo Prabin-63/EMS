@@ -25,6 +25,11 @@ dashboard::dashboard(int userId, QWidget *parent)
 {
     ui->setupUi(this);
 
+    if (!ui->chartContainer->layout()) {
+        QVBoxLayout *layout = new QVBoxLayout(ui->chartContainer);
+        layout->setContentsMargins(0, 0, 0, 0);
+    }
+
     loadUserEvents();
 
     connect(ui->eventComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),

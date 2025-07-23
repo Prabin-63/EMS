@@ -38,10 +38,11 @@ private:
 
     void styleLineEdit(QLineEdit* lineEdit, const QString& placeholder);
 
-    dashboard* dash = nullptr;
+
 
     int userId = -1;
     int eventId = -1;
+    dashboard* dash = nullptr;
 };
 
 #endif // PLACEMANAGE_H

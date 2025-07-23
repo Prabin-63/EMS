@@ -15,8 +15,9 @@
 scheduling::scheduling(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::scheduling),
-    dashboardWindow(nullptr),
-    place_manage(nullptr)
+
+    place_manage(nullptr),
+    dashboardWindow(nullptr)
 {
     ui->setupUi(this);
     connect(ui->Gotodash_subevent, &QPushButton::clicked, this, &scheduling::on_Gotodash_subevent_clicked);
