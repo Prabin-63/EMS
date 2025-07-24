@@ -10,12 +10,10 @@
 #include "sessionmanager.h"
 #include <placemanage.h>
 #include <dashboard.h>
-#include<QTimer>
 
 scheduling::scheduling(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::scheduling),
-
     place_manage(nullptr),
     dashboardWindow(nullptr)
 {
@@ -91,12 +89,10 @@ void scheduling::on_Gotodash_subevent_clicked()
         QMessageBox::critical(this, "Database Error", "Failed to save event: " + query.lastError().text());
         return;
     }
-      query.finish();
-      query.clear();
 
     // Get last inserted ID
     qint64 lastId = query.lastInsertId().toLongLong();
-    query.finish();  // 🔒 Ensure query finishes
+    query.finish();
 
     // Show success message
     QMessageBox::information(this, "Success", "Event scheduled successfully!");
@@ -109,21 +105,20 @@ void scheduling::on_Gotodash_subevent_clicked()
     ui->Contact->clear();
 
     // Ask to manage subevent
-    QTimer::singleShot(200, this, [=]() {
-        QMessageBox::StandardButton reply = QMessageBox::question(this,
-                                                                  "Manage Sub Event",
-                                                                  "Do you want to manage sub event?",
-                                                                  QMessageBox::Yes | QMessageBox::No);
+    QMessageBox::StandardButton reply = QMessageBox::question(this,
+                                                              "Manage Sub Event",
+                                                              "Do you want to manage sub event?",
+                                                              QMessageBox::Yes | QMessageBox::No);
 
-        if (reply == QMessageBox::Yes || reply == QMessageBox::No) {
-            if (place_manage) {
-                delete place_manage;
-            }
-            place_manage = new placemanage(userId, static_cast<int>(lastId));
-            place_manage->show();
-            this->close();
+    if (reply == QMessageBox::Yes) {
+        if (place_manage) {
+            delete place_manage;
         }
-    });
+        place_manage = new placemanage(userId, static_cast<int>(lastId));
+        place_manage->show();
+        this->close();
+    }
+    // If "No", just stay on the current window or optionally close.
 }
 
 void scheduling::on_dashboard_2_clicked()

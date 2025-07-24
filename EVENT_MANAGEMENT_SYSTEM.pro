@@ -16,7 +16,8 @@ SOURCES += \
     placemanage.cpp \
     profile.cpp \
     scheduling.cpp \
-    signup.cpp
+    signup.cpp \
+    viewvolunteer.cpp
 
 # Headers
 HEADERS += \
@@ -29,7 +30,8 @@ HEADERS += \
     profile.h \
     scheduling.h \
     sessionmanager.h \
-    signup.h
+    signup.h \
+    viewvolunteer.h
 
 # UI Forms
 FORMS += \
@@ -40,7 +42,8 @@ FORMS += \
     placemanage.ui \
     profile.ui \
     scheduling.ui \
-    signup.ui
+    signup.ui \
+    viewvolunteer.ui
 
 # Resources
 RESOURCES += \

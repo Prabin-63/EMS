@@ -2,16 +2,13 @@
 #define PLACEMANAGE_H
 
 #include <QMainWindow>
-#include <QVBoxLayout>
-#include <QLineEdit>
-#include "dashboard.h"
+#include<QLineEdit>
 
-
-QT_BEGIN_NAMESPACE
 namespace Ui {
-class placemanage;  // Capital P, must match ui_placemanage.h generated class
+class placemanage;
 }
-QT_END_NAMESPACE
+
+class dashboard;
 
 class placemanage : public QMainWindow
 {
@@ -29,20 +26,12 @@ private slots:
 
 private:
     Ui::placemanage *ui;
-    QVBoxLayout *subEventLayout;
-
-    void createSubEventForm();
-    void generatePlaceInputs();
-    void savePlaceToDatabase();
-    void removeSubEvent(QWidget* subEventWidget);
+    int userId;
+    int eventId;
+    dashboard* dash;
+    bool isInitialized; // ✅ Prevent premature slot calls
 
     void styleLineEdit(QLineEdit* lineEdit, const QString& placeholder);
-
-
-
-    int userId = -1;
-    int eventId = -1;
-    dashboard* dash = nullptr;
 };
 
 #endif // PLACEMANAGE_H

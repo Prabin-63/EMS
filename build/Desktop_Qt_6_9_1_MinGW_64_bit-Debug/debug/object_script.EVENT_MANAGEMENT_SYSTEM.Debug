@@ -8,6 +8,7 @@ debug/placemanage.o
 debug/profile.o
 debug/scheduling.o
 debug/signup.o
+debug/viewvolunteer.o
 debug/qrc_resources.o
 debug/moc_addvolunteername.o
 debug/moc_dashboard.o
@@ -17,3 +18,4 @@ debug/moc_placemanage.o
 debug/moc_profile.o
 debug/moc_scheduling.o
 debug/moc_signup.o
+debug/moc_viewvolunteer.o

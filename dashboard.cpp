@@ -5,6 +5,7 @@
 #include "QSqlQuery"
 #include "database.h"
 #include <addvolunteername.h>
+#include<viewvolunteer.h>
 
 // Qt Charts
 #include <QtCharts/QChartView>
@@ -38,6 +39,8 @@ dashboard::dashboard(int userId, QWidget *parent)
     ui->volunteerSummaryWidget->setVisible(false);
     ui->subeventSummaryWidget->setVisible(false);
     ui->Viewvolunteers->setVisible(false);
+
+    this->showMaximized();
 }
 
 dashboard::~dashboard()
@@ -131,13 +134,24 @@ void dashboard::createVolunteerLineChart(int eventId)
         }
     }
 
+    // Create chart and set basic properties
     QChart *chart = new QChart();
     chart->addSeries(series);
     chart->setTitle("Volunteers per Sub-Event");
     chart->legend()->hide();
 
+    series->setPen(QPen(QColor(188, 0, 188), 2));   // Purple pen, thickness 2
+    series->setPointsVisible(true);
+    series->setColor(QColor(188, 0, 188));          // Also set color explicitly
+
+    // Create chart and disable theme override
+
+    chart->setTheme(QChart::ChartThemeLight);
+
+    // X-axis (Category)
     QCategoryAxis *axisX = new QCategoryAxis();
     axisX->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
+   axisX->setGridLinePen(QPen(Qt::NoPen));  // ❌ Hide grid lines
 
     for (int i = 0; i < subEventNames.size(); ++i) {
         axisX->append(subEventNames[i], i);
@@ -146,17 +160,26 @@ void dashboard::createVolunteerLineChart(int eventId)
     chart->addAxis(axisX, Qt::AlignBottom);
     series->attachAxis(axisX);
 
+    // Y-axis (Value)
     QValueAxis *axisY = new QValueAxis();
     axisY->setTitleText("Volunteers");
     axisY->setLabelFormat("%d");
+    axisY->setGridLinePen(QPen(Qt::NoPen));  // ❌ Hide grid lines
+
     chart->addAxis(axisY, Qt::AlignLeft);
     series->attachAxis(axisY);
 
+    // Set background color
+    chart->setBackgroundBrush(QBrush(QColor("rgb(55,55,55)")));      // Outer background
+    chart->setPlotAreaBackgroundBrush(QBrush(QColor("rgb(55,55,55)")));   // Plot background
+    chart->setPlotAreaBackgroundVisible(true);
+
+    // Chart view and layout
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
-
     ui->chartContainer->layout()->addWidget(chartView);
 }
+
 
 void dashboard::onEventChanged(int index)
 {
@@ -240,3 +263,10 @@ void dashboard::on_Volunteer_clicked()
     AddVolunteerName *volunteerPage = new AddVolunteerName(eventId);
     volunteerPage->show();
 }
+
+void dashboard::on_viewvolunteer_clicked()
+{
+    ViewVolunteer *viewWindow = new ViewVolunteer(eventId);
+    viewWindow->show();
+}
+

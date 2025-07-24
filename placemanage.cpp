@@ -18,7 +18,8 @@ placemanage::placemanage(int userId, int eventId, QWidget *parent)
     ui(new Ui::placemanage),
     userId(userId),
     eventId(eventId),
-    dash(nullptr)
+    dash(nullptr),
+    isInitialized(false) // ✅ Initially false
 {
     ui->setupUi(this);
 
@@ -31,6 +32,8 @@ placemanage::placemanage(int userId, int eventId, QWidget *parent)
     connect(ui->addSubEventButton, &QPushButton::clicked, this, &placemanage::on_addSubEventButton_clicked);
     connect(ui->addOneSubEventButton, &QPushButton::clicked, this, &placemanage::on_addOneSubEventButton_clicked);
     connect(ui->removeSubEventButton, &QPushButton::clicked, this, &placemanage::on_removeSubEventButton_clicked);
+
+    isInitialized = true; // ✅ Set true only after setup is complete
 }
 
 placemanage::~placemanage()
@@ -39,12 +42,11 @@ placemanage::~placemanage()
     delete ui;
 }
 
-// Helper function to style a QLineEdit
+// Helper function
 void placemanage::styleLineEdit(QLineEdit* lineEdit, const QString& placeholder)
 {
     lineEdit->setPlaceholderText(placeholder);
     lineEdit->setStyleSheet("color: white; background-color: #2e2e2e; border: 1px solid gray;");
-
     QPalette palette = lineEdit->palette();
     palette.setColor(QPalette::PlaceholderText, Qt::gray);
     lineEdit->setPalette(palette);
@@ -58,7 +60,7 @@ void placemanage::on_generateButton_clicked()
         return;
     }
 
-    // Clear existing sub-event widgets
+    // Clear existing
     QLayoutItem *child;
     while ((child = layout->takeAt(0)) != nullptr) {
         if (child->widget()) {
@@ -113,6 +115,8 @@ void placemanage::on_generateButton_clicked()
 
 void placemanage::on_addSubEventButton_clicked()
 {
+    if (!isInitialized) return; // ✅ Prevent auto-trigger before UI ready
+
     if (eventId == -1) {
         QMessageBox::warning(this, "Missing Event ID", "Event ID is not set.");
         return;
@@ -125,13 +129,12 @@ void placemanage::on_addSubEventButton_clicked()
     if (!containerLayout) return;
 
     QSqlQuery query;
-
     query.prepare("DELETE FROM places WHERE event_id = ?");
     query.addBindValue(eventId);
     if (!query.exec()) {
         qDebug() << "Failed to clear old sub-events:" << query.lastError().text();
     }
-      query.finish();
+    query.finish();
 
     int successCount = 0;
 

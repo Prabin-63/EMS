@@ -14,6 +14,7 @@ AddVolunteerName::AddVolunteerName(int eventId, QWidget *parent)
     , currentEventId(eventId)
 {
     ui->setupUi(this);
+    ui->scrollArea->setWidgetResizable(true);
     setupVolunteerFields();
 }
 
@@ -43,21 +44,25 @@ int AddVolunteerName::getTotalVolunteersFromDB()
 
 void AddVolunteerName::setupVolunteerFields()
 {
-    QWidget *container = ui->scrollContent;
-    layout = new QVBoxLayout();
+    // Create a container widget that holds all QLineEdits
+    QWidget *container = new QWidget(this);
+    layout = new QVBoxLayout(container);  // Set layout directly on container
 
     int totalVolunteers = getTotalVolunteersFromDB();
 
     for (int i = 0; i < totalVolunteers; ++i) {
         QLineEdit *lineEdit = new QLineEdit(this);
         lineEdit->setPlaceholderText(QString("Enter name of volunteer %1").arg(i + 1));
-        lineEdit->setStyleSheet("color: white; background-color: grey;");
+        lineEdit->setStyleSheet("color: white; background-color: grey; padding: 6px; font-size: 16px;");
+
         layout->addWidget(lineEdit);
         lineEdits.append(lineEdit);
     }
 
+    container->setMinimumHeight(totalVolunteers * 50);  // Ensure scrolling
     container->setLayout(layout);
-    ui->scrollArea->setWidgetResizable(true);
+
+    ui->scrollArea->setWidget(container);  // Set as scroll area's widget
 }
 
 void AddVolunteerName::assignVolunteersToSubevents()

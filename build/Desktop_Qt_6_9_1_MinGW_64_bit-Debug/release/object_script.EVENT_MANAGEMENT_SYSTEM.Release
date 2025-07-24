@@ -8,6 +8,7 @@ release/placemanage.o
 release/profile.o
 release/scheduling.o
 release/signup.o
+release/viewvolunteer.o
 release/qrc_resources.o
 release/moc_addvolunteername.o
 release/moc_dashboard.o
@@ -17,3 +18,4 @@ release/moc_placemanage.o
 release/moc_profile.o
 release/moc_scheduling.o
 release/moc_signup.o
+release/moc_viewvolunteer.o
