@@ -8,6 +8,7 @@ QT += core gui widgets sql charts
 # Sources
 SOURCES += \
     addvolunteername.cpp \
+    booking.cpp \
     dashboard.cpp \
     database.cpp \
     login.cpp \
@@ -16,11 +17,13 @@ SOURCES += \
     placemanage.cpp \
     profile.cpp \
     scheduling.cpp \
-    signup.cpp
+    signup.cpp \
+    userdashboard.cpp
 
 # Headers
 HEADERS += \
     addvolunteername.h \
+    booking.h \
     dashboard.h \
     database.h \
     login.h \
@@ -29,7 +32,8 @@ HEADERS += \
     profile.h \
     scheduling.h \
     sessionmanager.h \
-    signup.h
+    signup.h \
+    userdashboard.h
 
 # UI Forms
 FORMS += \
@@ -40,7 +44,8 @@ FORMS += \
     placemanage.ui \
     profile.ui \
     scheduling.ui \
-    signup.ui
+    signup.ui \
+    userdashboard.ui
 
 # Resources
 RESOURCES += \

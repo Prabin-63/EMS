@@ -53,6 +53,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../../addvolunteername.cpp \
+		../../booking.cpp \
 		../../dashboard.cpp \
 		../../database.cpp \
 		../../login.cpp \
@@ -61,7 +62,8 @@ SOURCES       = ../../addvolunteername.cpp \
 		../../placemanage.cpp \
 		../../profile.cpp \
 		../../scheduling.cpp \
-		../../signup.cpp qrc_resources.cpp \
+		../../signup.cpp \
+		../../userdashboard.cpp qrc_resources.cpp \
 		moc_addvolunteername.cpp \
 		moc_dashboard.cpp \
 		moc_login.cpp \
@@ -69,8 +71,10 @@ SOURCES       = ../../addvolunteername.cpp \
 		moc_placemanage.cpp \
 		moc_profile.cpp \
 		moc_scheduling.cpp \
-		moc_signup.cpp
+		moc_signup.cpp \
+		moc_userdashboard.cpp
 OBJECTS       = addvolunteername.o \
+		booking.o \
 		dashboard.o \
 		database.o \
 		login.o \
@@ -80,6 +84,7 @@ OBJECTS       = addvolunteername.o \
 		profile.o \
 		scheduling.o \
 		signup.o \
+		userdashboard.o \
 		qrc_resources.o \
 		moc_addvolunteername.o \
 		moc_dashboard.o \
@@ -88,7 +93,8 @@ OBJECTS       = addvolunteername.o \
 		moc_placemanage.o \
 		moc_profile.o \
 		moc_scheduling.o \
-		moc_signup.o
+		moc_signup.o \
+		moc_userdashboard.o
 DIST          = ../../resources/icons8-play-100.png \
 		/Qt/6.9.0/macos/mkspecs/features/spec_pre.prf \
 		/Qt/6.9.0/macos/mkspecs/features/device_config.prf \
@@ -308,6 +314,7 @@ DIST          = ../../resources/icons8-play-100.png \
 		/Qt/6.9.0/macos/mkspecs/features/qt_config.prf \
 		/Qt/6.9.0/macos/mkspecs/macx-clang/qmake.conf \
 		/Qt/6.9.0/macos/mkspecs/features/spec_post.prf \
+		../../.qmake.stash \
 		/Qt/6.9.0/macos/mkspecs/features/exclusive_builds.prf \
 		/Qt/6.9.0/macos/mkspecs/features/mac/sdk.prf \
 		/Qt/6.9.0/macos/mkspecs/features/toolchain.prf \
@@ -338,6 +345,7 @@ DIST          = ../../resources/icons8-play-100.png \
 		/Qt/6.9.0/macos/mkspecs/features/yacc.prf \
 		/Qt/6.9.0/macos/mkspecs/features/lex.prf \
 		../../../../EVENT_MANAGEMENT_SYSTEM.pro ../../addvolunteername.h \
+		../../booking.h \
 		../../dashboard.h \
 		../../database.h \
 		../../login.h \
@@ -346,7 +354,9 @@ DIST          = ../../resources/icons8-play-100.png \
 		../../profile.h \
 		../../scheduling.h \
 		../../sessionmanager.h \
-		../../signup.h ../../addvolunteername.cpp \
+		../../signup.h \
+		../../userdashboard.h ../../addvolunteername.cpp \
+		../../booking.cpp \
 		../../dashboard.cpp \
 		../../database.cpp \
 		../../login.cpp \
@@ -355,7 +365,8 @@ DIST          = ../../resources/icons8-play-100.png \
 		../../placemanage.cpp \
 		../../profile.cpp \
 		../../scheduling.cpp \
-		../../signup.cpp
+		../../signup.cpp \
+		../../userdashboard.cpp
 QMAKE_TARGET  = EVENT_MANAGEMENT_SYSTEM
 DESTDIR       = 
 TARGET        = EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/EVENT_MANAGEMENT_SYSTEM
@@ -364,7 +375,7 @@ TARGET        = EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/EVENT_MANAGEMENT_SYST
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 15.5
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
-EXPORT__QMAKE_STASH_ = 
+EXPORT__QMAKE_STASH_ = /Users/prabinbashyal/Desktop/Project/build/Qt_6_9_0_for_macOS-Debug/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -376,7 +387,7 @@ include /Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/EVENT_MANAGEMENT_SYSTEM: ui_addvolunteername.h ui_dashboard.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h $(OBJECTS)  
+EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/EVENT_MANAGEMENT_SYSTEM: ui_addvolunteername.h ui_dashboard.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h $(OBJECTS)  
 	@test -d EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/ || mkdir -p EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -598,6 +609,7 @@ Makefile: ../../EVENT_MANAGEMENT_SYSTEM.pro ../../../../Qt/6.9.0/macos/mkspecs/f
 		../../../../Qt/6.9.0/macos/mkspecs/features/qt_config.prf \
 		../../../../Qt/6.9.0/macos/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/6.9.0/macos/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/6.9.0/macos/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/6.9.0/macos/mkspecs/features/mac/sdk.prf \
 		../../../../Qt/6.9.0/macos/mkspecs/features/toolchain.prf \
@@ -855,6 +867,7 @@ Makefile: ../../EVENT_MANAGEMENT_SYSTEM.pro ../../../../Qt/6.9.0/macos/mkspecs/f
 ../../../../Qt/6.9.0/macos/mkspecs/features/qt_config.prf:
 ../../../../Qt/6.9.0/macos/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt/6.9.0/macos/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/6.9.0/macos/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/6.9.0/macos/mkspecs/features/mac/sdk.prf:
 ../../../../Qt/6.9.0/macos/mkspecs/features/toolchain.prf:
@@ -918,9 +931,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../../addvolunteername.h ../../dashboard.h ../../database.h ../../login.h ../../mainwindow.h ../../placemanage.h ../../profile.h ../../scheduling.h ../../sessionmanager.h ../../signup.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../addvolunteername.cpp ../../dashboard.cpp ../../database.cpp ../../login.cpp ../../main.cpp ../../mainwindow.cpp ../../placemanage.cpp ../../profile.cpp ../../scheduling.cpp ../../signup.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../addvolunteername.ui ../../dashboard.ui ../../login.ui ../../mainwindow.ui ../../placemanage.ui ../../profile.ui ../../scheduling.ui ../../signup.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../addvolunteername.h ../../booking.h ../../dashboard.h ../../database.h ../../login.h ../../mainwindow.h ../../placemanage.h ../../profile.h ../../scheduling.h ../../sessionmanager.h ../../signup.h ../../userdashboard.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../addvolunteername.cpp ../../booking.cpp ../../dashboard.cpp ../../database.cpp ../../login.cpp ../../main.cpp ../../mainwindow.cpp ../../placemanage.cpp ../../profile.cpp ../../scheduling.cpp ../../signup.cpp ../../userdashboard.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../addvolunteername.ui ../../dashboard.ui ../../login.ui ../../mainwindow.ui ../../placemanage.ui ../../profile.ui ../../scheduling.ui ../../signup.ui ../../userdashboard.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -930,6 +943,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r EVENT_MANAGEMENT_SYSTEM.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -974,9 +988,9 @@ qrc_resources.cpp: ../../resources.qrc \
 		../../resources/charity.png
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/rcc -name resources --no-zstd ../../resources.qrc -o qrc_resources.cpp
 
-compiler_moc_header_make_all: moc_addvolunteername.cpp moc_dashboard.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp
+compiler_moc_header_make_all: moc_addvolunteername.cpp moc_dashboard.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp moc_userdashboard.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_addvolunteername.cpp moc_dashboard.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp
+	-$(DEL_FILE) moc_addvolunteername.cpp moc_dashboard.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp moc_userdashboard.cpp
 moc_addvolunteername.cpp: ../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -1146,13 +1160,19 @@ moc_signup.cpp: ../../signup.h \
 		../../../../Qt/6.9.0/macos/libexec/moc
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../signup.h -o moc_signup.cpp
 
+moc_userdashboard.cpp: ../../userdashboard.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDockWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdockwidget.h \
+		../../../../Qt/6.9.0/macos/libexec/moc
+	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../userdashboard.h -o moc_userdashboard.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_addvolunteername.h ui_dashboard.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h
+compiler_uic_make_all: ui_addvolunteername.h ui_dashboard.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_addvolunteername.h ui_dashboard.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h
+	-$(DEL_FILE) ui_addvolunteername.h ui_dashboard.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h
 ui_addvolunteername.h: ../../addvolunteername.ui \
 		../../../../Qt/6.9.0/macos/libexec/uic
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/uic ../../addvolunteername.ui -o ui_addvolunteername.h
@@ -1184,6 +1204,10 @@ ui_scheduling.h: ../../scheduling.ui \
 ui_signup.h: ../../signup.ui \
 		../../../../Qt/6.9.0/macos/libexec/uic
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/uic ../../signup.ui -o ui_signup.h
+
+ui_userdashboard.h: ../../userdashboard.ui \
+		../../../../Qt/6.9.0/macos/libexec/uic
+	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/uic ../../userdashboard.ui -o ui_userdashboard.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -1218,6 +1242,9 @@ addvolunteername.o: ../../addvolunteername.cpp ../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QRandomGenerator \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qrandom.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addvolunteername.o ../../addvolunteername.cpp
+
+booking.o: ../../booking.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o booking.o ../../booking.cpp
 
 dashboard.o: ../../dashboard.cpp ../../dashboard.h \
 		../../database.h \
@@ -1484,6 +1511,12 @@ signup.o: ../../signup.cpp ../../signup.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qregularexpression.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o signup.o ../../signup.cpp
 
+userdashboard.o: ../../userdashboard.cpp ../../userdashboard.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDockWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdockwidget.h \
+		ui_userdashboard.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userdashboard.o ../../userdashboard.cpp
+
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
@@ -1510,6 +1543,9 @@ moc_scheduling.o: moc_scheduling.cpp
 
 moc_signup.o: moc_signup.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_signup.o moc_signup.cpp
+
+moc_userdashboard.o: moc_userdashboard.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_userdashboard.o moc_userdashboard.cpp
 
 ####### Install
 

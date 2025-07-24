@@ -7,18 +7,21 @@
 #include "sessionmanager.h"
 #include "dashboard.h"
 #include "signup.h"
+#include "userdashboard.h"
 
 login::login(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::login)
-    , dash(nullptr)  // Initialize dash pointer
+    , dash(nullptr),  // Initialize dash pointer
+    udash(nullptr)
 {
     ui->setupUi(this);
 }
 
 login::~login()
 {
-    delete dash;  // Delete dash if created
+    delete dash;    // Delete dash if created
+    delete udash;
     delete ui;
 }
 
@@ -60,8 +63,8 @@ void login::on_Gotodash_clicked()
         int userId = query.value(0).toInt();
         SessionManager::instance().setUserId(userId);
 
-        dash = new dashboard(userId);
-        dash->show();
+        udash = new userdashboard(userId);
+        udash->show();
         this->close();
     } else {
         QMessageBox::warning(this, "Login Failed", "Incorrect email or password");

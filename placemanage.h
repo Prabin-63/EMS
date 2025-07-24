@@ -40,8 +40,8 @@ private:
 
 
 
-    int userId = -1;
-    int eventId = -1;
+    int userId ;
+    int eventId ;
     dashboard* dash = nullptr;
 };
 

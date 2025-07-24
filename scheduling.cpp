@@ -15,7 +15,6 @@
 scheduling::scheduling(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::scheduling),
-
     place_manage(nullptr),
     dashboardWindow(nullptr)
 {
@@ -91,12 +90,10 @@ void scheduling::on_Gotodash_subevent_clicked()
         QMessageBox::critical(this, "Database Error", "Failed to save event: " + query.lastError().text());
         return;
     }
+
+      qint64 lastId = query.lastInsertId().toLongLong();
       query.finish();
       query.clear();
-
-    // Get last inserted ID
-    qint64 lastId = query.lastInsertId().toLongLong();
-    query.finish();  // 🔒 Ensure query finishes
 
     // Show success message
     QMessageBox::information(this, "Success", "Event scheduled successfully!");
