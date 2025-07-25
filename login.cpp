@@ -43,8 +43,10 @@ void login::on_Gotodash_clicked()
     if (email == "admin" && pass == "Admin") {
         // Admin goes directly to dashboard with userId = 0
         SessionManager::instance().setUserId(0);
-        dash = new dashboard(0);
+        dash = new dashboard(0,this);
         dash->show();
+        ui->Emailid->clear();
+        ui->Password->clear();
         this->close();
         return;
     }
@@ -63,13 +65,18 @@ void login::on_Gotodash_clicked()
         int userId = query.value(0).toInt();
         SessionManager::instance().setUserId(userId);
 
-        udash = new UserDashboard(userId);  // Correct class name with uppercase letters
+        udash = new UserDashboard(userId);        // Correct class name with uppercase letters
+        ui->Emailid->clear();
+        ui->Password->clear();
         udash->show();
         this->close();
     } else {
         QMessageBox::warning(this, "Login Failed", "Incorrect email or password");
+        ui->Emailid->clear();
+        ui->Password->clear();
     }
     query.finish();
+\
 }
 
 void login::on_Gotosignup_clicked()
