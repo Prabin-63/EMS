@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include "signup.h"
 #include "dashboard.h"
-
+#include "userdashboard.h"
 
 namespace Ui {
 class login;  // lowercase 'login' to match ui_login.h

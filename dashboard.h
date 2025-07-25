@@ -2,11 +2,15 @@
 #define DASHBOARD_H
 #include"database.h"
 #include "profile.h"
-#include<viewvolunteer.h>
+
 
 #include <QMainWindow>
 #include <QSqlQuery>
 #include<addvolunteername.h>
+#include<viewvolunteer.h>
+#include <QTableWidget>
+#include<userdashboard.h>
+
 
 namespace Ui {
 class dashboard;
@@ -29,14 +33,20 @@ private slots:
     void onEventChanged(int index);
 
 
+
+
     void on_viewvolunteer_clicked();
+
+    void on_Booking_clicked();
 
 private:
     Ui::dashboard *ui;
     class scheduling *schedulingWindow;
     class profile *pt;
     AddVolunteerName *addvolunteername;
-    ViewVolunteer *viewWindow;
+    ViewVolunteer *viewDialog;
+    UserDashboard *user;
+
 
 
     int userId;
@@ -48,6 +58,8 @@ private:
     void updateSubeventSummary(int eventId);
     void ViewVolunteersWidget();
     void createVolunteerLineChart(int eventId);
+    void loadVolunteerNames(int eventId);
+    void loadSubeventTable(int eventId);
 
 
 

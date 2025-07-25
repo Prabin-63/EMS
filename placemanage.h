@@ -2,7 +2,7 @@
 #define PLACEMANAGE_H
 
 #include <QMainWindow>
-#include<QLineEdit>
+#include <QLineEdit>
 
 namespace Ui {
 class placemanage;
@@ -28,8 +28,8 @@ private:
     Ui::placemanage *ui;
     int userId;
     int eventId;
-    dashboard* dash;
-    bool isInitialized; // ✅ Prevent premature slot calls
+    dashboard* dash = nullptr; // combined declaration & initialization
+    bool isInitialized;
 
     void styleLineEdit(QLineEdit* lineEdit, const QString& placeholder);
 };

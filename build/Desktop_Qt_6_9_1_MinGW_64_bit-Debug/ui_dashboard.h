@@ -14,12 +14,15 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -98,10 +101,15 @@ public:
     QLabel *logoLabel_2;
     QLabel *totalSubeventsLabel;
     QWidget *widget_10;
+    QHBoxLayout *horizontalLayout_26;
+    QHBoxLayout *horizontalLayout_25;
+    QTableWidget *subeventTableWidget;
     QWidget *chartContainer;
-    QWidget *widget_12;
     QWidget *widget_9;
     QWidget *widget_11;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QWidget *volunteerNamesWidget;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -603,6 +611,19 @@ public:
         widget_10->setObjectName("widget_10");
         widget_10->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
 "border-radius:20px;"));
+        horizontalLayout_26 = new QHBoxLayout(widget_10);
+        horizontalLayout_26->setObjectName("horizontalLayout_26");
+        horizontalLayout_25 = new QHBoxLayout();
+        horizontalLayout_25->setObjectName("horizontalLayout_25");
+        subeventTableWidget = new QTableWidget(widget_10);
+        subeventTableWidget->setObjectName("subeventTableWidget");
+        subeventTableWidget->setColumnCount(0);
+
+        horizontalLayout_25->addWidget(subeventTableWidget);
+
+
+        horizontalLayout_26->addLayout(horizontalLayout_25);
+
 
         gridLayout->addWidget(widget_10, 3, 0, 1, 3);
 
@@ -615,19 +636,6 @@ public:
 "border-radius:20px;"));
 
         gridLayout->addWidget(chartContainer, 2, 0, 1, 2);
-
-        widget_12 = new QWidget(RightSideBar);
-        widget_12->setObjectName("widget_12");
-        QSizePolicy sizePolicy4(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(widget_12->sizePolicy().hasHeightForWidth());
-        widget_12->setSizePolicy(sizePolicy4);
-        widget_12->setMinimumSize(QSize(0, 0));
-        widget_12->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
-"border-radius:20px;"));
-
-        gridLayout->addWidget(widget_12, 1, 3, 2, 1);
 
         widget_9 = new QWidget(RightSideBar);
         widget_9->setObjectName("widget_9");
@@ -642,6 +650,27 @@ public:
 "border-radius:20px;"));
 
         gridLayout->addWidget(widget_11, 2, 2, 1, 1);
+
+        scrollArea = new QScrollArea(RightSideBar);
+        scrollArea->setObjectName("scrollArea");
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 219, 302));
+        volunteerNamesWidget = new QWidget(scrollAreaWidgetContents);
+        volunteerNamesWidget->setObjectName("volunteerNamesWidget");
+        volunteerNamesWidget->setGeometry(QRect(0, 0, 361, 301));
+        QSizePolicy sizePolicy4(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(volunteerNamesWidget->sizePolicy().hasHeightForWidth());
+        volunteerNamesWidget->setSizePolicy(sizePolicy4);
+        volunteerNamesWidget->setMinimumSize(QSize(0, 0));
+        volunteerNamesWidget->setStyleSheet(QString::fromUtf8("background-color: rgb(55, 55, 55);\n"
+"border-radius:20px;"));
+        scrollArea->setWidget(scrollAreaWidgetContents);
+
+        gridLayout->addWidget(scrollArea, 1, 3, 2, 1);
 
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);

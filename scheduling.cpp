@@ -90,9 +90,14 @@ void scheduling::on_Gotodash_subevent_clicked()
         return;
     }
 
+
     // Get last inserted ID
-    qint64 lastId = query.lastInsertId().toLongLong();
-    query.finish();
+
+
+      qint64 lastId = query.lastInsertId().toLongLong();
+      query.finish();
+      query.clear();
+
 
     // Show success message
     QMessageBox::information(this, "Success", "Event scheduled successfully!");

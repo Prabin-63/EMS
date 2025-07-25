@@ -24,6 +24,7 @@ private slots:
 
 private:
     Ui::scheduling *ui;
+
     placemanage *place_manage;
     dashboard *dashboardWindow;
 

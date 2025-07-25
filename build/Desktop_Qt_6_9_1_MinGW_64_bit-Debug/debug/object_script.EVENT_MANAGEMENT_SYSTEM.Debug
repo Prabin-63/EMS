@@ -1,6 +1,7 @@
 debug/addvolunteername.o
 debug/dashboard.o
 debug/database.o
+debug/eventdetailpage.o
 debug/login.o
 debug/main.o
 debug/mainwindow.o
@@ -8,14 +9,17 @@ debug/placemanage.o
 debug/profile.o
 debug/scheduling.o
 debug/signup.o
+debug/userdashboard.o
 debug/viewvolunteer.o
 debug/qrc_resources.o
 debug/moc_addvolunteername.o
 debug/moc_dashboard.o
+debug/moc_eventdetailpage.o
 debug/moc_login.o
 debug/moc_mainwindow.o
 debug/moc_placemanage.o
 debug/moc_profile.o
 debug/moc_scheduling.o
 debug/moc_signup.o
+debug/moc_userdashboard.o
 debug/moc_viewvolunteer.o

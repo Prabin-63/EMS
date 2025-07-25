@@ -10,6 +10,7 @@ SOURCES += \
     addvolunteername.cpp \
     dashboard.cpp \
     database.cpp \
+    eventdetailpage.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     profile.cpp \
     scheduling.cpp \
     signup.cpp \
+    userdashboard.cpp \
     viewvolunteer.cpp
 
 # Headers
@@ -24,6 +26,7 @@ HEADERS += \
     addvolunteername.h \
     dashboard.h \
     database.h \
+    eventdetailpage.h \
     login.h \
     mainwindow.h \
     placemanage.h \
@@ -31,19 +34,26 @@ HEADERS += \
     scheduling.h \
     sessionmanager.h \
     signup.h \
+    userdashboard.h \
     viewvolunteer.h
+
 
 # UI Forms
 FORMS += \
     addvolunteername.ui \
     dashboard.ui \
+    eventdetailpage.ui \
     login.ui \
     mainwindow.ui \
     placemanage.ui \
     profile.ui \
     scheduling.ui \
     signup.ui \
+    userdashboard.ui \
     viewvolunteer.ui
+
+    viewvolunteer.ui
+
 
 # Resources
 RESOURCES += \

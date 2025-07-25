@@ -24,6 +24,7 @@ public:
         if (ViewVolunteer->objectName().isEmpty())
             ViewVolunteer->setObjectName("ViewVolunteer");
         ViewVolunteer->resize(400, 300);
+        ViewVolunteer->setStyleSheet(QString::fromUtf8("background-color:black;"));
 
         retranslateUi(ViewVolunteer);
 

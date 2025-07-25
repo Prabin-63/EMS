@@ -89,5 +89,25 @@ bool connectDatabase()
         return false;
     }
       qDebug() << "Volunteer table ready.";
-    return true;
+
+    QString createBookingTable = "CREATE TABLE IF NOT EXISTS booking ("
+                                   "bid INTEGER PRIMARY KEY AUTOINCREMENT,"
+                                   "id INTEGER NOT NULL,"
+                                   "event_id INTEGER NOT NULL,"
+                                   "subevent_id INTEGER NOT NULL,"
+                                   "booking_time DATETIME DEFAULT CURRENT_TIMESTAMP,"
+                                    "FOREIGN KEY (id) REFERENCES users(id),"
+                                    "FOREIGN KEY (event_id) REFERENCES events(id),"
+                                    "FOREIGN KEY (subevent_id) REFERENCES places(id))";
+
+    if (!query.exec(createBookingTable))
+    {
+    qDebug() << "Failed to create booking table:" << query.lastError().text();
+    QMessageBox::critical(nullptr, "Database Error",
+                          "Failed to create booking table: " + query.lastError().text());
+    return false;
+    }
+    qDebug() << "booking table ready.";
+
+return true;
 }

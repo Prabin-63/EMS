@@ -4,33 +4,22 @@
 class SessionManager
 {
 public:
-    // Singleton accessor
-    static SessionManager& instance()
-    {
+    static SessionManager& instance() {
         static SessionManager instance;
         return instance;
-    }
-
-    // Getter for currentEventId
-    int currentEventId() const
-    {
-        return m_currentEventId;
-    }
-
-    // Setter for currentEventId
-    void setCurrentEventId(int id)
-    {
-        m_currentEventId = id;
     }
 
     void setUserId(int id) { userId = id; }
     int getUserId() const { return userId; }
 
-private:
-    SessionManager() = default;  // private constructor for singleton
+    void setEventId(int id) { eventId = id; }
+    int getEventId() const { return eventId; }
 
-    int m_currentEventId = 0;
-    int userId = -1;  // -1 = no user logged in
+private:
+    SessionManager() = default;  // Private constructor for singleton
+
+    int userId = -1;    // No user logged in by default
+    int eventId = -1;   // No event selected by default
 };
 
 #endif // SESSIONMANAGER_H

@@ -18,10 +18,10 @@ public:
 
 private:
     Ui::ViewVolunteer *ui;
-    int currentEventId;
-    QVBoxLayout *layout;
+    int currentEventId;                   // ID of the current event
+    QVBoxLayout *layout;                  // Layout to display volunteers
 
-    void loadVolunteersBySubevent();
+    void loadVolunteersBySubevent();      // Function to load volunteers by sub-event
 };
 
 #endif // VIEWVOLUNTEER_H
