@@ -7,21 +7,21 @@
 #include "sessionmanager.h"
 #include "dashboard.h"
 #include "signup.h"
-#include "userdashboard.h"
+#include "userdashboard.h"   // Use quotes and correct filename
 
 login::login(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::login)
-    , dash(nullptr) // Initialize dash pointer
-
+    , dash(nullptr)
+    , udash(nullptr)
 {
     ui->setupUi(this);
 }
 
 login::~login()
 {
-    delete dash;    // Delete dash if created
-
+    delete dash;
+    delete udash;
     delete ui;
 }
 
@@ -43,7 +43,7 @@ void login::on_Gotodash_clicked()
     if (email == "admin" && pass == "Admin") {
         // Admin goes directly to dashboard with userId = 0
         SessionManager::instance().setUserId(0);
-        dash = new dashboard(0);  // Pass 0 explicitly as userId
+        dash = new dashboard(0);
         dash->show();
         this->close();
         return;
@@ -59,7 +59,17 @@ void login::on_Gotodash_clicked()
         return;
     }
 
+    if (query.next()) {
+        int userId = query.value(0).toInt();
+        SessionManager::instance().setUserId(userId);
 
+        udash = new UserDashboard(userId);  // Correct class name with uppercase letters
+        udash->show();
+        this->close();
+    } else {
+        QMessageBox::warning(this, "Login Failed", "Incorrect email or password");
+    }
+    query.finish();
 }
 
 void login::on_Gotosignup_clicked()

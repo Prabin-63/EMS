@@ -9,7 +9,7 @@
 #include<addvolunteername.h>
 #include<viewvolunteer.h>
 #include <QTableWidget>
-#include<userdashboard.h>
+
 
 
 namespace Ui {
@@ -37,7 +37,7 @@ private slots:
 
     void on_viewvolunteer_clicked();
 
-    void on_Booking_clicked();
+
 
 private:
     Ui::dashboard *ui;
@@ -45,7 +45,7 @@ private:
     class profile *pt;
     AddVolunteerName *addvolunteername;
     ViewVolunteer *viewDialog;
-    UserDashboard *user;
+
 
 
 

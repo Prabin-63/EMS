@@ -345,9 +345,4 @@ void dashboard::on_viewvolunteer_clicked()
 }
 
 
-void dashboard::on_Booking_clicked()
-{
-    user= new UserDashboard(this);
-    user->show();
-}
 

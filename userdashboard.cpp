@@ -11,9 +11,10 @@
 #include <QScrollArea>
 #include <QLabel>
 
-UserDashboard::UserDashboard(QWidget *parent)
+UserDashboard::UserDashboard(int userId, QWidget *parent)
     : QMainWindow(parent),
-    ui(new Ui::UserDashboard)
+    ui(new Ui::UserDashboard),
+currentUserId(userId)
 {
     ui->setupUi(this);
 
