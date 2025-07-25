@@ -6,7 +6,7 @@
 #include "database.h"
 #include <addvolunteername.h>
 
-
+#include<QMessageBox>
 // Qt Charts
 #include <QtCharts/QChartView>
 #include <QtCharts/QLineSeries>
@@ -30,6 +30,7 @@ dashboard::dashboard(int userId, QWidget *parent)
     if (!ui->chartContainer->layout()) {
         QVBoxLayout *layout = new QVBoxLayout(ui->chartContainer);
         layout->setContentsMargins(0, 0, 0, 0);
+        loadsubev();
     }
 
     loadUserEvents();
@@ -293,6 +294,31 @@ void dashboard::loadUserEvents()
     }
     query.finish();
 }
+void dashboard::loadsubev() {
+    ui->subeventTableWidget->setRowCount(0);
+    ui->subeventTableWidget->setColumnCount(6);
+    QStringList headers = {"ID", "Event ID", "Sub Event", "Location", "Time", "Contact Person"};
+    ui->subeventTableWidget->setHorizontalHeaderLabels(headers);
+    QSqlQuery y;
+    y.prepare("SELECT id, event_id, sub_event_name, location, time, contact_person FROM places");
+    if (!y.exec()) {
+        QMessageBox::critical(this, "Query Execution Error", y.lastError().text());
+        return;
+    }
+
+    int row = 0;
+    while (y.next()) {
+        ui->subeventTableWidget->insertRow(row);
+        for (int col = 0; col < 6; ++col) {
+            ui->subeventTableWidget->setItem(row, col, new QTableWidgetItem(y.value(col).toString()));
+        }
+        row++;
+    }
+
+    ui->subeventTableWidget->resizeColumnsToContents();
+}
+
+
 
 void dashboard::loadEventData(int eventId)
 {

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dashboard.ui'
 **
-** Created by: Qt User Interface Compiler version 6.9.0
+** Created by: Qt User Interface Compiler version 6.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -81,35 +81,35 @@ public:
     QWidget *RightSideBar;
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
-    QWidget *TOP;
-    QHBoxLayout *horizontalLayout_18;
-    QHBoxLayout *horizontalLayout_15;
-    QComboBox *eventComboBox;
-    QWidget *Viewvolunteers;
-    QHBoxLayout *horizontalLayout_24;
-    QHBoxLayout *horizontalLayout_23;
-    QLabel *logoLabel_3;
-    QPushButton *viewvolunteer;
-    QWidget *volunteerSummaryWidget;
-    QHBoxLayout *horizontalLayout_20;
-    QHBoxLayout *horizontalLayout_19;
-    QLabel *logoLabel;
-    QLabel *totalVolunteersLabel;
+    QWidget *widget_11;
     QWidget *subeventSummaryWidget;
     QHBoxLayout *horizontalLayout_22;
     QHBoxLayout *horizontalLayout_21;
     QLabel *logoLabel_2;
     QLabel *totalSubeventsLabel;
+    QWidget *TOP;
+    QHBoxLayout *horizontalLayout_18;
+    QHBoxLayout *horizontalLayout_15;
+    QComboBox *eventComboBox;
     QWidget *widget_10;
     QHBoxLayout *horizontalLayout_26;
     QHBoxLayout *horizontalLayout_25;
     QTableWidget *subeventTableWidget;
-    QWidget *chartContainer;
-    QWidget *widget_9;
-    QWidget *widget_11;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QWidget *volunteerNamesWidget;
+    QWidget *Viewvolunteers;
+    QHBoxLayout *horizontalLayout_24;
+    QHBoxLayout *horizontalLayout_23;
+    QLabel *logoLabel_3;
+    QPushButton *viewvolunteer;
+    QWidget *chartContainer;
+    QWidget *volunteerSummaryWidget;
+    QHBoxLayout *horizontalLayout_20;
+    QHBoxLayout *horizontalLayout_19;
+    QLabel *logoLabel;
+    QLabel *totalVolunteersLabel;
+    QWidget *widget_9;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -496,6 +496,40 @@ public:
         gridLayout_2->setObjectName("gridLayout_2");
         gridLayout = new QGridLayout();
         gridLayout->setObjectName("gridLayout");
+        widget_11 = new QWidget(RightSideBar);
+        widget_11->setObjectName("widget_11");
+        widget_11->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
+
+        gridLayout->addWidget(widget_11, 2, 2, 1, 1);
+
+        subeventSummaryWidget = new QWidget(RightSideBar);
+        subeventSummaryWidget->setObjectName("subeventSummaryWidget");
+        sizePolicy1.setHeightForWidth(subeventSummaryWidget->sizePolicy().hasHeightForWidth());
+        subeventSummaryWidget->setSizePolicy(sizePolicy1);
+        subeventSummaryWidget->setMinimumSize(QSize(0, 80));
+        subeventSummaryWidget->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
+        horizontalLayout_22 = new QHBoxLayout(subeventSummaryWidget);
+        horizontalLayout_22->setObjectName("horizontalLayout_22");
+        horizontalLayout_21 = new QHBoxLayout();
+        horizontalLayout_21->setObjectName("horizontalLayout_21");
+        logoLabel_2 = new QLabel(subeventSummaryWidget);
+        logoLabel_2->setObjectName("logoLabel_2");
+
+        horizontalLayout_21->addWidget(logoLabel_2);
+
+        totalSubeventsLabel = new QLabel(subeventSummaryWidget);
+        totalSubeventsLabel->setObjectName("totalSubeventsLabel");
+
+        horizontalLayout_21->addWidget(totalSubeventsLabel);
+
+
+        horizontalLayout_22->addLayout(horizontalLayout_21);
+
+
+        gridLayout->addWidget(subeventSummaryWidget, 1, 1, 1, 1);
+
         TOP = new QWidget(RightSideBar);
         TOP->setObjectName("TOP");
         sizePolicy1.setHeightForWidth(TOP->sizePolicy().hasHeightForWidth());
@@ -521,6 +555,63 @@ public:
 
 
         gridLayout->addWidget(TOP, 0, 0, 1, 4);
+
+        widget_10 = new QWidget(RightSideBar);
+        widget_10->setObjectName("widget_10");
+        widget_10->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
+        horizontalLayout_26 = new QHBoxLayout(widget_10);
+        horizontalLayout_26->setObjectName("horizontalLayout_26");
+        horizontalLayout_25 = new QHBoxLayout();
+        horizontalLayout_25->setObjectName("horizontalLayout_25");
+        subeventTableWidget = new QTableWidget(widget_10);
+        subeventTableWidget->setObjectName("subeventTableWidget");
+        subeventTableWidget->setStyleSheet(QString::fromUtf8("QHeaderView::section {\n"
+"    background-color: rgb(55, 55, 55);\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QTableWidget {\n"
+"    background-color: rgb(55, 55, 55);\n"
+"    gridline-color: gray;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"    background-color: rgb(55, 55, 55);\n"
+"    color: white;\n"
+"}"));
+        subeventTableWidget->setColumnCount(0);
+
+        horizontalLayout_25->addWidget(subeventTableWidget);
+
+
+        horizontalLayout_26->addLayout(horizontalLayout_25);
+
+
+        gridLayout->addWidget(widget_10, 3, 0, 1, 3);
+
+        scrollArea = new QScrollArea(RightSideBar);
+        scrollArea->setObjectName("scrollArea");
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 81, 304));
+        volunteerNamesWidget = new QWidget(scrollAreaWidgetContents);
+        volunteerNamesWidget->setObjectName("volunteerNamesWidget");
+        volunteerNamesWidget->setGeometry(QRect(0, 0, 361, 301));
+        QSizePolicy sizePolicy4(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(volunteerNamesWidget->sizePolicy().hasHeightForWidth());
+        volunteerNamesWidget->setSizePolicy(sizePolicy4);
+        volunteerNamesWidget->setMinimumSize(QSize(0, 0));
+        volunteerNamesWidget->setStyleSheet(QString::fromUtf8("background-color: rgb(55, 55, 55);\n"
+"border-radius:20px;"));
+        scrollArea->setWidget(scrollAreaWidgetContents);
+
+        gridLayout->addWidget(scrollArea, 1, 3, 2, 1);
 
         Viewvolunteers = new QWidget(RightSideBar);
         Viewvolunteers->setObjectName("Viewvolunteers");
@@ -553,6 +644,16 @@ public:
 
         gridLayout->addWidget(Viewvolunteers, 1, 2, 1, 1);
 
+        chartContainer = new QWidget(RightSideBar);
+        chartContainer->setObjectName("chartContainer");
+        sizePolicy1.setHeightForWidth(chartContainer->sizePolicy().hasHeightForWidth());
+        chartContainer->setSizePolicy(sizePolicy1);
+        chartContainer->setMinimumSize(QSize(0, 220));
+        chartContainer->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
+
+        gridLayout->addWidget(chartContainer, 2, 0, 1, 2);
+
         volunteerSummaryWidget = new QWidget(RightSideBar);
         volunteerSummaryWidget->setObjectName("volunteerSummaryWidget");
         sizePolicy1.setHeightForWidth(volunteerSummaryWidget->sizePolicy().hasHeightForWidth());
@@ -580,97 +681,17 @@ public:
 
         gridLayout->addWidget(volunteerSummaryWidget, 1, 0, 1, 1);
 
-        subeventSummaryWidget = new QWidget(RightSideBar);
-        subeventSummaryWidget->setObjectName("subeventSummaryWidget");
-        sizePolicy1.setHeightForWidth(subeventSummaryWidget->sizePolicy().hasHeightForWidth());
-        subeventSummaryWidget->setSizePolicy(sizePolicy1);
-        subeventSummaryWidget->setMinimumSize(QSize(0, 80));
-        subeventSummaryWidget->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
-"border-radius:20px;"));
-        horizontalLayout_22 = new QHBoxLayout(subeventSummaryWidget);
-        horizontalLayout_22->setObjectName("horizontalLayout_22");
-        horizontalLayout_21 = new QHBoxLayout();
-        horizontalLayout_21->setObjectName("horizontalLayout_21");
-        logoLabel_2 = new QLabel(subeventSummaryWidget);
-        logoLabel_2->setObjectName("logoLabel_2");
-
-        horizontalLayout_21->addWidget(logoLabel_2);
-
-        totalSubeventsLabel = new QLabel(subeventSummaryWidget);
-        totalSubeventsLabel->setObjectName("totalSubeventsLabel");
-
-        horizontalLayout_21->addWidget(totalSubeventsLabel);
-
-
-        horizontalLayout_22->addLayout(horizontalLayout_21);
-
-
-        gridLayout->addWidget(subeventSummaryWidget, 1, 1, 1, 1);
-
-        widget_10 = new QWidget(RightSideBar);
-        widget_10->setObjectName("widget_10");
-        widget_10->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
-"border-radius:20px;"));
-        horizontalLayout_26 = new QHBoxLayout(widget_10);
-        horizontalLayout_26->setObjectName("horizontalLayout_26");
-        horizontalLayout_25 = new QHBoxLayout();
-        horizontalLayout_25->setObjectName("horizontalLayout_25");
-        subeventTableWidget = new QTableWidget(widget_10);
-        subeventTableWidget->setObjectName("subeventTableWidget");
-        subeventTableWidget->setColumnCount(0);
-
-        horizontalLayout_25->addWidget(subeventTableWidget);
-
-
-        horizontalLayout_26->addLayout(horizontalLayout_25);
-
-
-        gridLayout->addWidget(widget_10, 3, 0, 1, 3);
-
-        chartContainer = new QWidget(RightSideBar);
-        chartContainer->setObjectName("chartContainer");
-        sizePolicy1.setHeightForWidth(chartContainer->sizePolicy().hasHeightForWidth());
-        chartContainer->setSizePolicy(sizePolicy1);
-        chartContainer->setMinimumSize(QSize(0, 220));
-        chartContainer->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
-"border-radius:20px;"));
-
-        gridLayout->addWidget(chartContainer, 2, 0, 1, 2);
-
         widget_9 = new QWidget(RightSideBar);
         widget_9->setObjectName("widget_9");
+        QSizePolicy sizePolicy5(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::Preferred);
+        sizePolicy5.setHorizontalStretch(4);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(widget_9->sizePolicy().hasHeightForWidth());
+        widget_9->setSizePolicy(sizePolicy5);
         widget_9->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
 "border-radius:20px;"));
 
         gridLayout->addWidget(widget_9, 3, 3, 1, 1);
-
-        widget_11 = new QWidget(RightSideBar);
-        widget_11->setObjectName("widget_11");
-        widget_11->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
-"border-radius:20px;"));
-
-        gridLayout->addWidget(widget_11, 2, 2, 1, 1);
-
-        scrollArea = new QScrollArea(RightSideBar);
-        scrollArea->setObjectName("scrollArea");
-        scrollArea->setWidgetResizable(true);
-        scrollAreaWidgetContents = new QWidget();
-        scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 219, 302));
-        volunteerNamesWidget = new QWidget(scrollAreaWidgetContents);
-        volunteerNamesWidget->setObjectName("volunteerNamesWidget");
-        volunteerNamesWidget->setGeometry(QRect(0, 0, 361, 301));
-        QSizePolicy sizePolicy4(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(volunteerNamesWidget->sizePolicy().hasHeightForWidth());
-        volunteerNamesWidget->setSizePolicy(sizePolicy4);
-        volunteerNamesWidget->setMinimumSize(QSize(0, 0));
-        volunteerNamesWidget->setStyleSheet(QString::fromUtf8("background-color: rgb(55, 55, 55);\n"
-"border-radius:20px;"));
-        scrollArea->setWidget(scrollAreaWidgetContents);
-
-        gridLayout->addWidget(scrollArea, 1, 3, 2, 1);
 
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
@@ -684,7 +705,7 @@ public:
         dashboard->setCentralWidget(centralwidget);
         menubar = new QMenuBar(dashboard);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 18));
+        menubar->setGeometry(QRect(0, 0, 800, 22));
         dashboard->setMenuBar(menubar);
         statusbar = new QStatusBar(dashboard);
         statusbar->setObjectName("statusbar");
@@ -713,13 +734,13 @@ public:
         Help_Center->setText(QCoreApplication::translate("dashboard", "Help Center", nullptr));
         label_7->setText(QString());
         Log_out->setText(QCoreApplication::translate("dashboard", "LOG OUT", nullptr));
+        logoLabel_2->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
+        totalSubeventsLabel->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
         eventComboBox->setPlaceholderText(QCoreApplication::translate("dashboard", "Select Your Event", nullptr));
         logoLabel_3->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
         viewvolunteer->setText(QCoreApplication::translate("dashboard", "View Volunteers", nullptr));
         logoLabel->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
         totalVolunteersLabel->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
-        logoLabel_2->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
-        totalSubeventsLabel->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
     } // retranslateUi
 
 };
