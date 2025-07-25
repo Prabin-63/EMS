@@ -12,6 +12,7 @@ SOURCES += \
     database.cpp \
     eventdetailpage.cpp \
     login.cpp \
+    logout.cpp \
     main.cpp \
     mainwindow.cpp \
     placemanage.cpp \
@@ -28,6 +29,7 @@ HEADERS += \
     database.h \
     eventdetailpage.h \
     login.h \
+    logout.h \
     mainwindow.h \
     placemanage.h \
     profile.h \

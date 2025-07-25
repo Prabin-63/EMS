@@ -14,19 +14,21 @@
 #include <QtCharts/QValueAxis>
 #include <QtCharts/QChart>
 #include<viewvolunteer.h>
+    #include<login.h>
 
 
-
-dashboard::dashboard(int userId, QWidget *parent)
+dashboard::dashboard(int userId, login *loginWindow, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::dashboard),
     schedulingWindow(nullptr),
     pt(nullptr),
+    loginWindow(loginWindow),
     userId(userId),
     eventId(-1)
+
 {
     ui->setupUi(this);
-
+   connect(ui->Logout, &QPushButton::clicked, this, &dashboard::on_Logout_clicked);
     if (!ui->chartContainer->layout()) {
         QVBoxLayout *layout = new QVBoxLayout(ui->chartContainer);
         layout->setContentsMargins(0, 0, 0, 0);
@@ -343,6 +345,12 @@ void dashboard::on_viewvolunteer_clicked()
     ViewVolunteer *viewDialog = new ViewVolunteer(eventIdToPass, this);
     viewDialog->exec();
 }
-
+void dashboard::on_Logout_clicked()
+{
+    this->hide();             // Hide dashboard
+    if (loginWindow) {
+        loginWindow->show();
+    }        // Show login window again
+}
 
 

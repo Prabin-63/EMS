@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>864</width>
+    <height>610</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -610,7 +610,7 @@ QPushButton:hover{
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="Log_out">
+               <widget class="QPushButton" name="Logout">
                 <property name="font">
                  <font>
                   <pointsize>11</pointsize>
@@ -905,8 +905,8 @@ border-radius:20px;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>219</width>
-                <height>302</height>
+                <width>72</width>
+                <height>308</height>
                </rect>
               </property>
               <widget class="QWidget" name="volunteerNamesWidget" native="true">
@@ -952,8 +952,8 @@ border-radius:20px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>18</height>
+     <width>864</width>
+     <height>43</height>
     </rect>
    </property>
   </widget>

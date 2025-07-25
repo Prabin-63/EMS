@@ -53,31 +53,36 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../../addvolunteername.cpp \
-		../../booking.cpp \
 		../../dashboard.cpp \
 		../../database.cpp \
+		../../eventdetailpage.cpp \
 		../../login.cpp \
+		../../logout.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
 		../../placemanage.cpp \
 		../../profile.cpp \
 		../../scheduling.cpp \
 		../../signup.cpp \
-		../../userdashboard.cpp qrc_resources.cpp \
+		../../userdashboard.cpp \
+		../../viewvolunteer.cpp qrc_resources.cpp \
 		moc_addvolunteername.cpp \
 		moc_dashboard.cpp \
+		moc_eventdetailpage.cpp \
 		moc_login.cpp \
 		moc_mainwindow.cpp \
 		moc_placemanage.cpp \
 		moc_profile.cpp \
 		moc_scheduling.cpp \
 		moc_signup.cpp \
-		moc_userdashboard.cpp
+		moc_userdashboard.cpp \
+		moc_viewvolunteer.cpp
 OBJECTS       = addvolunteername.o \
-		booking.o \
 		dashboard.o \
 		database.o \
+		eventdetailpage.o \
 		login.o \
+		logout.o \
 		main.o \
 		mainwindow.o \
 		placemanage.o \
@@ -85,16 +90,19 @@ OBJECTS       = addvolunteername.o \
 		scheduling.o \
 		signup.o \
 		userdashboard.o \
+		viewvolunteer.o \
 		qrc_resources.o \
 		moc_addvolunteername.o \
 		moc_dashboard.o \
+		moc_eventdetailpage.o \
 		moc_login.o \
 		moc_mainwindow.o \
 		moc_placemanage.o \
 		moc_profile.o \
 		moc_scheduling.o \
 		moc_signup.o \
-		moc_userdashboard.o
+		moc_userdashboard.o \
+		moc_viewvolunteer.o
 DIST          = ../../resources/icons8-play-100.png \
 		/Qt/6.9.0/macos/mkspecs/features/spec_pre.prf \
 		/Qt/6.9.0/macos/mkspecs/features/device_config.prf \
@@ -345,28 +353,32 @@ DIST          = ../../resources/icons8-play-100.png \
 		/Qt/6.9.0/macos/mkspecs/features/yacc.prf \
 		/Qt/6.9.0/macos/mkspecs/features/lex.prf \
 		../../../../EVENT_MANAGEMENT_SYSTEM.pro ../../addvolunteername.h \
-		../../booking.h \
 		../../dashboard.h \
 		../../database.h \
+		../../eventdetailpage.h \
 		../../login.h \
+		../../logout.h \
 		../../mainwindow.h \
 		../../placemanage.h \
 		../../profile.h \
 		../../scheduling.h \
 		../../sessionmanager.h \
 		../../signup.h \
-		../../userdashboard.h ../../addvolunteername.cpp \
-		../../booking.cpp \
+		../../userdashboard.h \
+		../../viewvolunteer.h ../../addvolunteername.cpp \
 		../../dashboard.cpp \
 		../../database.cpp \
+		../../eventdetailpage.cpp \
 		../../login.cpp \
+		../../logout.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
 		../../placemanage.cpp \
 		../../profile.cpp \
 		../../scheduling.cpp \
 		../../signup.cpp \
-		../../userdashboard.cpp
+		../../userdashboard.cpp \
+		../../viewvolunteer.cpp
 QMAKE_TARGET  = EVENT_MANAGEMENT_SYSTEM
 DESTDIR       = 
 TARGET        = EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/EVENT_MANAGEMENT_SYSTEM
@@ -387,7 +399,7 @@ include /Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/EVENT_MANAGEMENT_SYSTEM: ui_addvolunteername.h ui_dashboard.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h $(OBJECTS)  
+EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/EVENT_MANAGEMENT_SYSTEM: ui_addvolunteername.h ui_dashboard.h ui_eventdetailpage.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h ui_viewvolunteer.h $(OBJECTS)  
 	@test -d EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/ || mkdir -p EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -931,9 +943,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../../addvolunteername.h ../../booking.h ../../dashboard.h ../../database.h ../../login.h ../../mainwindow.h ../../placemanage.h ../../profile.h ../../scheduling.h ../../sessionmanager.h ../../signup.h ../../userdashboard.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../addvolunteername.cpp ../../booking.cpp ../../dashboard.cpp ../../database.cpp ../../login.cpp ../../main.cpp ../../mainwindow.cpp ../../placemanage.cpp ../../profile.cpp ../../scheduling.cpp ../../signup.cpp ../../userdashboard.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../addvolunteername.ui ../../dashboard.ui ../../login.ui ../../mainwindow.ui ../../placemanage.ui ../../profile.ui ../../scheduling.ui ../../signup.ui ../../userdashboard.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../addvolunteername.h ../../dashboard.h ../../database.h ../../eventdetailpage.h ../../login.h ../../logout.h ../../mainwindow.h ../../placemanage.h ../../profile.h ../../scheduling.h ../../sessionmanager.h ../../signup.h ../../userdashboard.h ../../viewvolunteer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../addvolunteername.cpp ../../dashboard.cpp ../../database.cpp ../../eventdetailpage.cpp ../../login.cpp ../../logout.cpp ../../main.cpp ../../mainwindow.cpp ../../placemanage.cpp ../../profile.cpp ../../scheduling.cpp ../../signup.cpp ../../userdashboard.cpp ../../viewvolunteer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../addvolunteername.ui ../../dashboard.ui ../../eventdetailpage.ui ../../login.ui ../../mainwindow.ui ../../placemanage.ui ../../profile.ui ../../scheduling.ui ../../signup.ui ../../userdashboard.ui ../../viewvolunteer.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -988,9 +1000,9 @@ qrc_resources.cpp: ../../resources.qrc \
 		../../resources/charity.png
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/rcc -name resources --no-zstd ../../resources.qrc -o qrc_resources.cpp
 
-compiler_moc_header_make_all: moc_addvolunteername.cpp moc_dashboard.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp moc_userdashboard.cpp
+compiler_moc_header_make_all: moc_addvolunteername.cpp moc_dashboard.cpp moc_eventdetailpage.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp moc_userdashboard.cpp moc_viewvolunteer.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_addvolunteername.cpp moc_dashboard.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp moc_userdashboard.cpp
+	-$(DEL_FILE) moc_addvolunteername.cpp moc_dashboard.cpp moc_eventdetailpage.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp moc_userdashboard.cpp moc_viewvolunteer.cpp
 moc_addvolunteername.cpp: ../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -1027,8 +1039,25 @@ moc_dashboard.cpp: ../../dashboard.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		../../../../Qt/6.9.0/macos/libexec/moc
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../dashboard.h -o moc_dashboard.cpp
+
+moc_eventdetailpage.cpp: ../../eventdetailpage.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.9.0/macos/libexec/moc
+	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../eventdetailpage.h -o moc_eventdetailpage.cpp
 
 moc_login.cpp: ../../login.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1056,6 +1085,16 @@ moc_login.cpp: ../../login.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../userdashboard.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		../../../../Qt/6.9.0/macos/libexec/moc
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../login.h -o moc_login.cpp
 
@@ -1086,34 +1125,24 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../userdashboard.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		../../../../Qt/6.9.0/macos/libexec/moc
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../mainwindow.h -o moc_mainwindow.cpp
 
 moc_placemanage.cpp: ../../placemanage.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
-		../../dashboard.h \
-		../../database.h \
-		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QString \
-		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
-		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
-		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlQuery \
-		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
-		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlError \
-		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
-		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QDebug \
-		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qdebug.h \
-		../../profile.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../addvolunteername.h \
-		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
-		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
 		../../../../Qt/6.9.0/macos/libexec/moc
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../placemanage.h -o moc_placemanage.cpp
 
@@ -1129,8 +1158,6 @@ moc_scheduling.cpp: ../../scheduling.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../placemanage.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../dashboard.h \
@@ -1149,8 +1176,15 @@ moc_scheduling.cpp: ../../scheduling.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../addvolunteername.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		../../../../Qt/6.9.0/macos/libexec/moc
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../scheduling.h -o moc_scheduling.cpp
 
@@ -1161,18 +1195,36 @@ moc_signup.cpp: ../../signup.h \
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../signup.h -o moc_signup.cpp
 
 moc_userdashboard.cpp: ../../userdashboard.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDockWidget \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdockwidget.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlError \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
 		../../../../Qt/6.9.0/macos/libexec/moc
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../userdashboard.h -o moc_userdashboard.cpp
+
+moc_viewvolunteer.cpp: ../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.9.0/macos/libexec/moc
+	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../viewvolunteer.h -o moc_viewvolunteer.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_addvolunteername.h ui_dashboard.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h
+compiler_uic_make_all: ui_addvolunteername.h ui_dashboard.h ui_eventdetailpage.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h ui_viewvolunteer.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_addvolunteername.h ui_dashboard.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h
+	-$(DEL_FILE) ui_addvolunteername.h ui_dashboard.h ui_eventdetailpage.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h ui_viewvolunteer.h
 ui_addvolunteername.h: ../../addvolunteername.ui \
 		../../../../Qt/6.9.0/macos/libexec/uic
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/uic ../../addvolunteername.ui -o ui_addvolunteername.h
@@ -1180,6 +1232,10 @@ ui_addvolunteername.h: ../../addvolunteername.ui \
 ui_dashboard.h: ../../dashboard.ui \
 		../../../../Qt/6.9.0/macos/libexec/uic
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/uic ../../dashboard.ui -o ui_dashboard.h
+
+ui_eventdetailpage.h: ../../eventdetailpage.ui \
+		../../../../Qt/6.9.0/macos/libexec/uic
+	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/uic ../../eventdetailpage.ui -o ui_eventdetailpage.h
 
 ui_login.h: ../../login.ui \
 		../../../../Qt/6.9.0/macos/libexec/uic
@@ -1208,6 +1264,10 @@ ui_signup.h: ../../signup.ui \
 ui_userdashboard.h: ../../userdashboard.ui \
 		../../../../Qt/6.9.0/macos/libexec/uic
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/uic ../../userdashboard.ui -o ui_userdashboard.h
+
+ui_viewvolunteer.h: ../../viewvolunteer.ui \
+		../../../../Qt/6.9.0/macos/libexec/uic
+	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/uic ../../viewvolunteer.ui -o ui_viewvolunteer.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -1243,9 +1303,6 @@ addvolunteername.o: ../../addvolunteername.cpp ../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qrandom.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addvolunteername.o ../../addvolunteername.cpp
 
-booking.o: ../../booking.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o booking.o ../../booking.cpp
-
 dashboard.o: ../../dashboard.cpp ../../dashboard.h \
 		../../database.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QString \
@@ -1270,6 +1327,11 @@ dashboard.o: ../../dashboard.cpp ../../dashboard.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		ui_dashboard.h \
 		../../scheduling.h \
 		../../placemanage.h
@@ -1293,6 +1355,27 @@ database.o: ../../database.cpp ../../database.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o database.o ../../database.cpp
+
+eventdetailpage.o: ../../eventdetailpage.cpp ../../eventdetailpage.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlError \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qdebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o eventdetailpage.o ../../eventdetailpage.cpp
 
 login.o: ../../login.cpp ../../login.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1320,6 +1403,16 @@ login.o: ../../login.cpp ../../login.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../userdashboard.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		ui_login.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
@@ -1327,6 +1420,9 @@ login.o: ../../login.cpp ../../login.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qcryptographichash.h \
 		../../sessionmanager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o ../../login.cpp
+
+logout.o: ../../logout.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o logout.o ../../logout.cpp
 
 main.o: ../../main.cpp ../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
@@ -1356,6 +1452,16 @@ main.o: ../../main.cpp ../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Header
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../userdashboard.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		../../mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
 
@@ -1386,17 +1492,36 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../userdashboard.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
 
 placemanage.o: ../../placemanage.cpp ../../placemanage.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
-		../../dashboard.h \
+		ui_placemanage.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QSpinBox \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qspinbox.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		../../database.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qstring.h \
@@ -1408,24 +1533,20 @@ placemanage.o: ../../placemanage.cpp ../../placemanage.h \
 		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../dashboard.h \
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
-		ui_placemanage.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QHBoxLayout \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLabel \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QSpinBox \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qspinbox.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h
+		../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o placemanage.o ../../placemanage.cpp
 
 profile.o: ../../profile.cpp ../../profile.h \
@@ -1453,8 +1574,6 @@ scheduling.o: ../../scheduling.cpp ../../scheduling.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../placemanage.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../dashboard.h \
@@ -1473,8 +1592,15 @@ scheduling.o: ../../scheduling.cpp ../../scheduling.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../addvolunteername.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		ui_scheduling.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
@@ -1483,9 +1609,7 @@ scheduling.o: ../../scheduling.cpp ../../scheduling.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QDate \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QTime \
-		../../sessionmanager.h \
-		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QTimer \
-		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qtimer.h
+		../../sessionmanager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scheduling.o ../../scheduling.cpp
 
 signup.o: ../../signup.cpp ../../signup.h \
@@ -1512,10 +1636,48 @@ signup.o: ../../signup.cpp ../../signup.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o signup.o ../../signup.cpp
 
 userdashboard.o: ../../userdashboard.cpp ../../userdashboard.h \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDockWidget \
-		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdockwidget.h \
-		ui_userdashboard.h
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlError \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		ui_userdashboard.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlabel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userdashboard.o ../../userdashboard.cpp
+
+viewvolunteer.o: ../../viewvolunteer.cpp ../../viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		ui_viewvolunteer.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlError \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QMap \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qmap.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QHBoxLayout
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o viewvolunteer.o ../../viewvolunteer.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
@@ -1525,6 +1687,9 @@ moc_addvolunteername.o: moc_addvolunteername.cpp
 
 moc_dashboard.o: moc_dashboard.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dashboard.o moc_dashboard.cpp
+
+moc_eventdetailpage.o: moc_eventdetailpage.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_eventdetailpage.o moc_eventdetailpage.cpp
 
 moc_login.o: moc_login.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_login.o moc_login.cpp
@@ -1546,6 +1711,9 @@ moc_signup.o: moc_signup.cpp
 
 moc_userdashboard.o: moc_userdashboard.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_userdashboard.o moc_userdashboard.cpp
+
+moc_viewvolunteer.o: moc_viewvolunteer.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_viewvolunteer.o moc_viewvolunteer.cpp
 
 ####### Install
 
