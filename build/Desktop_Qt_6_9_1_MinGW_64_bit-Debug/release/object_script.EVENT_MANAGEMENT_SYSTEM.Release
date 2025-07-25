@@ -2,7 +2,9 @@ release/addvolunteername.o
 release/dashboard.o
 release/database.o
 release/eventdetailpage.o
+release/helpcenter.o
 release/login.o
+release/logout.o
 release/main.o
 release/mainwindow.o
 release/placemanage.o
@@ -15,6 +17,7 @@ release/qrc_resources.o
 release/moc_addvolunteername.o
 release/moc_dashboard.o
 release/moc_eventdetailpage.o
+release/moc_helpcenter.o
 release/moc_login.o
 release/moc_mainwindow.o
 release/moc_placemanage.o

@@ -13,7 +13,8 @@ class EventDetailPage : public QWidget
 public:
     explicit EventDetailPage(int userId, QWidget *parent = nullptr); // ✅ CORRECTED CONSTRUCTOR
     void loadEventDetails(int eventId);
-
+signals:
+    void backButtonClicked();
 private:
     int currentEventId;
     int currentUserId;

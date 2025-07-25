@@ -16,6 +16,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
@@ -35,6 +36,8 @@ public:
     QWidget *widget_4;
     QVBoxLayout *verticalLayout_2;
     QWidget *widget_6;
+    QHBoxLayout *horizontalLayout_7;
+    QPushButton *pushButton;
     QWidget *widget_5;
     QHBoxLayout *horizontalLayout_6;
     QFrame *eventDetailFrame;
@@ -107,6 +110,13 @@ public:
         widget_6->setMinimumSize(QSize(0, 60));
         widget_6->setStyleSheet(QString::fromUtf8("background-color:#CB6040;\n"
 "border-radius:20px;"));
+        horizontalLayout_7 = new QHBoxLayout(widget_6);
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        pushButton = new QPushButton(widget_6);
+        pushButton->setObjectName("pushButton");
+
+        horizontalLayout_7->addWidget(pushButton);
+
 
         verticalLayout_2->addWidget(widget_6);
 
@@ -197,6 +207,7 @@ public:
     void retranslateUi(QMainWindow *EventDetailPage)
     {
         EventDetailPage->setWindowTitle(QCoreApplication::translate("EventDetailPage", "MainWindow", nullptr));
+        pushButton->setText(QCoreApplication::translate("EventDetailPage", "PushButton", nullptr));
         label_2->setText(QCoreApplication::translate("EventDetailPage", "TextLabel", nullptr));
         label_3->setText(QCoreApplication::translate("EventDetailPage", "TextLabel", nullptr));
         label->setText(QCoreApplication::translate("EventDetailPage", "TextLabel", nullptr));

@@ -9,8 +9,10 @@
 #include<addvolunteername.h>
 #include<viewvolunteer.h>
 #include <QTableWidget>
+#include<helpcenter.h>
 
 class login;
+class Profile;
 namespace Ui {
 class dashboard;
 }
@@ -39,14 +41,17 @@ private slots:
 
     void on_Logout_clicked();
 
+    void on_Help_Center_clicked();
+
 private:
     Ui::dashboard *ui;
     class scheduling *schedulingWindow;
-    class profile *pt;
+    class Profile *pt;
     AddVolunteerName *addvolunteername;
     ViewVolunteer *viewDialog;
 
     login *loginWindow;
+    HelpCenter *help;
 
 
     int userId;

@@ -11,6 +11,7 @@ SOURCES += \
     dashboard.cpp \
     database.cpp \
     eventdetailpage.cpp \
+    helpcenter.cpp \
     login.cpp \
     logout.cpp \
     main.cpp \
@@ -28,6 +29,7 @@ HEADERS += \
     dashboard.h \
     database.h \
     eventdetailpage.h \
+    helpcenter.h \
     login.h \
     logout.h \
     mainwindow.h \
@@ -45,6 +47,7 @@ FORMS += \
     addvolunteername.ui \
     dashboard.ui \
     eventdetailpage.ui \
+    helpcenter.ui \
     login.ui \
     mainwindow.ui \
     placemanage.ui \

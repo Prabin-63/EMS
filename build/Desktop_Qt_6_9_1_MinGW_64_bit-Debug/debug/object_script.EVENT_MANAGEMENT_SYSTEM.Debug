@@ -2,7 +2,9 @@ debug/addvolunteername.o
 debug/dashboard.o
 debug/database.o
 debug/eventdetailpage.o
+debug/helpcenter.o
 debug/login.o
+debug/logout.o
 debug/main.o
 debug/mainwindow.o
 debug/placemanage.o
@@ -15,6 +17,7 @@ debug/qrc_resources.o
 debug/moc_addvolunteername.o
 debug/moc_dashboard.o
 debug/moc_eventdetailpage.o
+debug/moc_helpcenter.o
 debug/moc_login.o
 debug/moc_mainwindow.o
 debug/moc_placemanage.o

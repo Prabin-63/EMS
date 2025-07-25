@@ -76,7 +76,7 @@ public:
     QHBoxLayout *horizontalLayout_14;
     QHBoxLayout *horizontalLayout_13;
     QLabel *label_7;
-    QPushButton *Log_out;
+    QPushButton *Logout;
     QSpacerItem *verticalSpacer_3;
     QWidget *RightSideBar;
     QGridLayout *gridLayout_2;
@@ -85,6 +85,11 @@ public:
     QHBoxLayout *horizontalLayout_18;
     QHBoxLayout *horizontalLayout_15;
     QComboBox *eventComboBox;
+    QWidget *widget_12;
+    QHBoxLayout *horizontalLayout_28;
+    QHBoxLayout *horizontalLayout_27;
+    QLabel *label_9;
+    QLabel *label_10;
     QWidget *Viewvolunteers;
     QHBoxLayout *horizontalLayout_24;
     QHBoxLayout *horizontalLayout_23;
@@ -117,7 +122,7 @@ public:
     {
         if (dashboard->objectName().isEmpty())
             dashboard->setObjectName("dashboard");
-        dashboard->resize(800, 600);
+        dashboard->resize(864, 610);
         centralwidget = new QWidget(dashboard);
         centralwidget->setObjectName("centralwidget");
         centralwidget->setStyleSheet(QString::fromUtf8("QWidget{\n"
@@ -456,13 +461,13 @@ public:
 
         horizontalLayout_13->addWidget(label_7);
 
-        Log_out = new QPushButton(widget_7);
-        Log_out->setObjectName("Log_out");
+        Logout = new QPushButton(widget_7);
+        Logout->setObjectName("Logout");
         QFont font2;
         font2.setPointSize(11);
         font2.setBold(false);
-        Log_out->setFont(font2);
-        Log_out->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+        Logout->setFont(font2);
+        Logout->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "color:black;\n"
 "	\n"
 "	background-color: rgb(0, 251, 255);\n"
@@ -475,7 +480,7 @@ public:
 "color:white;\n"
 "}"));
 
-        horizontalLayout_13->addWidget(Log_out);
+        horizontalLayout_13->addWidget(Logout);
 
 
         horizontalLayout_14->addLayout(horizontalLayout_13);
@@ -512,9 +517,45 @@ public:
         QFont font3;
         font3.setPointSize(15);
         eventComboBox->setFont(font3);
-        eventComboBox->setStyleSheet(QString::fromUtf8("color:white;"));
+        eventComboBox->setStyleSheet(QString::fromUtf8("color:white;\n"
+"padding-left:20px;"));
 
         horizontalLayout_15->addWidget(eventComboBox);
+
+        widget_12 = new QWidget(TOP);
+        widget_12->setObjectName("widget_12");
+        sizePolicy.setHeightForWidth(widget_12->sizePolicy().hasHeightForWidth());
+        widget_12->setSizePolicy(sizePolicy);
+        widget_12->setMinimumSize(QSize(80, 0));
+        horizontalLayout_28 = new QHBoxLayout(widget_12);
+        horizontalLayout_28->setObjectName("horizontalLayout_28");
+        horizontalLayout_27 = new QHBoxLayout();
+        horizontalLayout_27->setObjectName("horizontalLayout_27");
+        label_9 = new QLabel(widget_12);
+        label_9->setObjectName("label_9");
+        sizePolicy2.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
+        label_9->setSizePolicy(sizePolicy2);
+        label_9->setMinimumSize(QSize(30, 30));
+        label_9->setMaximumSize(QSize(30, 30));
+        label_9->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-name-50.png")));
+        label_9->setScaledContents(true);
+
+        horizontalLayout_27->addWidget(label_9);
+
+        label_10 = new QLabel(widget_12);
+        label_10->setObjectName("label_10");
+        label_10->setFont(font3);
+        label_10->setStyleSheet(QString::fromUtf8("color:white;\n"
+"padding-left:20px;\n"
+""));
+
+        horizontalLayout_27->addWidget(label_10);
+
+
+        horizontalLayout_28->addLayout(horizontalLayout_27);
+
+
+        horizontalLayout_15->addWidget(widget_12);
 
 
         horizontalLayout_18->addLayout(horizontalLayout_15);
@@ -609,8 +650,7 @@ public:
 
         widget_10 = new QWidget(RightSideBar);
         widget_10->setObjectName("widget_10");
-        widget_10->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
-"border-radius:20px;"));
+        widget_10->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout_26 = new QHBoxLayout(widget_10);
         horizontalLayout_26->setObjectName("horizontalLayout_26");
         horizontalLayout_25 = new QHBoxLayout();
@@ -639,15 +679,13 @@ public:
 
         widget_9 = new QWidget(RightSideBar);
         widget_9->setObjectName("widget_9");
-        widget_9->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
-"border-radius:20px;"));
+        widget_9->setStyleSheet(QString::fromUtf8(""));
 
         gridLayout->addWidget(widget_9, 3, 3, 1, 1);
 
         widget_11 = new QWidget(RightSideBar);
         widget_11->setObjectName("widget_11");
-        widget_11->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
-"border-radius:20px;"));
+        widget_11->setStyleSheet(QString::fromUtf8(""));
 
         gridLayout->addWidget(widget_11, 2, 2, 1, 1);
 
@@ -656,7 +694,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 219, 302));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 283, 302));
         volunteerNamesWidget = new QWidget(scrollAreaWidgetContents);
         volunteerNamesWidget->setObjectName("volunteerNamesWidget");
         volunteerNamesWidget->setGeometry(QRect(0, 0, 361, 301));
@@ -684,7 +722,7 @@ public:
         dashboard->setCentralWidget(centralwidget);
         menubar = new QMenuBar(dashboard);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 18));
+        menubar->setGeometry(QRect(0, 0, 864, 18));
         dashboard->setMenuBar(menubar);
         statusbar = new QStatusBar(dashboard);
         statusbar->setObjectName("statusbar");
@@ -712,8 +750,10 @@ public:
         label_6->setText(QString());
         Help_Center->setText(QCoreApplication::translate("dashboard", "Help Center", nullptr));
         label_7->setText(QString());
-        Log_out->setText(QCoreApplication::translate("dashboard", "LOG OUT", nullptr));
+        Logout->setText(QCoreApplication::translate("dashboard", "LOG OUT", nullptr));
         eventComboBox->setPlaceholderText(QCoreApplication::translate("dashboard", "Select Your Event", nullptr));
+        label_9->setText(QString());
+        label_10->setText(QCoreApplication::translate("dashboard", "Admin ", nullptr));
         logoLabel_3->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));
         viewvolunteer->setText(QCoreApplication::translate("dashboard", "View Volunteers", nullptr));
         logoLabel->setText(QCoreApplication::translate("dashboard", "TextLabel", nullptr));

@@ -31,67 +31,67 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN7profileE_t {};
+struct qt_meta_tag_ZN7ProfileE_t {};
 } // unnamed namespace
 
-template <> constexpr inline auto profile::qt_create_metaobjectdata<qt_meta_tag_ZN7profileE_t>()
+template <> constexpr inline auto Profile::qt_create_metaobjectdata<qt_meta_tag_ZN7ProfileE_t>()
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "profile",
-        "on_filterButton_clicked",
+        "Profile",
+        "on_dashboard_2_clicked",
         ""
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'on_filterButton_clicked'
+        // Slot 'on_dashboard_2_clicked'
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
     QtMocHelpers::UintData qt_enums {
     };
-    return QtMocHelpers::metaObjectData<profile, qt_meta_tag_ZN7profileE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+    return QtMocHelpers::metaObjectData<Profile, qt_meta_tag_ZN7ProfileE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
 }
-Q_CONSTINIT const QMetaObject profile::staticMetaObject = { {
-    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN7profileE_t>.stringdata,
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN7profileE_t>.data,
+Q_CONSTINIT const QMetaObject Profile::staticMetaObject = { {
+    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN7ProfileE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN7ProfileE_t>.data,
     qt_static_metacall,
     nullptr,
-    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN7profileE_t>.metaTypes,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN7ProfileE_t>.metaTypes,
     nullptr
 } };
 
-void profile::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Profile::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<profile *>(_o);
+    auto *_t = static_cast<Profile *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->on_filterButton_clicked(); break;
+        case 0: _t->on_dashboard_2_clicked(); break;
         default: ;
         }
     }
     (void)_a;
 }
 
-const QMetaObject *profile::metaObject() const
+const QMetaObject *Profile::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *profile::qt_metacast(const char *_clname)
+void *Profile::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN7profileE_t>.strings))
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN7ProfileE_t>.strings))
         return static_cast<void*>(this);
-    return QWidget::qt_metacast(_clname);
+    return QMainWindow::qt_metacast(_clname);
 }
 
-int profile::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Profile::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QWidget::qt_metacall(_c, _id, _a);
+    _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {

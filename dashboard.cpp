@@ -5,6 +5,7 @@
 #include "QSqlQuery"
 #include "database.h"
 #include <addvolunteername.h>
+#include<helpcenter.h>
 
 
 // Qt Charts
@@ -20,6 +21,7 @@
 dashboard::dashboard(int userId, login *loginWindow, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::dashboard),
+
     schedulingWindow(nullptr),
     pt(nullptr),
     loginWindow(loginWindow),
@@ -38,6 +40,7 @@ dashboard::dashboard(int userId, login *loginWindow, QWidget *parent)
 
     connect(ui->eventComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &dashboard::onEventChanged);
+    connect(ui->Help_Center, &QPushButton::clicked, this, &dashboard::on_Help_Center_clicked);
 
     ui->volunteerSummaryWidget->setVisible(false);
     ui->subeventSummaryWidget->setVisible(false);
@@ -321,8 +324,9 @@ void dashboard::on_Managing_clicked()
 
 void dashboard::on_Profile_clicked()
 {
-    pt = new profile();
+    pt=new Profile(this);
     pt->show();
+    this->hide();
 }
 
 void dashboard::on_Volunteer_clicked()
@@ -353,4 +357,11 @@ void dashboard::on_Logout_clicked()
     }        // Show login window again
 }
 
+
+
+void dashboard::on_Help_Center_clicked()
+{
+    help =new HelpCenter(this);
+    help->show();
+}
 

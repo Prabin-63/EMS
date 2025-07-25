@@ -691,11 +691,82 @@ background-color:rgb(55,55,55);</string>
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">color:white;</string>
+                   <string notr="true">color:white;
+padding-left:20px;</string>
                   </property>
                   <property name="placeholderText">
                    <string>Select Your Event</string>
                   </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QWidget" name="widget_12" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>80</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_28">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_27">
+                     <item>
+                      <widget class="QLabel" name="label_9">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>30</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>30</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="resources.qrc">:/resources/icons8-name-50.png</pixmap>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_10">
+                       <property name="font">
+                        <font>
+                         <pointsize>15</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color:white;
+padding-left:20px;
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Admin </string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
                  </widget>
                 </item>
                </layout>
@@ -841,8 +912,7 @@ border-radius:20px;</string>
            <item row="3" column="0" colspan="3">
             <widget class="QWidget" name="widget_10" native="true">
              <property name="styleSheet">
-              <string notr="true">background-color:rgb(55,55,55);
-border-radius:20px;</string>
+              <string notr="true"/>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_26">
               <item>
@@ -882,16 +952,14 @@ border-radius:20px;</string>
            <item row="3" column="3">
             <widget class="QWidget" name="widget_9" native="true">
              <property name="styleSheet">
-              <string notr="true">background-color:rgb(55,55,55);
-border-radius:20px;</string>
+              <string notr="true"/>
              </property>
             </widget>
            </item>
            <item row="2" column="2">
             <widget class="QWidget" name="widget_11" native="true">
              <property name="styleSheet">
-              <string notr="true">background-color:rgb(55,55,55);
-border-radius:20px;</string>
+              <string notr="true"/>
              </property>
             </widget>
            </item>
@@ -905,8 +973,8 @@ border-radius:20px;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>72</width>
-                <height>308</height>
+                <width>283</width>
+                <height>302</height>
                </rect>
               </property>
               <widget class="QWidget" name="volunteerNamesWidget" native="true">
@@ -953,7 +1021,7 @@ border-radius:20px;</string>
      <x>0</x>
      <y>0</y>
      <width>864</width>
-     <height>43</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

@@ -1,31 +1,28 @@
 #ifndef PROFILE_H
 #define PROFILE_H
-#include <QSqlQuery>
-#include <QWidget>
+
+#include <QMainWindow>
+
+class dashboard;  // Forward declaration
 
 namespace Ui {
-class profile;
+class Profile;
 }
 
-class profile : public QWidget
+class Profile : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit profile(QWidget *parent = nullptr);
-    ~profile();
+    explicit Profile(dashboard *dash, QWidget *parent = nullptr);
+    ~Profile();
 
 private slots:
-
-
-    void on_filterButton_clicked();
-
+    void on_dashboard_2_clicked();  // Button to go back to dashboard
 
 private:
-    Ui::profile *ui;
-       void loadAllEvents();
-    void filterEvents(const QString &filterType, const QString &filterValue);
-    void populateTable(QSqlQuery &query);
+    Ui::Profile *ui;
+    dashboard *dash;  // Pointer to original dashboard
 };
 
 #endif // PROFILE_H
