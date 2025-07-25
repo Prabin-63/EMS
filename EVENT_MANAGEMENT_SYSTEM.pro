@@ -8,6 +8,7 @@ QT += core gui widgets sql charts
 # Sources
 SOURCES += \
     addvolunteername.cpp \
+    booking.cpp \
     dashboard.cpp \
     database.cpp \
     eventdetailpage.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 # Headers
 HEADERS += \
     addvolunteername.h \
+    booking.h \
     dashboard.h \
     database.h \
     eventdetailpage.h \
@@ -43,6 +45,7 @@ HEADERS += \
 # UI Forms
 FORMS += \
     addvolunteername.ui \
+    booking.ui \
     dashboard.ui \
     eventdetailpage.ui \
     login.ui \
@@ -54,7 +57,6 @@ FORMS += \
     userdashboard.ui \
     viewvolunteer.ui
 
-    viewvolunteer.ui
 
 
 # Resources

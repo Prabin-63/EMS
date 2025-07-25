@@ -46,6 +46,7 @@ template <> constexpr inline auto dashboard::qt_create_metaobjectdata<qt_meta_ta
         "on_Volunteer_clicked",
         "onEventChanged",
         "index",
+        "on_Booking_clicked",
         "on_viewvolunteer_clicked",
         "on_Logout_clicked"
     };
@@ -61,10 +62,12 @@ template <> constexpr inline auto dashboard::qt_create_metaobjectdata<qt_meta_ta
         QtMocHelpers::SlotData<void(int)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Int, 6 },
         }}),
-        // Slot 'on_viewvolunteer_clicked'
+        // Slot 'on_Booking_clicked'
         QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_Logout_clicked'
+        // Slot 'on_viewvolunteer_clicked'
         QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_Logout_clicked'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -92,8 +95,9 @@ void dashboard::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 1: _t->on_Profile_clicked(); break;
         case 2: _t->on_Volunteer_clicked(); break;
         case 3: _t->onEventChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 4: _t->on_viewvolunteer_clicked(); break;
-        case 5: _t->on_Logout_clicked(); break;
+        case 4: _t->on_Booking_clicked(); break;
+        case 5: _t->on_viewvolunteer_clicked(); break;
+        case 6: _t->on_Logout_clicked(); break;
         default: ;
         }
     }
@@ -118,14 +122,14 @@ int dashboard::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

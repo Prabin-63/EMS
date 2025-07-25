@@ -53,6 +53,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../../addvolunteername.cpp \
+		../../booking.cpp \
 		../../dashboard.cpp \
 		../../database.cpp \
 		../../eventdetailpage.cpp \
@@ -67,6 +68,7 @@ SOURCES       = ../../addvolunteername.cpp \
 		../../userdashboard.cpp \
 		../../viewvolunteer.cpp qrc_resources.cpp \
 		moc_addvolunteername.cpp \
+		moc_booking.cpp \
 		moc_dashboard.cpp \
 		moc_eventdetailpage.cpp \
 		moc_login.cpp \
@@ -78,6 +80,7 @@ SOURCES       = ../../addvolunteername.cpp \
 		moc_userdashboard.cpp \
 		moc_viewvolunteer.cpp
 OBJECTS       = addvolunteername.o \
+		booking.o \
 		dashboard.o \
 		database.o \
 		eventdetailpage.o \
@@ -93,6 +96,7 @@ OBJECTS       = addvolunteername.o \
 		viewvolunteer.o \
 		qrc_resources.o \
 		moc_addvolunteername.o \
+		moc_booking.o \
 		moc_dashboard.o \
 		moc_eventdetailpage.o \
 		moc_login.o \
@@ -353,6 +357,7 @@ DIST          = ../../resources/icons8-play-100.png \
 		/Qt/6.9.0/macos/mkspecs/features/yacc.prf \
 		/Qt/6.9.0/macos/mkspecs/features/lex.prf \
 		../../../../EVENT_MANAGEMENT_SYSTEM.pro ../../addvolunteername.h \
+		../../booking.h \
 		../../dashboard.h \
 		../../database.h \
 		../../eventdetailpage.h \
@@ -366,6 +371,7 @@ DIST          = ../../resources/icons8-play-100.png \
 		../../signup.h \
 		../../userdashboard.h \
 		../../viewvolunteer.h ../../addvolunteername.cpp \
+		../../booking.cpp \
 		../../dashboard.cpp \
 		../../database.cpp \
 		../../eventdetailpage.cpp \
@@ -399,7 +405,7 @@ include /Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/EVENT_MANAGEMENT_SYSTEM: ui_addvolunteername.h ui_dashboard.h ui_eventdetailpage.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h ui_viewvolunteer.h $(OBJECTS)  
+EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/EVENT_MANAGEMENT_SYSTEM: ui_addvolunteername.h ui_booking.h ui_dashboard.h ui_eventdetailpage.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h ui_viewvolunteer.h $(OBJECTS)  
 	@test -d EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/ || mkdir -p EVENT_MANAGEMENT_SYSTEM.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -943,9 +949,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../../addvolunteername.h ../../dashboard.h ../../database.h ../../eventdetailpage.h ../../login.h ../../logout.h ../../mainwindow.h ../../placemanage.h ../../profile.h ../../scheduling.h ../../sessionmanager.h ../../signup.h ../../userdashboard.h ../../viewvolunteer.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../addvolunteername.cpp ../../dashboard.cpp ../../database.cpp ../../eventdetailpage.cpp ../../login.cpp ../../logout.cpp ../../main.cpp ../../mainwindow.cpp ../../placemanage.cpp ../../profile.cpp ../../scheduling.cpp ../../signup.cpp ../../userdashboard.cpp ../../viewvolunteer.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../addvolunteername.ui ../../dashboard.ui ../../eventdetailpage.ui ../../login.ui ../../mainwindow.ui ../../placemanage.ui ../../profile.ui ../../scheduling.ui ../../signup.ui ../../userdashboard.ui ../../viewvolunteer.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../addvolunteername.h ../../booking.h ../../dashboard.h ../../database.h ../../eventdetailpage.h ../../login.h ../../logout.h ../../mainwindow.h ../../placemanage.h ../../profile.h ../../scheduling.h ../../sessionmanager.h ../../signup.h ../../userdashboard.h ../../viewvolunteer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../addvolunteername.cpp ../../booking.cpp ../../dashboard.cpp ../../database.cpp ../../eventdetailpage.cpp ../../login.cpp ../../logout.cpp ../../main.cpp ../../mainwindow.cpp ../../placemanage.cpp ../../profile.cpp ../../scheduling.cpp ../../signup.cpp ../../userdashboard.cpp ../../viewvolunteer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../addvolunteername.ui ../../booking.ui ../../dashboard.ui ../../eventdetailpage.ui ../../login.ui ../../mainwindow.ui ../../placemanage.ui ../../profile.ui ../../scheduling.ui ../../signup.ui ../../userdashboard.ui ../../viewvolunteer.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1000,9 +1006,9 @@ qrc_resources.cpp: ../../resources.qrc \
 		../../resources/charity.png
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/rcc -name resources --no-zstd ../../resources.qrc -o qrc_resources.cpp
 
-compiler_moc_header_make_all: moc_addvolunteername.cpp moc_dashboard.cpp moc_eventdetailpage.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp moc_userdashboard.cpp moc_viewvolunteer.cpp
+compiler_moc_header_make_all: moc_addvolunteername.cpp moc_booking.cpp moc_dashboard.cpp moc_eventdetailpage.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp moc_userdashboard.cpp moc_viewvolunteer.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_addvolunteername.cpp moc_dashboard.cpp moc_eventdetailpage.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp moc_userdashboard.cpp moc_viewvolunteer.cpp
+	-$(DEL_FILE) moc_addvolunteername.cpp moc_booking.cpp moc_dashboard.cpp moc_eventdetailpage.cpp moc_login.cpp moc_mainwindow.cpp moc_placemanage.cpp moc_profile.cpp moc_scheduling.cpp moc_signup.cpp moc_userdashboard.cpp moc_viewvolunteer.cpp
 moc_addvolunteername.cpp: ../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -1014,6 +1020,14 @@ moc_addvolunteername.cpp: ../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
 		../../../../Qt/6.9.0/macos/libexec/moc
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../addvolunteername.h -o moc_addvolunteername.cpp
+
+moc_booking.cpp: ../../booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Qt/6.9.0/macos/libexec/moc
+	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=201402L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=17 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/prabinbashyal/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/prabinbashyal/Desktop/Project -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCharts.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGLWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtOpenGL.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtSql.framework/Headers -I/Users/prabinbashyal/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/prabinbashyal/Qt/6.9.0/macos/lib ../../booking.h -o moc_booking.cpp
 
 moc_dashboard.cpp: ../../dashboard.h \
 		../../database.h \
@@ -1030,8 +1044,11 @@ moc_dashboard.cpp: ../../dashboard.h \
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../booking.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
@@ -1078,6 +1095,9 @@ moc_login.cpp: ../../login.h \
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
@@ -1118,6 +1138,9 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
@@ -1175,6 +1198,9 @@ moc_scheduling.cpp: ../../scheduling.h \
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
@@ -1222,12 +1248,16 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_addvolunteername.h ui_dashboard.h ui_eventdetailpage.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h ui_viewvolunteer.h
+compiler_uic_make_all: ui_addvolunteername.h ui_booking.h ui_dashboard.h ui_eventdetailpage.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h ui_viewvolunteer.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_addvolunteername.h ui_dashboard.h ui_eventdetailpage.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h ui_viewvolunteer.h
+	-$(DEL_FILE) ui_addvolunteername.h ui_booking.h ui_dashboard.h ui_eventdetailpage.h ui_login.h ui_mainwindow.h ui_placemanage.h ui_profile.h ui_scheduling.h ui_signup.h ui_userdashboard.h ui_viewvolunteer.h
 ui_addvolunteername.h: ../../addvolunteername.ui \
 		../../../../Qt/6.9.0/macos/libexec/uic
 	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/uic ../../addvolunteername.ui -o ui_addvolunteername.h
+
+ui_booking.h: ../../booking.ui \
+		../../../../Qt/6.9.0/macos/libexec/uic
+	/Users/prabinbashyal/Qt/6.9.0/macos/libexec/uic ../../booking.ui -o ui_booking.h
 
 ui_dashboard.h: ../../dashboard.ui \
 		../../../../Qt/6.9.0/macos/libexec/uic
@@ -1303,6 +1333,23 @@ addvolunteername.o: ../../addvolunteername.cpp ../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qrandom.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addvolunteername.o ../../addvolunteername.cpp
 
+booking.o: ../../booking.cpp ../../booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		ui_booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelation \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalDelegate \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlError \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qdebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o booking.o ../../booking.cpp
+
 dashboard.o: ../../dashboard.cpp ../../dashboard.h \
 		../../database.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QString \
@@ -1318,8 +1365,11 @@ dashboard.o: ../../dashboard.cpp ../../dashboard.h \
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../booking.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
@@ -1334,7 +1384,14 @@ dashboard.o: ../../dashboard.cpp ../../dashboard.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		ui_dashboard.h \
 		../../scheduling.h \
-		../../placemanage.h
+		../../placemanage.h \
+		../../login.h \
+		../../signup.h \
+		../../userdashboard.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dashboard.o ../../dashboard.cpp
 
 database.o: ../../database.cpp ../../database.h \
@@ -1396,6 +1453,9 @@ login.o: ../../login.cpp ../../login.h \
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
@@ -1445,6 +1505,9 @@ main.o: ../../main.cpp ../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Header
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
@@ -1485,6 +1548,9 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
@@ -1539,6 +1605,9 @@ placemanage.o: ../../placemanage.cpp ../../placemanage.h \
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qvector.h \
@@ -1591,6 +1660,9 @@ scheduling.o: ../../scheduling.cpp ../../scheduling.h \
 		../../profile.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../booking.h \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Qt/6.9.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		../../addvolunteername.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
@@ -1684,6 +1756,9 @@ qrc_resources.o: qrc_resources.cpp
 
 moc_addvolunteername.o: moc_addvolunteername.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_addvolunteername.o moc_addvolunteername.cpp
+
+moc_booking.o: moc_booking.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_booking.o moc_booking.cpp
 
 moc_dashboard.o: moc_dashboard.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dashboard.o moc_dashboard.cpp
