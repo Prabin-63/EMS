@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>806</width>
-    <height>605</height>
+    <width>1444</width>
+    <height>680</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,8 +117,8 @@ border-radius:20px;</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>600</width>
-                     <height>461</height>
+                     <width>1184</width>
+                     <height>460</height>
                     </rect>
                    </property>
                    <widget class="QWidget" name="eventContainer" native="true">
@@ -153,8 +153,8 @@ border-radius:20px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>806</width>
-     <height>18</height>
+     <width>1444</width>
+     <height>43</height>
     </rect>
    </property>
   </widget>

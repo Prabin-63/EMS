@@ -2,7 +2,7 @@
 #define DASHBOARD_H
 #include"database.h"
 #include "profile.h"
-
+#include "booking.h"
 
 #include <QMainWindow>
 #include <QSqlQuery>
@@ -34,7 +34,7 @@ private slots:
     void on_Volunteer_clicked();
     void onEventChanged(int index);
 
-
+   void on_Booking_clicked();
 
 
     void on_viewvolunteer_clicked();

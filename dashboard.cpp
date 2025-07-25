@@ -328,6 +328,11 @@ void dashboard::on_Profile_clicked()
     pt->show();
     this->hide();
 }
+void dashboard::on_Booking_clicked()
+{
+    Booking* bt = new Booking();
+    bt->show();
+}
 
 void dashboard::on_Volunteer_clicked()
 {
