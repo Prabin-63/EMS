@@ -64,6 +64,7 @@ void login::on_Gotodash_clicked()
     if (query.next()) {
         int userId = query.value(0).toInt();
         SessionManager::instance().setUserId(userId);
+        qDebug() << "Session user ID set to:" << SessionManager::instance().getUserId();
 
         udash = new UserDashboard(userId);        // Correct class name with uppercase letters
         ui->Emailid->clear();
