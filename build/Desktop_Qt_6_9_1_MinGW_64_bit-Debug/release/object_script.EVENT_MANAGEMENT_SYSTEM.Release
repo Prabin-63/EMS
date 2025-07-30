@@ -1,4 +1,5 @@
 release/addvolunteername.o
+release/booking.o
 release/dashboard.o
 release/database.o
 release/eventdetailpage.o
@@ -15,6 +16,7 @@ release/userdashboard.o
 release/viewvolunteer.o
 release/qrc_resources.o
 release/moc_addvolunteername.o
+release/moc_booking.o
 release/moc_dashboard.o
 release/moc_eventdetailpage.o
 release/moc_helpcenter.o
