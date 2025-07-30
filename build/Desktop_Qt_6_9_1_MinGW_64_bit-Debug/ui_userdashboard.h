@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'userdashboard.ui'
 **
-** Created by: Qt User Interface Compiler version 6.9.0
+** Created by: Qt User Interface Compiler version 6.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -48,7 +48,7 @@ public:
     {
         if (UserDashboard->objectName().isEmpty())
             UserDashboard->setObjectName("UserDashboard");
-        UserDashboard->resize(806, 605);
+        UserDashboard->resize(1444, 680);
         centralwidget = new QWidget(UserDashboard);
         centralwidget->setObjectName("centralwidget");
         centralwidget->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
@@ -116,7 +116,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 600, 461));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1184, 460));
         eventContainer = new QWidget(scrollAreaWidgetContents);
         eventContainer->setObjectName("eventContainer");
         eventContainer->setGeometry(QRect(0, 0, 601, 461));
@@ -142,7 +142,7 @@ public:
         UserDashboard->setCentralWidget(centralwidget);
         menubar = new QMenuBar(UserDashboard);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 806, 18));
+        menubar->setGeometry(QRect(0, 0, 1444, 43));
         UserDashboard->setMenuBar(menubar);
         statusbar = new QStatusBar(UserDashboard);
         statusbar->setObjectName("statusbar");

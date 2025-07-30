@@ -1,8 +1,10 @@
 release/addvolunteername.o
+release/booking.o
 release/dashboard.o
 release/database.o
 release/eventdetailpage.o
 release/login.o
+release/logout.o
 release/main.o
 release/mainwindow.o
 release/placemanage.o
@@ -13,6 +15,7 @@ release/userdashboard.o
 release/viewvolunteer.o
 release/qrc_resources.o
 release/moc_addvolunteername.o
+release/moc_booking.o
 release/moc_dashboard.o
 release/moc_eventdetailpage.o
 release/moc_login.o
