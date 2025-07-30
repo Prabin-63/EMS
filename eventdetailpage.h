@@ -11,13 +11,13 @@ class EventDetailPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit EventDetailPage(int userId, QWidget *parent = nullptr); // ✅ CORRECTED CONSTRUCTOR
+    explicit EventDetailPage(int userId, QWidget *parent = nullptr);
     void loadEventDetails(int eventId);
 signals:
     void backButtonClicked();
 private:
     int currentEventId;
-    int currentUserId;
+    int currentUserId;  // Store the user ID
 
     QLabel *eventNameLabel;
     QLabel *venueLabel;
