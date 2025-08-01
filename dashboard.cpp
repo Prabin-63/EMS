@@ -45,7 +45,7 @@ dashboard::dashboard(int userId, login *loginWindow, QWidget *parent)
     ui->volunteerSummaryWidget->setVisible(false);
     ui->subeventSummaryWidget->setVisible(false);
     ui->Viewvolunteers->setVisible(false);
-    ui->volunteerNamesWidget->setVisible(false);
+
 
 
 
@@ -189,32 +189,30 @@ void dashboard::createVolunteerLineChart(int eventId)
     chartView->setRenderHint(QPainter::Antialiasing);
     ui->chartContainer->layout()->addWidget(chartView);
 }
+
 void dashboard::loadVolunteerNames(int eventId)
 {
-    // Remove old layout
-    QLayout *oldLayout = ui->volunteerNamesWidget->layout();
-    if (oldLayout) {
+    // 🧹 Remove old layout if exists
+    if (volunteerLayout) {
         QLayoutItem *item;
-        while ((item = oldLayout->takeAt(0)) != nullptr) {
-            if (item->widget()) {
-                delete item->widget();
-            }
+        while ((item = volunteerLayout->takeAt(0)) != nullptr) {
+            if (item->widget()) delete item->widget();
             delete item;
         }
-        delete oldLayout;
+        delete volunteerLayout;
     }
 
-    // 🔧 Set layout with stretch
-    QVBoxLayout *layout = new QVBoxLayout();
-    layout->setAlignment(Qt::AlignTop);
+    // 🧱 Create a new layout
+    volunteerLayout = new QVBoxLayout();
+    volunteerLayout->setAlignment(Qt::AlignTop);
 
-    // 📌 Add title
+    // 🏷️ Add title
     QLabel *titleLabel = new QLabel("Volunteers Name");
     titleLabel->setStyleSheet("color: white; font-size: 24px; font-weight: bold;");
     titleLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    layout->addWidget(titleLabel);
+    volunteerLayout->addWidget(titleLabel);
 
-    // 📋 Load names
+    // 📋 Load names from DB
     QSqlQuery query;
     query.prepare("SELECT name FROM volunteers WHERE event_id = ?");
     query.addBindValue(eventId);
@@ -226,8 +224,8 @@ void dashboard::loadVolunteerNames(int eventId)
             QLabel *label = new QLabel(name);
             label->setStyleSheet("color: white; font-size: 18px; background-color: #444;"
                                  "padding: 6px 12px; margin: 4px; border-radius: 6px;");
-            label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred); // 🔧 Expand horizontally
-            layout->addWidget(label);
+            label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+            volunteerLayout->addWidget(label);
             count++;
         }
 
@@ -235,21 +233,19 @@ void dashboard::loadVolunteerNames(int eventId)
             QLabel *noData = new QLabel("No volunteers found.");
             noData->setStyleSheet("color: gray;");
             noData->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-            layout->addWidget(noData);
+            volunteerLayout->addWidget(noData);
         }
 
     } else {
         QLabel *errorLabel = new QLabel("⚠️ Error loading volunteers.");
         errorLabel->setStyleSheet("color: red;");
         errorLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        layout->addWidget(errorLabel);
+        volunteerLayout->addWidget(errorLabel);
     }
 
-    // Set layout to widget and make it expand
-    ui->volunteerNamesWidget->setLayout(layout);
+    // 📌 Set new layout to the widget inside QScrollArea
+    ui->volunteerNamesWidget->setLayout(volunteerLayout);
     ui->volunteerNamesWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    ui->volunteerNamesWidget->setVisible(true);
-
 }
 
 
@@ -275,7 +271,7 @@ void dashboard::onEventChanged(int index)
     updateSubeventSummary(eventId);
     ViewVolunteersWidget();
     createVolunteerLineChart(eventId);
-    loadVolunteerNames(eventId);    // 👈 Show the chart
+    loadVolunteerNames( eventId);
 }
 
 void dashboard::loadUserEvents()

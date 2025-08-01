@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>864</width>
-    <height>610</height>
+    <width>861</width>
+    <height>601</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -661,7 +661,7 @@ color:white;
        <widget class="QWidget" name="RightSideBar" native="true">
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
-          <layout class="QGridLayout" name="gridLayout">
+          <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,1">
            <item row="0" column="0" colspan="4">
             <widget class="QWidget" name="TOP" native="true">
              <property name="sizePolicy">
@@ -774,6 +774,73 @@ padding-left:20px;
              </layout>
             </widget>
            </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QWidget" name="chartContainer" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>220</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color:rgb(55,55,55);
+border-radius:20px;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3">
+            <widget class="QWidget" name="widget_9" native="true">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QWidget" name="subeventSummaryWidget" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>80</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color:rgb(55,55,55);
+border-radius:20px;</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_22">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_21">
+                <item>
+                 <widget class="QLabel" name="logoLabel_2">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="totalSubeventsLabel">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
            <item row="1" column="2">
             <widget class="QWidget" name="Viewvolunteers" native="true">
              <property name="sizePolicy">
@@ -829,6 +896,18 @@ padding-left:10px;</string>
              </layout>
             </widget>
            </item>
+           <item row="2" column="2">
+            <widget class="QWidget" name="widget_11" native="true">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_4"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
            <item row="1" column="0">
             <widget class="QWidget" name="volunteerSummaryWidget" native="true">
              <property name="sizePolicy">
@@ -869,46 +948,6 @@ border-radius:20px;</string>
              </layout>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QWidget" name="subeventSummaryWidget" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>80</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color:rgb(55,55,55);
-border-radius:20px;</string>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_22">
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_21">
-                <item>
-                 <widget class="QLabel" name="logoLabel_2">
-                  <property name="text">
-                   <string>TextLabel</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="totalSubeventsLabel">
-                  <property name="text">
-                   <string>TextLabel</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </widget>
-           </item>
            <item row="3" column="0" colspan="3">
             <widget class="QWidget" name="widget_10" native="true">
              <property name="styleSheet">
@@ -916,23 +955,15 @@ border-radius:20px;</string>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_26">
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_25">
-                <item>
-                 <widget class="QTableWidget" name="subeventTableWidget">
-                  <property name="columnCount">
-                   <number>0</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               <layout class="QHBoxLayout" name="horizontalLayout_25"/>
               </item>
              </layout>
             </widget>
            </item>
-           <item row="2" column="0" colspan="2">
-            <widget class="QWidget" name="chartContainer" native="true">
+           <item row="2" column="3">
+            <widget class="QScrollArea" name="scrollArea">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -943,28 +974,6 @@ border-radius:20px;</string>
                <height>220</height>
               </size>
              </property>
-             <property name="styleSheet">
-              <string notr="true">background-color:rgb(55,55,55);
-border-radius:20px;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="3">
-            <widget class="QWidget" name="widget_9" native="true">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="QWidget" name="widget_11" native="true">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="3" rowspan="2">
-            <widget class="QScrollArea" name="scrollArea">
              <property name="widgetResizable">
               <bool>true</bool>
              </property>
@@ -973,36 +982,24 @@ border-radius:20px;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>283</width>
-                <height>302</height>
+                <width>280</width>
+                <height>218</height>
                </rect>
               </property>
-              <widget class="QWidget" name="volunteerNamesWidget" native="true">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>361</width>
-                 <height>301</height>
-                </rect>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(55, 55, 55);
+              <layout class="QVBoxLayout" name="verticalLayout_6">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <item>
+                  <widget class="QWidget" name="volunteerNamesWidget" native="true">
+                   <property name="styleSheet">
+                    <string notr="true">background-color:rgb(55,55,55);
 border-radius:20px;</string>
-               </property>
-              </widget>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
              </widget>
             </widget>
            </item>
@@ -1020,7 +1017,7 @@ border-radius:20px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>864</width>
+     <width>861</width>
      <height>18</height>
     </rect>
    </property>

@@ -52,6 +52,7 @@ private:
 
     login *loginWindow;
     HelpCenter *help;
+     QVBoxLayout *volunteerLayout = nullptr;
 
 
     int userId;
