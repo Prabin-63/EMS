@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -103,6 +104,7 @@ public:
     QWidget *widget_11;
     QVBoxLayout *verticalLayout_5;
     QVBoxLayout *verticalLayout_4;
+    QCalendarWidget *calendarWidget;
     QWidget *volunteerSummaryWidget;
     QHBoxLayout *horizontalLayout_20;
     QHBoxLayout *horizontalLayout_19;
@@ -640,11 +642,22 @@ public:
 
         widget_11 = new QWidget(RightSideBar);
         widget_11->setObjectName("widget_11");
-        widget_11->setStyleSheet(QString::fromUtf8(""));
+        widget_11->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
         verticalLayout_5 = new QVBoxLayout(widget_11);
         verticalLayout_5->setObjectName("verticalLayout_5");
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName("verticalLayout_4");
+        calendarWidget = new QCalendarWidget(widget_11);
+        calendarWidget->setObjectName("calendarWidget");
+        sizePolicy1.setHeightForWidth(calendarWidget->sizePolicy().hasHeightForWidth());
+        calendarWidget->setSizePolicy(sizePolicy1);
+        calendarWidget->setMinimumSize(QSize(0, 220));
+        calendarWidget->setStyleSheet(QString::fromUtf8("color:white;\n"
+""));
+
+        verticalLayout_4->addWidget(calendarWidget);
+
 
         verticalLayout_5->addLayout(verticalLayout_4);
 
@@ -698,11 +711,11 @@ public:
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
         scrollArea->setSizePolicy(sizePolicy4);
-        scrollArea->setMinimumSize(QSize(0, 220));
+        scrollArea->setMinimumSize(QSize(0, 320));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 280, 218));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 237, 318));
         verticalLayout_6 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_6->setObjectName("verticalLayout_6");
         verticalLayout_3 = new QVBoxLayout();
@@ -719,7 +732,7 @@ public:
 
         scrollArea->setWidget(scrollAreaWidgetContents);
 
-        gridLayout->addWidget(scrollArea, 2, 3, 1, 1);
+        gridLayout->addWidget(scrollArea, 1, 3, 2, 1);
 
         gridLayout->setColumnStretch(3, 1);
 
