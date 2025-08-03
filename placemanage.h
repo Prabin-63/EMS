@@ -3,6 +3,16 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include<dashboard.h>
+#include<profile.h>
+#include<booking.h>
+#include<helpcenter.h>
+
+class HelpCenter;
+
+class Booking;
+class dashboard;
+class Profile;
 
 namespace Ui {
 class placemanage;
@@ -24,12 +34,23 @@ private slots:
     void on_addOneSubEventButton_clicked();
     void on_removeSubEventButton_clicked();
 
+    void on_dashboard_2_clicked();
+
+    void on_Profile_2_clicked();
+
+    void on_Booking_clicked();
+
+    void on_Help_Center_clicked();
+
 private:
     Ui::placemanage *ui;
     int userId;
     int eventId;
     dashboard* dash = nullptr; // combined declaration & initialization
     bool isInitialized;
+    Profile *prof;
+    Booking *book;
+    HelpCenter *help;
 
     void styleLineEdit(QLineEdit* lineEdit, const QString& placeholder);
 };

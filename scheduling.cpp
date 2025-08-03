@@ -10,15 +10,21 @@
 #include "sessionmanager.h"
 #include <placemanage.h>
 #include <dashboard.h>
+#include<profile.h>
+#include<booking.h>
+#include<helpcenter.h>
 
-scheduling::scheduling(QWidget *parent)
+scheduling::scheduling(dashboard *dash, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::scheduling),
     place_manage(nullptr),
-    dashboardWindow(nullptr)
+    dashboardWindow(nullptr),
+    dash(dash), //
+    prof(nullptr)
 {
     ui->setupUi(this);
     connect(ui->Gotodash_subevent, &QPushButton::clicked, this, &scheduling::on_Gotodash_subevent_clicked);
+    this->showMaximized();
 }
 
 scheduling::~scheduling()
@@ -141,3 +147,28 @@ void scheduling::on_dashboard_2_clicked()
     dashboardWindow->show();
     this->hide();
 }
+
+void scheduling::on_Profile_clicked()
+{
+
+    prof=new Profile(dash);
+    prof->show();
+    this->close();
+}
+
+
+void scheduling::on_Booking_clicked()
+{
+    book=new Booking();
+    book->show();
+    this->close();
+}
+
+
+void scheduling::on_Help_Center_clicked()
+{
+    help=new HelpCenter();
+    help->show();
+    this->close();
+}
+

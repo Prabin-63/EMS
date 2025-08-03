@@ -54,11 +54,6 @@ public:
     QHBoxLayout *horizontalLayout_16;
     QLabel *label_11;
     QPushButton *Booking;
-    QWidget *widget_11;
-    QHBoxLayout *horizontalLayout_17;
-    QHBoxLayout *horizontalLayout_18;
-    QLabel *label_12;
-    QPushButton *Managing;
     QWidget *widget_12;
     QHBoxLayout *horizontalLayout_19;
     QHBoxLayout *horizontalLayout_20;
@@ -76,6 +71,14 @@ public:
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QWidget *widget;
+    QHBoxLayout *horizontalLayout_8;
+    QHBoxLayout *horizontalLayout_7;
+    QLabel *label_2;
+    QWidget *widget_5;
+    QHBoxLayout *horizontalLayout_10;
+    QHBoxLayout *horizontalLayout_9;
+    QLabel *label_4;
+    QLabel *label_3;
     QWidget *widget_2;
     QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout_3;
@@ -295,48 +298,6 @@ public:
 
         verticalLayout_8->addWidget(widget_10);
 
-        widget_11 = new QWidget(LeftSidebar);
-        widget_11->setObjectName("widget_11");
-        sizePolicy1.setHeightForWidth(widget_11->sizePolicy().hasHeightForWidth());
-        widget_11->setSizePolicy(sizePolicy1);
-        widget_11->setMinimumSize(QSize(0, 40));
-        horizontalLayout_17 = new QHBoxLayout(widget_11);
-        horizontalLayout_17->setObjectName("horizontalLayout_17");
-        horizontalLayout_18 = new QHBoxLayout();
-        horizontalLayout_18->setObjectName("horizontalLayout_18");
-        label_12 = new QLabel(widget_11);
-        label_12->setObjectName("label_12");
-        sizePolicy2.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
-        label_12->setSizePolicy(sizePolicy2);
-        label_12->setMinimumSize(QSize(20, 20));
-        label_12->setMaximumSize(QSize(20, 20));
-        label_12->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-hierarchy-48.png")));
-        label_12->setScaledContents(true);
-
-        horizontalLayout_18->addWidget(label_12);
-
-        Managing = new QPushButton(widget_11);
-        Managing->setObjectName("Managing");
-        Managing->setFont(font1);
-        Managing->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"color:white;\n"
-"	background-color: rgb(111, 111, 111);\n"
-"padding:5px;\n"
-"border:none;\n"
-"border-radius:7px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background-color: rgb(188, 0, 188);\n"
-"}"));
-
-        horizontalLayout_18->addWidget(Managing);
-
-
-        horizontalLayout_17->addLayout(horizontalLayout_18);
-
-
-        verticalLayout_8->addWidget(widget_11);
-
         widget_12 = new QWidget(LeftSidebar);
         widget_12->setObjectName("widget_12");
         sizePolicy1.setHeightForWidth(widget_12->sizePolicy().hasHeightForWidth());
@@ -464,6 +425,53 @@ public:
 "	background-color: rgb(55, 55, 55);\n"
 "border-radius:20px;\n"
 "}"));
+        horizontalLayout_8 = new QHBoxLayout(widget);
+        horizontalLayout_8->setObjectName("horizontalLayout_8");
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        label_2 = new QLabel(widget);
+        label_2->setObjectName("label_2");
+        QFont font3;
+        font3.setFamilies({QString::fromUtf8("Sitka")});
+        font3.setPointSize(17);
+        label_2->setFont(font3);
+        label_2->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        horizontalLayout_7->addWidget(label_2);
+
+        widget_5 = new QWidget(widget);
+        widget_5->setObjectName("widget_5");
+        sizePolicy.setHeightForWidth(widget_5->sizePolicy().hasHeightForWidth());
+        widget_5->setSizePolicy(sizePolicy);
+        widget_5->setMinimumSize(QSize(140, 0));
+        horizontalLayout_10 = new QHBoxLayout(widget_5);
+        horizontalLayout_10->setObjectName("horizontalLayout_10");
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName("horizontalLayout_9");
+        label_4 = new QLabel(widget_5);
+        label_4->setObjectName("label_4");
+        label_4->setMinimumSize(QSize(30, 30));
+        label_4->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_9->addWidget(label_4);
+
+        label_3 = new QLabel(widget_5);
+        label_3->setObjectName("label_3");
+        label_3->setFont(font3);
+        label_3->setStyleSheet(QString::fromUtf8("color:white;\n"
+"padding-left:10px;"));
+
+        horizontalLayout_9->addWidget(label_3);
+
+
+        horizontalLayout_10->addLayout(horizontalLayout_9);
+
+
+        horizontalLayout_7->addWidget(widget_5);
+
+
+        horizontalLayout_8->addLayout(horizontalLayout_7);
+
 
         verticalLayout->addWidget(widget);
 
@@ -508,6 +516,12 @@ public:
 
         generateButton = new QPushButton(widget_3);
         generateButton->setObjectName("generateButton");
+        sizePolicy2.setHeightForWidth(generateButton->sizePolicy().hasHeightForWidth());
+        generateButton->setSizePolicy(sizePolicy2);
+        generateButton->setMinimumSize(QSize(115, 30));
+        QFont font4;
+        font4.setPointSize(16);
+        generateButton->setFont(font4);
         generateButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color:rgb(55,55,55);\n"
 "color:white;\n"
@@ -555,6 +569,12 @@ public:
         horizontalLayout_5->setObjectName("horizontalLayout_5");
         addSubEventButton = new QPushButton(widget_4);
         addSubEventButton->setObjectName("addSubEventButton");
+        sizePolicy2.setHeightForWidth(addSubEventButton->sizePolicy().hasHeightForWidth());
+        addSubEventButton->setSizePolicy(sizePolicy2);
+        addSubEventButton->setMinimumSize(QSize(150, 0));
+        QFont font5;
+        font5.setPointSize(20);
+        addSubEventButton->setFont(font5);
         addSubEventButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color:rgb(55,55,55);\n"
 "color:white;\n"
@@ -565,6 +585,10 @@ public:
 
         addOneSubEventButton = new QPushButton(widget_4);
         addOneSubEventButton->setObjectName("addOneSubEventButton");
+        sizePolicy2.setHeightForWidth(addOneSubEventButton->sizePolicy().hasHeightForWidth());
+        addOneSubEventButton->setSizePolicy(sizePolicy2);
+        addOneSubEventButton->setMinimumSize(QSize(150, 0));
+        addOneSubEventButton->setFont(font5);
         addOneSubEventButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color:rgb(55,55,55);\n"
 "color:white;\n"
@@ -578,6 +602,10 @@ public:
 
         removeSubEventButton = new QPushButton(widget_4);
         removeSubEventButton->setObjectName("removeSubEventButton");
+        sizePolicy2.setHeightForWidth(removeSubEventButton->sizePolicy().hasHeightForWidth());
+        removeSubEventButton->setSizePolicy(sizePolicy2);
+        removeSubEventButton->setMinimumSize(QSize(150, 0));
+        removeSubEventButton->setFont(font5);
         removeSubEventButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color:rgb(55,55,55);\n"
 "color:white;\n"
@@ -619,17 +647,18 @@ public:
         Profile_2->setText(QCoreApplication::translate("placemanage", "Profile", nullptr));
         label_11->setText(QString());
         Booking->setText(QCoreApplication::translate("placemanage", "Booking", nullptr));
-        label_12->setText(QString());
-        Managing->setText(QCoreApplication::translate("placemanage", "Managing", nullptr));
         label_13->setText(QString());
         Help_Center->setText(QCoreApplication::translate("placemanage", "Help Center", nullptr));
         label_14->setText(QString());
         pushButton_6->setText(QCoreApplication::translate("placemanage", "LOG OUT", nullptr));
+        label_2->setText(QCoreApplication::translate("placemanage", "Manage your Sub event", nullptr));
+        label_4->setText(QCoreApplication::translate("placemanage", "TextLabel", nullptr));
+        label_3->setText(QCoreApplication::translate("placemanage", "ADMIN", nullptr));
         label->setText(QCoreApplication::translate("placemanage", "How many subevents do you want to manage?", nullptr));
         generateButton->setText(QCoreApplication::translate("placemanage", "Generate", nullptr));
         addSubEventButton->setText(QCoreApplication::translate("placemanage", "Save", nullptr));
-        addOneSubEventButton->setText(QCoreApplication::translate("placemanage", "addOneSubEventButton", nullptr));
-        removeSubEventButton->setText(QCoreApplication::translate("placemanage", "removeSubEventButton", nullptr));
+        addOneSubEventButton->setText(QCoreApplication::translate("placemanage", "Add", nullptr));
+        removeSubEventButton->setText(QCoreApplication::translate("placemanage", "Remove", nullptr));
     } // retranslateUi
 
 };

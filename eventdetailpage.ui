@@ -173,7 +173,7 @@ border-radius:20px;</string>
            <property name="widgetResizable">
             <bool>true</bool>
            </property>
-           <widget class="QWidget" name="scrollAreaWidgetContents_3">
+           <widget class="QWidget" name="scrollAreaWidgetContents">
             <property name="geometry">
              <rect>
               <x>0</x>
@@ -182,21 +182,11 @@ border-radius:20px;</string>
               <height>408</height>
              </rect>
             </property>
-            <widget class="QWidget" name="subEventContainer" native="true">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>14</width>
-               <height>14</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout"/>
-              </item>
-             </layout>
-            </widget>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout"/>
+             </item>
+            </layout>
            </widget>
           </widget>
          </item>

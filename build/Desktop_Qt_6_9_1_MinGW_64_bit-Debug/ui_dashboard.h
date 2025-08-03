@@ -15,6 +15,7 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -22,6 +23,7 @@
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -90,7 +92,9 @@ public:
     QLabel *label_9;
     QLabel *label_10;
     QWidget *chartContainer;
-    QWidget *widget_9;
+    QWidget *pieChartContainer;
+    QVBoxLayout *verticalLayout_9;
+    QVBoxLayout *verticalLayout_8;
     QWidget *subeventSummaryWidget;
     QHBoxLayout *horizontalLayout_22;
     QHBoxLayout *horizontalLayout_21;
@@ -110,14 +114,15 @@ public:
     QHBoxLayout *horizontalLayout_19;
     QLabel *logoLabel;
     QLabel *totalVolunteersLabel;
-    QWidget *widget_10;
-    QHBoxLayout *horizontalLayout_26;
-    QHBoxLayout *horizontalLayout_25;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_6;
     QVBoxLayout *verticalLayout_3;
     QWidget *volunteerNamesWidget;
+    QWidget *widget_10;
+    QHBoxLayout *horizontalLayout_26;
+    QVBoxLayout *verticalLayout_7;
+    QTableWidget *subEventTable;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -576,11 +581,19 @@ public:
 
         gridLayout->addWidget(chartContainer, 2, 0, 1, 2);
 
-        widget_9 = new QWidget(RightSideBar);
-        widget_9->setObjectName("widget_9");
-        widget_9->setStyleSheet(QString::fromUtf8(""));
+        pieChartContainer = new QWidget(RightSideBar);
+        pieChartContainer->setObjectName("pieChartContainer");
+        pieChartContainer->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+"border-radius:20px;"));
+        verticalLayout_9 = new QVBoxLayout(pieChartContainer);
+        verticalLayout_9->setObjectName("verticalLayout_9");
+        verticalLayout_8 = new QVBoxLayout();
+        verticalLayout_8->setObjectName("verticalLayout_8");
 
-        gridLayout->addWidget(widget_9, 3, 3, 1, 1);
+        verticalLayout_9->addLayout(verticalLayout_8);
+
+
+        gridLayout->addWidget(pieChartContainer, 3, 3, 1, 1);
 
         subeventSummaryWidget = new QWidget(RightSideBar);
         subeventSummaryWidget->setObjectName("subeventSummaryWidget");
@@ -691,19 +704,6 @@ public:
 
         gridLayout->addWidget(volunteerSummaryWidget, 1, 0, 1, 1);
 
-        widget_10 = new QWidget(RightSideBar);
-        widget_10->setObjectName("widget_10");
-        widget_10->setStyleSheet(QString::fromUtf8(""));
-        horizontalLayout_26 = new QHBoxLayout(widget_10);
-        horizontalLayout_26->setObjectName("horizontalLayout_26");
-        horizontalLayout_25 = new QHBoxLayout();
-        horizontalLayout_25->setObjectName("horizontalLayout_25");
-
-        horizontalLayout_26->addLayout(horizontalLayout_25);
-
-
-        gridLayout->addWidget(widget_10, 3, 0, 1, 3);
-
         scrollArea = new QScrollArea(RightSideBar);
         scrollArea->setObjectName("scrollArea");
         QSizePolicy sizePolicy4(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
@@ -733,6 +733,25 @@ public:
         scrollArea->setWidget(scrollAreaWidgetContents);
 
         gridLayout->addWidget(scrollArea, 1, 3, 2, 1);
+
+        widget_10 = new QWidget(RightSideBar);
+        widget_10->setObjectName("widget_10");
+        widget_10->setStyleSheet(QString::fromUtf8(""));
+        horizontalLayout_26 = new QHBoxLayout(widget_10);
+        horizontalLayout_26->setObjectName("horizontalLayout_26");
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setObjectName("verticalLayout_7");
+        subEventTable = new QTableWidget(widget_10);
+        subEventTable->setObjectName("subEventTable");
+        subEventTable->setStyleSheet(QString::fromUtf8("border-radius:10px;"));
+
+        verticalLayout_7->addWidget(subEventTable);
+
+
+        horizontalLayout_26->addLayout(verticalLayout_7);
+
+
+        gridLayout->addWidget(widget_10, 3, 0, 1, 3);
 
         gridLayout->setColumnStretch(3, 1);
 

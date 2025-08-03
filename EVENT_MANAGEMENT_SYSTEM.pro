@@ -4,6 +4,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 QT += core gui widgets sql charts
+QT += core gui widgets printsupport
+
 
 # Sources
 SOURCES += \
@@ -21,6 +23,7 @@ SOURCES += \
     profile.cpp \
     scheduling.cpp \
     signup.cpp \
+    ticketwindow.cpp \
     userdashboard.cpp \
     viewvolunteer.cpp
 
@@ -40,6 +43,7 @@ HEADERS += \
     scheduling.h \
     sessionmanager.h \
     signup.h \
+    ticketwindow.h \
     userdashboard.h \
     viewvolunteer.h
 
@@ -57,6 +61,7 @@ FORMS += \
     profile.ui \
     scheduling.ui \
     signup.ui \
+    ticketwindow.ui \
     userdashboard.ui \
     viewvolunteer.ui
 

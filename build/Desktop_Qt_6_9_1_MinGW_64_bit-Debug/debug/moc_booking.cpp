@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../../booking.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -38,10 +39,32 @@ template <> constexpr inline auto Booking::qt_create_metaobjectdata<qt_meta_tag_
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "Booking"
+        "Booking",
+        "loadBookingTable",
+        "",
+        "refreshTable",
+        "exportToCSV",
+        "on_Profile_clicked",
+        "on_Managing_clicked",
+        "on_Help_Center_clicked",
+        "on_dashboard_2_clicked"
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Slot 'loadBookingTable'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'refreshTable'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'exportToCSV'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_Profile_clicked'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_Managing_clicked'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_Help_Center_clicked'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_dashboard_2_clicked'
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -63,9 +86,18 @@ Q_CONSTINIT const QMetaObject Booking::staticMetaObject = { {
 void Booking::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<Booking *>(_o);
-    (void)_t;
-    (void)_c;
-    (void)_id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->loadBookingTable(); break;
+        case 1: _t->refreshTable(); break;
+        case 2: _t->exportToCSV(); break;
+        case 3: _t->on_Profile_clicked(); break;
+        case 4: _t->on_Managing_clicked(); break;
+        case 5: _t->on_Help_Center_clicked(); break;
+        case 6: _t->on_dashboard_2_clicked(); break;
+        default: ;
+        }
+    }
     (void)_a;
 }
 
@@ -85,6 +117,18 @@ void *Booking::qt_metacast(const char *_clname)
 int Booking::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 7)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 7;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 7)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 7;
+    }
     return _id;
 }
 QT_WARNING_POP

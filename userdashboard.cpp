@@ -19,9 +19,17 @@ UserDashboard::UserDashboard(int userId, QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Debug: Verify the userId is stored correctly
-    qDebug() << "=== UserDashboard Constructor Debug ===";
-    qDebug() << "UserDashboard created with userId:" << this->currentUserId;
+    // Fetch user's actual name from DB and set to existing QLabel Nameuser
+    QString userName = "User";  // fallback default
+    QSqlQuery query;
+    query.prepare("SELECT name FROM users WHERE id = :id");
+    query.bindValue(":id", currentUserId);
+    if (query.exec() && query.next()) {
+        userName = query.value("name").toString();
+    } else {
+        qDebug() << "Failed to get user name for userId" << currentUserId << ":" << query.lastError().text();
+    }
+    ui->Nameuser->setText("Hi " + userName);
 
     // Setup scroll area for main event list
     scrollArea = new QScrollArea(this);
@@ -36,8 +44,15 @@ UserDashboard::UserDashboard(int userId, QWidget *parent)
 
     scrollArea->setWidget(eventWidget);
 
+    QHBoxLayout *wrapperLayout = new QHBoxLayout();
+    wrapperLayout->addStretch();
+    wrapperLayout->addWidget(scrollArea);
+    wrapperLayout->addStretch();
+
     QVBoxLayout *mainLayout = new QVBoxLayout();
-    mainLayout->addWidget(scrollArea);
+    mainLayout->addLayout(wrapperLayout);
+    mainLayout->addStretch();
+
     ui->eventContainer->setLayout(mainLayout);
 
     loadEvents();
@@ -207,9 +222,8 @@ void UserDashboard::loadEventDetail(int eventId)
                 bookBtn->setStyleSheet("background-color: gray; color: white; padding: 6px; border-radius: 4px;");
             }
 
-            // Fixed booking logic - use this->currentUserId instead of hardcoded 1
+            // Booking logic
             connect(bookBtn, &QPushButton::clicked, this, [this, subEventId, eventId, bookBtn]() {
-                // Debug: Verify correct userId is being used in booking
                 qDebug() << "=== BOOKING BUTTON CLICKED ===";
                 qDebug() << "Booking for userId:" << this->currentUserId;
                 qDebug() << "SubEventId:" << subEventId;
@@ -232,79 +246,41 @@ void UserDashboard::loadEventDetail(int eventId)
                     return;
                 }
 
-                qDebug() << "=== Pre-Booking Validation ===";
-                qDebug() << "Binding values - uid:" << this->currentUserId << "eid:" << eventId << "seid:" << subEventId;
-
-                // Validate that all foreign keys exist
+                // Validate foreign keys existence
                 QSqlQuery validateUser;
                 validateUser.prepare("SELECT COUNT(*) FROM users WHERE id = :uid");
                 validateUser.bindValue(":uid", this->currentUserId);
-                if (validateUser.exec() && validateUser.next()) {
-                    int userExists = validateUser.value(0).toInt();
-                    qDebug() << "User exists check:" << userExists;
-                    if (userExists == 0) {
-                        QMessageBox::critical(this, "Error", "User ID does not exist in database.");
-                        return;
-                    }
+                if (validateUser.exec() && validateUser.next() && validateUser.value(0).toInt() == 0) {
+                    QMessageBox::critical(this, "Error", "User ID does not exist in database.");
+                    return;
                 }
 
                 QSqlQuery validateEvent;
                 validateEvent.prepare("SELECT COUNT(*) FROM events WHERE id = :eid");
                 validateEvent.bindValue(":eid", eventId);
-                if (validateEvent.exec() && validateEvent.next()) {
-                    int eventExists = validateEvent.value(0).toInt();
-                    qDebug() << "Event exists check:" << eventExists;
-                    if (eventExists == 0) {
-                        QMessageBox::critical(this, "Error", "Event ID does not exist in database.");
-                        return;
-                    }
+                if (validateEvent.exec() && validateEvent.next() && validateEvent.value(0).toInt() == 0) {
+                    QMessageBox::critical(this, "Error", "Event ID does not exist in database.");
+                    return;
                 }
 
                 QSqlQuery validateSubEvent;
                 validateSubEvent.prepare("SELECT COUNT(*) FROM places WHERE id = :seid");
                 validateSubEvent.bindValue(":seid", subEventId);
-                if (validateSubEvent.exec() && validateSubEvent.next()) {
-                    int subEventExists = validateSubEvent.value(0).toInt();
-                    qDebug() << "SubEvent exists check:" << subEventExists;
-                    if (subEventExists == 0) {
-                        QMessageBox::critical(this, "Error", "Sub-event ID does not exist in database.");
-                        return;
-                    }
+                if (validateSubEvent.exec() && validateSubEvent.next() && validateSubEvent.value(0).toInt() == 0) {
+                    QMessageBox::critical(this, "Error", "Sub-event ID does not exist in database.");
+                    return;
                 }
 
-                // Debug: Check the actual table structure first
-                QSqlQuery tableInfoQuery("PRAGMA table_info(booking)");
-                if (tableInfoQuery.exec()) {
-                    qDebug() << "=== Booking Table Structure ===";
-                    while (tableInfoQuery.next()) {
-                        QString colName = tableInfoQuery.value(1).toString();
-                        QString colType = tableInfoQuery.value(2).toString();
-                        qDebug() << "Column:" << colName << "Type:" << colType;
-                    }
-                }
-
-                // Try the simplest possible insert first
+                // Insert booking
                 QSqlQuery bookQuery;
-
-                // Method 1: Try with column names explicitly
-                QString queryStr = "INSERT INTO booking (id, event_id, subevent_id) VALUES (?, ?, ?)";
-                bookQuery.prepare(queryStr);
+                bookQuery.prepare("INSERT INTO booking (id, event_id, subevent_id) VALUES (?, ?, ?)");
                 bookQuery.addBindValue(this->currentUserId);
                 bookQuery.addBindValue(eventId);
                 bookQuery.addBindValue(subEventId);
 
-                qDebug() << "=== Booking Insert Debug ===";
-                qDebug() << "Query string:" << queryStr;
-                qDebug() << "Values:" << this->currentUserId << eventId << subEventId;
-
                 if (!bookQuery.exec()) {
-                    qDebug() << "Booking query failed:" << bookQuery.lastError().text();
-                    qDebug() << "Error type:" << bookQuery.lastError().type();
-                    qDebug() << "Database error:" << bookQuery.lastError().databaseText();
-                    qDebug() << "Driver error:" << bookQuery.lastError().driverText();
                     QMessageBox::critical(this, "Error", "Booking failed: " + bookQuery.lastError().text());
                 } else {
-                    qDebug() << "Booking successful!";
                     QMessageBox::information(this, "Success", "Booking confirmed!");
                     bookBtn->setText("Booked");
                     bookBtn->setEnabled(false);

@@ -93,6 +93,14 @@ public:
     QSpacerItem *verticalSpacer_7;
     QVBoxLayout *verticalLayout_3;
     QWidget *Topbar;
+    QHBoxLayout *horizontalLayout_20;
+    QHBoxLayout *horizontalLayout_19;
+    QLabel *label_10;
+    QWidget *widget_9;
+    QHBoxLayout *horizontalLayout_22;
+    QHBoxLayout *horizontalLayout_21;
+    QLabel *label_12;
+    QLabel *label_11;
     QSpacerItem *verticalSpacer_5;
     QSpacerItem *verticalSpacer_6;
     QMenuBar *menubar;
@@ -655,6 +663,53 @@ public:
 "	background-color: rgb(55, 55, 55);\n"
 "border-radius:20px;\n"
 "}"));
+        horizontalLayout_20 = new QHBoxLayout(Topbar);
+        horizontalLayout_20->setObjectName("horizontalLayout_20");
+        horizontalLayout_19 = new QHBoxLayout();
+        horizontalLayout_19->setObjectName("horizontalLayout_19");
+        label_10 = new QLabel(Topbar);
+        label_10->setObjectName("label_10");
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("Sitka")});
+        font4.setPointSize(17);
+        label_10->setFont(font4);
+        label_10->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        horizontalLayout_19->addWidget(label_10);
+
+        widget_9 = new QWidget(Topbar);
+        widget_9->setObjectName("widget_9");
+        sizePolicy.setHeightForWidth(widget_9->sizePolicy().hasHeightForWidth());
+        widget_9->setSizePolicy(sizePolicy);
+        widget_9->setMinimumSize(QSize(140, 0));
+        horizontalLayout_22 = new QHBoxLayout(widget_9);
+        horizontalLayout_22->setObjectName("horizontalLayout_22");
+        horizontalLayout_21 = new QHBoxLayout();
+        horizontalLayout_21->setObjectName("horizontalLayout_21");
+        label_12 = new QLabel(widget_9);
+        label_12->setObjectName("label_12");
+        label_12->setMinimumSize(QSize(30, 30));
+        label_12->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_21->addWidget(label_12);
+
+        label_11 = new QLabel(widget_9);
+        label_11->setObjectName("label_11");
+        label_11->setFont(font4);
+        label_11->setStyleSheet(QString::fromUtf8("color:white;\n"
+"padding-left:10px;"));
+
+        horizontalLayout_21->addWidget(label_11);
+
+
+        horizontalLayout_22->addLayout(horizontalLayout_21);
+
+
+        horizontalLayout_19->addWidget(widget_9);
+
+
+        horizontalLayout_20->addLayout(horizontalLayout_19);
+
 
         verticalLayout_3->addWidget(Topbar);
 
@@ -708,6 +763,9 @@ public:
         Name->setPlaceholderText(QCoreApplication::translate("scheduling", "Name", nullptr));
         Gotodash_subevent->setText(QCoreApplication::translate("scheduling", "Save", nullptr));
         Location->setPlaceholderText(QCoreApplication::translate("scheduling", "Location of Event", nullptr));
+        label_10->setText(QCoreApplication::translate("scheduling", "Schedule Your Event", nullptr));
+        label_12->setText(QCoreApplication::translate("scheduling", "TextLabel", nullptr));
+        label_11->setText(QCoreApplication::translate("scheduling", "ADMIN", nullptr));
     } // retranslateUi
 
 };

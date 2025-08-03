@@ -14,6 +14,10 @@
 #include <QtCharts/QCategoryAxis>
 #include <QtCharts/QValueAxis>
 #include <QtCharts/QChart>
+
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QBarCategoryAxis>
 #include<viewvolunteer.h>
     #include<login.h>
 
@@ -40,7 +44,7 @@ dashboard::dashboard(int userId, login *loginWindow, QWidget *parent)
 
     connect(ui->eventComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &dashboard::onEventChanged);
-    connect(ui->Help_Center, &QPushButton::clicked, this, &dashboard::on_Help_Center_clicked);
+
 
     ui->volunteerSummaryWidget->setVisible(false);
     ui->subeventSummaryWidget->setVisible(false);
@@ -249,6 +253,128 @@ void dashboard::loadVolunteerNames(int eventId)
 }
 
 
+void dashboard::loadSubEventTable(int eventId)
+{
+    QSqlQuery query;
+    query.prepare("SELECT sub_event_name, location, time, contact_person FROM places WHERE event_id = ?");
+    query.addBindValue(eventId);
+
+    if (!query.exec()) {
+        qDebug() << "❌ Failed to load sub-events:" << query.lastError().text();
+        return;
+    }
+
+    ui->subEventTable->clear(); // 🧹 Reset headers too
+    ui->subEventTable->setRowCount(0);
+    ui->subEventTable->setColumnCount(4);
+    ui->subEventTable->setHorizontalHeaderLabels(QStringList() << "Sub-Event" << "Location" << "Time" << "Contact");
+    ui->subEventTable->setStyleSheet("QTableWidget { background-color: #333; color: white; gridline-color: #555; }"
+                                     "QHeaderView::section { background-color: #444; color: white; }");
+    ui->subEventTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->subEventTable->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+
+    int row = 0;
+    while (query.next()) {
+        ui->subEventTable->insertRow(row);
+        for (int col = 0; col < 4; ++col) {
+            QTableWidgetItem *item = new QTableWidgetItem(query.value(col).toString());
+            item->setTextAlignment(Qt::AlignCenter);
+            ui->subEventTable->setItem(row, col, item);
+        }
+        row++;
+    }
+
+    ui->subEventTable->resizeColumnsToContents();
+}
+void dashboard::createBookingBarChart(int eventId) {
+    QSqlQuery query;
+    query.prepare(R"(
+        SELECT p.sub_event_name, COUNT(b.bid)
+        FROM booking b
+        JOIN places p ON b.subevent_id = p.id
+        WHERE b.event_id = ?
+        GROUP BY p.sub_event_name
+    )");
+    query.addBindValue(eventId);
+
+    QBarSet *barSet = new QBarSet("Bookings");
+    barSet->setColor(QColor("#FF4F0F"));
+
+    QStringList categories;
+
+    if (!query.exec()) {
+        qDebug() << "❌ Failed to load booking data:" << query.lastError().text();
+        return;
+    }
+
+    while (query.next()) {
+        QString subEventName = query.value(0).toString();
+        int count = query.value(1).toInt();
+        *barSet << count;
+        categories << subEventName;
+    }
+
+    if (barSet->count() == 0) {
+        qDebug() << "ℹ️ No bookings found for event ID:" << eventId;
+        return;
+    }
+
+    QBarSeries *series = new QBarSeries();
+    series->append(barSet);
+    series->setLabelsVisible(true);
+
+    QChart *chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle("📊 Bookings per Sub-Event");
+    chart->setAnimationOptions(QChart::SeriesAnimations);
+    chart->legend()->setVisible(false);
+
+
+
+    chart->setBackgroundBrush(QColor("rgb(55,55,55)"));
+    chart->setTitleBrush(QBrush(Qt::white));
+
+    QBarCategoryAxis *axisX = new QBarCategoryAxis();
+    axisX->append(categories);
+    axisX->setGridLineVisible(false);
+    axisX->setLabelsColor(Qt::white);
+
+    QValueAxis *axisY = new QValueAxis();
+    axisY->setLabelFormat("%d");
+    axisY->setGridLineVisible(false);
+    axisY->setTitleText("Bookings");
+    axisY->setLabelsColor(Qt::white);
+    axisY->setGridLineColor(Qt::white);
+
+    chart->addAxis(axisX, Qt::AlignBottom);
+    chart->addAxis(axisY, Qt::AlignLeft);
+
+    series->attachAxis(axisX);
+    series->attachAxis(axisY);
+
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->setMinimumSize(400, 300);
+    chartView->setStyleSheet("background-color: transparent");
+    chartView->setMaximumSize(400, 300);
+    chartView->setMinimumSize(200, 150);
+
+    // Clear old chart if any
+    if (ui->pieChartContainer->layout() == nullptr) {
+        QVBoxLayout *layout = new QVBoxLayout(ui->pieChartContainer);
+        layout->setContentsMargins(0, 0, 0, 0);
+        ui->pieChartContainer->setLayout(layout);
+    }
+
+    QLayoutItem *child;
+    while ((child = ui->pieChartContainer->layout()->takeAt(0)) != nullptr) {
+        if (child->widget()) delete child->widget();
+        delete child;
+    }
+
+    ui->pieChartContainer->layout()->addWidget(chartView);
+}
+
 
 void dashboard::onEventChanged(int index)
 {
@@ -272,6 +398,8 @@ void dashboard::onEventChanged(int index)
     ViewVolunteersWidget();
     createVolunteerLineChart(eventId);
     loadVolunteerNames( eventId);
+    loadSubEventTable(eventId);
+    createBookingBarChart(eventId);
 }
 
 void dashboard::loadUserEvents()
@@ -316,6 +444,8 @@ void dashboard::on_Managing_clicked()
         schedulingWindow = new scheduling(this);
     }
     schedulingWindow->show();
+    this->close();
+
 }
 
 void dashboard::on_Profile_clicked()
@@ -328,6 +458,7 @@ void dashboard::on_Booking_clicked()
 {
     Booking* bt = new Booking();
     bt->show();
+    this->close();
 }
 
 void dashboard::on_Volunteer_clicked()
@@ -362,7 +493,8 @@ void dashboard::on_Logout_clicked()
 
 void dashboard::on_Help_Center_clicked()
 {
-    help =new HelpCenter(this);
+    help =new HelpCenter();
     help->show();
+    this->close();
 }
 

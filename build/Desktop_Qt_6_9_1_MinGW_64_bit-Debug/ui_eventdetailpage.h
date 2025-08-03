@@ -48,8 +48,7 @@ public:
     QLabel *label;
     QLabel *label_4;
     QScrollArea *subEventScroll;
-    QWidget *scrollAreaWidgetContents_3;
-    QWidget *subEventContainer;
+    QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
     QMenuBar *menubar;
@@ -167,20 +166,17 @@ public:
         subEventScroll = new QScrollArea(widget_4);
         subEventScroll->setObjectName("subEventScroll");
         subEventScroll->setWidgetResizable(true);
-        scrollAreaWidgetContents_3 = new QWidget();
-        scrollAreaWidgetContents_3->setObjectName("scrollAreaWidgetContents_3");
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 610, 408));
-        subEventContainer = new QWidget(scrollAreaWidgetContents_3);
-        subEventContainer->setObjectName("subEventContainer");
-        subEventContainer->setGeometry(QRect(0, 0, 14, 14));
-        verticalLayout_3 = new QVBoxLayout(subEventContainer);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 610, 408));
+        verticalLayout_3 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_3->setObjectName("verticalLayout_3");
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName("verticalLayout");
 
         verticalLayout_3->addLayout(verticalLayout);
 
-        subEventScroll->setWidget(scrollAreaWidgetContents_3);
+        subEventScroll->setWidget(scrollAreaWidgetContents);
 
         verticalLayout_2->addWidget(subEventScroll);
 

@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QScrollArea>
+#include<ticketwindow.h>
 
 class EventDetailPage : public QWidget
 {
@@ -27,6 +28,10 @@ private:
     QScrollArea *scrollArea;
     QWidget *subEventContainer;
     QVBoxLayout *subEventLayout;
+
+
+    ticketwindow *ticketWindow;
+
 };
 
 #endif // EVENTDETAILPAGE_H

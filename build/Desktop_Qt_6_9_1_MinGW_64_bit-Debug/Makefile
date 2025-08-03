@@ -308,6 +308,7 @@ Makefile: ../../EVENT_MANAGEMENT_SYSTEM.pro C:/Qt/6.9.0/mingw_64/mkspecs/win32-g
 		../../EVENT_MANAGEMENT_SYSTEM.pro \
 		C:/Qt/6.9.0/mingw_64/lib/Qt6Charts.prl \
 		C:/Qt/6.9.0/mingw_64/lib/Qt6OpenGLWidgets.prl \
+		C:/Qt/6.9.0/mingw_64/lib/Qt6PrintSupport.prl \
 		C:/Qt/6.9.0/mingw_64/lib/Qt6Widgets.prl \
 		C:/Qt/6.9.0/mingw_64/lib/Qt6OpenGL.prl \
 		C:/Qt/6.9.0/mingw_64/lib/Qt6Gui.prl \
@@ -556,6 +557,7 @@ C:/Qt/6.9.0/mingw_64/mkspecs/features/lex.prf:
 ../../EVENT_MANAGEMENT_SYSTEM.pro:
 C:/Qt/6.9.0/mingw_64/lib/Qt6Charts.prl:
 C:/Qt/6.9.0/mingw_64/lib/Qt6OpenGLWidgets.prl:
+C:/Qt/6.9.0/mingw_64/lib/Qt6PrintSupport.prl:
 C:/Qt/6.9.0/mingw_64/lib/Qt6Widgets.prl:
 C:/Qt/6.9.0/mingw_64/lib/Qt6OpenGL.prl:
 C:/Qt/6.9.0/mingw_64/lib/Qt6Gui.prl:

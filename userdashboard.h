@@ -7,6 +7,7 @@
 #include <QScrollArea>
 #include <QSqlQuery>
 #include <QSqlError>
+#include<QLabel>
 
 namespace Ui {
 class UserDashboard;
@@ -26,6 +27,7 @@ private:
     QVBoxLayout *eventLayout;
     QWidget *eventWidget;
     QScrollArea *scrollArea;
+     QLabel *greetingLabel;
 
     int currentUserId;  // Stores logged-in user ID
 

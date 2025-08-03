@@ -32,6 +32,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QWidget *widget;
     QVBoxLayout *verticalLayout_6;
+    QVBoxLayout *verticalLayout_5;
     QWidget *LeftSidebar;
     QVBoxLayout *verticalLayout_7;
     QVBoxLayout *verticalLayout_8;
@@ -70,11 +71,18 @@ public:
     QLabel *label_14;
     QPushButton *pushButton_6;
     QSpacerItem *verticalSpacer_3;
-    QVBoxLayout *verticalLayout_5;
     QWidget *widget_2;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QWidget *widget_3;
+    QVBoxLayout *verticalLayout_24;
+    QHBoxLayout *horizontalLayout_23;
+    QLabel *label_28;
+    QWidget *widget_26;
+    QHBoxLayout *horizontalLayout_25;
+    QHBoxLayout *horizontalLayout_24;
+    QLabel *label_30;
+    QLabel *label_29;
     QWidget *widget_4;
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
@@ -86,9 +94,57 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_2;
     QLabel *label_3;
+    QWidget *widget_15;
+    QVBoxLayout *verticalLayout_9;
+    QVBoxLayout *verticalLayout_10;
     QLabel *label;
+    QLabel *label_4;
     QWidget *widget_6;
+    QWidget *widget_16;
+    QVBoxLayout *verticalLayout_11;
+    QVBoxLayout *verticalLayout_12;
+    QWidget *widget_17;
+    QHBoxLayout *horizontalLayout_5;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *label_5;
+    QLabel *label_6;
+    QWidget *widget_18;
+    QVBoxLayout *verticalLayout_13;
+    QVBoxLayout *verticalLayout_14;
+    QLabel *label_7;
+    QLabel *label_15;
     QWidget *widget_7;
+    QWidget *widget_19;
+    QVBoxLayout *verticalLayout_15;
+    QVBoxLayout *verticalLayout_16;
+    QWidget *widget_20;
+    QHBoxLayout *horizontalLayout_7;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *label_16;
+    QLabel *label_17;
+    QWidget *widget_21;
+    QVBoxLayout *verticalLayout_17;
+    QVBoxLayout *verticalLayout_18;
+    QLabel *label_18;
+    QLabel *label_19;
+    QWidget *widget_22;
+    QWidget *widget_23;
+    QVBoxLayout *verticalLayout_19;
+    QVBoxLayout *verticalLayout_20;
+    QWidget *widget_24;
+    QHBoxLayout *horizontalLayout_9;
+    QHBoxLayout *horizontalLayout_10;
+    QLabel *label_20;
+    QLabel *label_21;
+    QWidget *widget_25;
+    QVBoxLayout *verticalLayout_21;
+    QVBoxLayout *verticalLayout_22;
+    QLabel *label_26;
+    QLabel *label_22;
+    QLabel *label_23;
+    QLabel *label_24;
+    QLabel *label_25;
+    QLabel *label_27;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -116,6 +172,8 @@ public:
 ""));
         verticalLayout_6 = new QVBoxLayout(widget);
         verticalLayout_6->setObjectName("verticalLayout_6");
+        verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setObjectName("verticalLayout_5");
         LeftSidebar = new QWidget(widget);
         LeftSidebar->setObjectName("LeftSidebar");
         sizePolicy.setHeightForWidth(LeftSidebar->sizePolicy().hasHeightForWidth());
@@ -427,10 +485,8 @@ public:
         verticalLayout_7->addItem(verticalSpacer_3);
 
 
-        verticalLayout_6->addWidget(LeftSidebar);
+        verticalLayout_5->addWidget(LeftSidebar);
 
-        verticalLayout_5 = new QVBoxLayout();
-        verticalLayout_5->setObjectName("verticalLayout_5");
 
         verticalLayout_6->addLayout(verticalLayout_5);
 
@@ -450,6 +506,53 @@ public:
         widget_3->setMinimumSize(QSize(0, 60));
         widget_3->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
 "border-radius:20px;"));
+        verticalLayout_24 = new QVBoxLayout(widget_3);
+        verticalLayout_24->setObjectName("verticalLayout_24");
+        horizontalLayout_23 = new QHBoxLayout();
+        horizontalLayout_23->setObjectName("horizontalLayout_23");
+        label_28 = new QLabel(widget_3);
+        label_28->setObjectName("label_28");
+        QFont font3;
+        font3.setFamilies({QString::fromUtf8("Sitka")});
+        font3.setPointSize(17);
+        label_28->setFont(font3);
+        label_28->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        horizontalLayout_23->addWidget(label_28);
+
+        widget_26 = new QWidget(widget_3);
+        widget_26->setObjectName("widget_26");
+        sizePolicy.setHeightForWidth(widget_26->sizePolicy().hasHeightForWidth());
+        widget_26->setSizePolicy(sizePolicy);
+        widget_26->setMinimumSize(QSize(140, 0));
+        horizontalLayout_25 = new QHBoxLayout(widget_26);
+        horizontalLayout_25->setObjectName("horizontalLayout_25");
+        horizontalLayout_24 = new QHBoxLayout();
+        horizontalLayout_24->setObjectName("horizontalLayout_24");
+        label_30 = new QLabel(widget_26);
+        label_30->setObjectName("label_30");
+        label_30->setMinimumSize(QSize(30, 30));
+        label_30->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_24->addWidget(label_30);
+
+        label_29 = new QLabel(widget_26);
+        label_29->setObjectName("label_29");
+        label_29->setFont(font3);
+        label_29->setStyleSheet(QString::fromUtf8("color:white;\n"
+"padding-left:10px;"));
+
+        horizontalLayout_24->addWidget(label_29);
+
+
+        horizontalLayout_25->addLayout(horizontalLayout_24);
+
+
+        horizontalLayout_23->addWidget(widget_26);
+
+
+        verticalLayout_24->addLayout(horizontalLayout_23);
+
 
         verticalLayout->addWidget(widget_3);
 
@@ -484,9 +587,9 @@ public:
 
         label_3 = new QLabel(widget_8);
         label_3->setObjectName("label_3");
-        QFont font3;
-        font3.setPointSize(16);
-        label_3->setFont(font3);
+        QFont font4;
+        font4.setPointSize(16);
+        label_3->setFont(font4);
         label_3->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:20px;"));
 
@@ -498,12 +601,29 @@ public:
 
         verticalLayout_3->addWidget(widget_8);
 
-        label = new QLabel(widget_5);
+        widget_15 = new QWidget(widget_5);
+        widget_15->setObjectName("widget_15");
+        verticalLayout_9 = new QVBoxLayout(widget_15);
+        verticalLayout_9->setObjectName("verticalLayout_9");
+        verticalLayout_10 = new QVBoxLayout();
+        verticalLayout_10->setObjectName("verticalLayout_10");
+        label = new QLabel(widget_15);
         label->setObjectName("label");
-        label->setStyleSheet(QString::fromUtf8("color:white;\n"
-"padding-left:12px;"));
+        label->setStyleSheet(QString::fromUtf8("color:white;"));
 
-        verticalLayout_3->addWidget(label);
+        verticalLayout_10->addWidget(label);
+
+        label_4 = new QLabel(widget_15);
+        label_4->setObjectName("label_4");
+        label_4->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_10->addWidget(label_4);
+
+
+        verticalLayout_9->addLayout(verticalLayout_10);
+
+
+        verticalLayout_3->addWidget(widget_15);
 
 
         verticalLayout_4->addLayout(verticalLayout_3);
@@ -513,13 +633,240 @@ public:
 
         widget_6 = new QWidget(widget_4);
         widget_6->setObjectName("widget_6");
+        widget_16 = new QWidget(widget_6);
+        widget_16->setObjectName("widget_16");
+        widget_16->setGeometry(QRect(0, 0, 273, 180));
+        verticalLayout_11 = new QVBoxLayout(widget_16);
+        verticalLayout_11->setObjectName("verticalLayout_11");
+        verticalLayout_12 = new QVBoxLayout();
+        verticalLayout_12->setObjectName("verticalLayout_12");
+        widget_17 = new QWidget(widget_16);
+        widget_17->setObjectName("widget_17");
+        horizontalLayout_5 = new QHBoxLayout(widget_17);
+        horizontalLayout_5->setObjectName("horizontalLayout_5");
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName("horizontalLayout_6");
+        label_5 = new QLabel(widget_17);
+        label_5->setObjectName("label_5");
+        sizePolicy2.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
+        label_5->setSizePolicy(sizePolicy2);
+        label_5->setMinimumSize(QSize(30, 30));
+        label_5->setMaximumSize(QSize(30, 30));
+        label_5->setPixmap(QPixmap(QString::fromUtf8(":/resources/event.png")));
+        label_5->setScaledContents(true);
+
+        horizontalLayout_6->addWidget(label_5);
+
+        label_6 = new QLabel(widget_17);
+        label_6->setObjectName("label_6");
+        label_6->setFont(font4);
+        label_6->setStyleSheet(QString::fromUtf8("color:white;\n"
+"padding-left:20px;"));
+
+        horizontalLayout_6->addWidget(label_6);
+
+
+        horizontalLayout_5->addLayout(horizontalLayout_6);
+
+
+        verticalLayout_12->addWidget(widget_17);
+
+        widget_18 = new QWidget(widget_16);
+        widget_18->setObjectName("widget_18");
+        verticalLayout_13 = new QVBoxLayout(widget_18);
+        verticalLayout_13->setObjectName("verticalLayout_13");
+        verticalLayout_14 = new QVBoxLayout();
+        verticalLayout_14->setObjectName("verticalLayout_14");
+        label_7 = new QLabel(widget_18);
+        label_7->setObjectName("label_7");
+        label_7->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_14->addWidget(label_7);
+
+        label_15 = new QLabel(widget_18);
+        label_15->setObjectName("label_15");
+        label_15->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_14->addWidget(label_15);
+
+
+        verticalLayout_13->addLayout(verticalLayout_14);
+
+
+        verticalLayout_12->addWidget(widget_18);
+
+
+        verticalLayout_11->addLayout(verticalLayout_12);
+
 
         gridLayout->addWidget(widget_6, 1, 0, 1, 1);
 
         widget_7 = new QWidget(widget_4);
         widget_7->setObjectName("widget_7");
+        widget_19 = new QWidget(widget_7);
+        widget_19->setObjectName("widget_19");
+        widget_19->setGeometry(QRect(0, 0, 273, 180));
+        verticalLayout_15 = new QVBoxLayout(widget_19);
+        verticalLayout_15->setObjectName("verticalLayout_15");
+        verticalLayout_16 = new QVBoxLayout();
+        verticalLayout_16->setObjectName("verticalLayout_16");
+        widget_20 = new QWidget(widget_19);
+        widget_20->setObjectName("widget_20");
+        horizontalLayout_7 = new QHBoxLayout(widget_20);
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName("horizontalLayout_8");
+        label_16 = new QLabel(widget_20);
+        label_16->setObjectName("label_16");
+        sizePolicy2.setHeightForWidth(label_16->sizePolicy().hasHeightForWidth());
+        label_16->setSizePolicy(sizePolicy2);
+        label_16->setMinimumSize(QSize(30, 30));
+        label_16->setMaximumSize(QSize(30, 30));
+        label_16->setPixmap(QPixmap(QString::fromUtf8(":/resources/event.png")));
+        label_16->setScaledContents(true);
+
+        horizontalLayout_8->addWidget(label_16);
+
+        label_17 = new QLabel(widget_20);
+        label_17->setObjectName("label_17");
+        label_17->setFont(font4);
+        label_17->setStyleSheet(QString::fromUtf8("color:white;\n"
+"padding-left:20px;"));
+
+        horizontalLayout_8->addWidget(label_17);
+
+
+        horizontalLayout_7->addLayout(horizontalLayout_8);
+
+
+        verticalLayout_16->addWidget(widget_20);
+
+        widget_21 = new QWidget(widget_19);
+        widget_21->setObjectName("widget_21");
+        verticalLayout_17 = new QVBoxLayout(widget_21);
+        verticalLayout_17->setObjectName("verticalLayout_17");
+        verticalLayout_18 = new QVBoxLayout();
+        verticalLayout_18->setObjectName("verticalLayout_18");
+        label_18 = new QLabel(widget_21);
+        label_18->setObjectName("label_18");
+        label_18->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_18->addWidget(label_18);
+
+        label_19 = new QLabel(widget_21);
+        label_19->setObjectName("label_19");
+        label_19->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_18->addWidget(label_19);
+
+
+        verticalLayout_17->addLayout(verticalLayout_18);
+
+
+        verticalLayout_16->addWidget(widget_21);
+
+
+        verticalLayout_15->addLayout(verticalLayout_16);
+
 
         gridLayout->addWidget(widget_7, 0, 1, 1, 1);
+
+        widget_22 = new QWidget(widget_4);
+        widget_22->setObjectName("widget_22");
+        widget_23 = new QWidget(widget_22);
+        widget_23->setObjectName("widget_23");
+        widget_23->setGeometry(QRect(0, 0, 273, 180));
+        verticalLayout_19 = new QVBoxLayout(widget_23);
+        verticalLayout_19->setObjectName("verticalLayout_19");
+        verticalLayout_20 = new QVBoxLayout();
+        verticalLayout_20->setObjectName("verticalLayout_20");
+        widget_24 = new QWidget(widget_23);
+        widget_24->setObjectName("widget_24");
+        sizePolicy1.setHeightForWidth(widget_24->sizePolicy().hasHeightForWidth());
+        widget_24->setSizePolicy(sizePolicy1);
+        widget_24->setMinimumSize(QSize(0, 51));
+        horizontalLayout_9 = new QHBoxLayout(widget_24);
+        horizontalLayout_9->setObjectName("horizontalLayout_9");
+        horizontalLayout_10 = new QHBoxLayout();
+        horizontalLayout_10->setObjectName("horizontalLayout_10");
+        label_20 = new QLabel(widget_24);
+        label_20->setObjectName("label_20");
+        sizePolicy2.setHeightForWidth(label_20->sizePolicy().hasHeightForWidth());
+        label_20->setSizePolicy(sizePolicy2);
+        label_20->setMinimumSize(QSize(30, 30));
+        label_20->setMaximumSize(QSize(30, 30));
+        label_20->setPixmap(QPixmap(QString::fromUtf8(":/resources/event.png")));
+        label_20->setScaledContents(true);
+
+        horizontalLayout_10->addWidget(label_20);
+
+        label_21 = new QLabel(widget_24);
+        label_21->setObjectName("label_21");
+        label_21->setFont(font4);
+        label_21->setStyleSheet(QString::fromUtf8("color:white;\n"
+"padding-left:20px;"));
+
+        horizontalLayout_10->addWidget(label_21);
+
+
+        horizontalLayout_9->addLayout(horizontalLayout_10);
+
+
+        verticalLayout_20->addWidget(widget_24);
+
+        widget_25 = new QWidget(widget_23);
+        widget_25->setObjectName("widget_25");
+        verticalLayout_21 = new QVBoxLayout(widget_25);
+        verticalLayout_21->setObjectName("verticalLayout_21");
+        verticalLayout_22 = new QVBoxLayout();
+        verticalLayout_22->setObjectName("verticalLayout_22");
+        label_26 = new QLabel(widget_25);
+        label_26->setObjectName("label_26");
+        label_26->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_22->addWidget(label_26);
+
+        label_22 = new QLabel(widget_25);
+        label_22->setObjectName("label_22");
+        label_22->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_22->addWidget(label_22);
+
+        label_23 = new QLabel(widget_25);
+        label_23->setObjectName("label_23");
+        label_23->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_22->addWidget(label_23);
+
+        label_24 = new QLabel(widget_25);
+        label_24->setObjectName("label_24");
+        label_24->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_22->addWidget(label_24);
+
+        label_25 = new QLabel(widget_25);
+        label_25->setObjectName("label_25");
+        label_25->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_22->addWidget(label_25);
+
+        label_27 = new QLabel(widget_25);
+        label_27->setObjectName("label_27");
+        label_27->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        verticalLayout_22->addWidget(label_27);
+
+
+        verticalLayout_21->addLayout(verticalLayout_22);
+
+
+        verticalLayout_20->addWidget(widget_25);
+
+
+        verticalLayout_19->addLayout(verticalLayout_20);
+
+
+        gridLayout->addWidget(widget_22, 1, 1, 1, 1);
 
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
@@ -566,9 +913,29 @@ public:
         Help_Center->setText(QCoreApplication::translate("HelpCenter", "Help Center", nullptr));
         label_14->setText(QString());
         pushButton_6->setText(QCoreApplication::translate("HelpCenter", "LOG OUT", nullptr));
+        label_28->setText(QCoreApplication::translate("HelpCenter", "Help Center", nullptr));
+        label_30->setText(QCoreApplication::translate("HelpCenter", "TextLabel", nullptr));
+        label_29->setText(QCoreApplication::translate("HelpCenter", "ADMIN", nullptr));
         label_2->setText(QString());
         label_3->setText(QCoreApplication::translate("HelpCenter", "Schedule your Event", nullptr));
-        label->setText(QString());
+        label->setText(QCoreApplication::translate("HelpCenter", "-> On menu bar you will see SCHEDULING .", nullptr));
+        label_4->setText(QCoreApplication::translate("HelpCenter", "-> Click there and schedule your Event", nullptr));
+        label_5->setText(QString());
+        label_6->setText(QCoreApplication::translate("HelpCenter", "Manage Volunteers", nullptr));
+        label_7->setText(QCoreApplication::translate("HelpCenter", "-> On menu bar you will see Volunteer.", nullptr));
+        label_15->setText(QCoreApplication::translate("HelpCenter", "-> Click there and enter volunteer name .", nullptr));
+        label_16->setText(QString());
+        label_17->setText(QCoreApplication::translate("HelpCenter", "User panel", nullptr));
+        label_18->setText(QCoreApplication::translate("HelpCenter", "-> On menu bar you will see BOOKING and PROFILE .", nullptr));
+        label_19->setText(QCoreApplication::translate("HelpCenter", "-> Click there and view details of your user", nullptr));
+        label_20->setText(QString());
+        label_21->setText(QCoreApplication::translate("HelpCenter", "Developers", nullptr));
+        label_26->setText(QCoreApplication::translate("HelpCenter", "Supervisior: Deni Shahi", nullptr));
+        label_22->setText(QCoreApplication::translate("HelpCenter", "Abhinab Basnet", nullptr));
+        label_23->setText(QCoreApplication::translate("HelpCenter", "Prabin Babu Basel", nullptr));
+        label_24->setText(QCoreApplication::translate("HelpCenter", "Ayam Pokhrel", nullptr));
+        label_25->setText(QCoreApplication::translate("HelpCenter", "Samipya Rupakheti", nullptr));
+        label_27->setText(QCoreApplication::translate("HelpCenter", "Contact: 9842566031", nullptr));
     } // retranslateUi
 
 };

@@ -12,6 +12,9 @@
 #include <QSqlError>
 #include <QDebug>
 #include <dashboard.h>
+#include<profile.h>
+#include<booking.h>
+#include<helpcenter.h>
 
 placemanage::placemanage(int userId, int eventId, QWidget *parent)
     : QMainWindow(parent),
@@ -242,3 +245,35 @@ void placemanage::on_removeSubEventButton_clicked()
         delete lastItem;
     }
 }
+
+void placemanage::on_dashboard_2_clicked()
+{
+    dash=new dashboard(userId);
+    dash->show();
+    this->close();
+}
+
+
+void placemanage::on_Profile_2_clicked()
+{
+    prof=new Profile(dash);
+    prof->show();
+    this->close();
+}
+
+
+void placemanage::on_Booking_clicked()
+{
+    book=new Booking();
+    book->show();
+    this->close();
+}
+
+
+void placemanage::on_Help_Center_clicked()
+{
+    help=new HelpCenter();
+    help->show();
+    this->close();
+}
+

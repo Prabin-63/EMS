@@ -12,6 +12,7 @@ release/placemanage.o
 release/profile.o
 release/scheduling.o
 release/signup.o
+release/ticketwindow.o
 release/userdashboard.o
 release/viewvolunteer.o
 release/qrc_resources.o
@@ -26,5 +27,6 @@ release/moc_placemanage.o
 release/moc_profile.o
 release/moc_scheduling.o
 release/moc_signup.o
+release/moc_ticketwindow.o
 release/moc_userdashboard.o
 release/moc_viewvolunteer.o

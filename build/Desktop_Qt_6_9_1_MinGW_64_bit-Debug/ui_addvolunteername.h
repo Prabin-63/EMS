@@ -75,6 +75,14 @@ public:
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QWidget *widget_3;
+    QHBoxLayout *horizontalLayout_4;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label;
+    QWidget *widget_5;
+    QHBoxLayout *horizontalLayout_6;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *label_3;
+    QLabel *label_2;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QWidget *scrollContent;
@@ -442,6 +450,58 @@ public:
         widget_3->setMinimumSize(QSize(0, 60));
         widget_3->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
 "border-radius:20px;"));
+        horizontalLayout_4 = new QHBoxLayout(widget_3);
+        horizontalLayout_4->setObjectName("horizontalLayout_4");
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName("horizontalLayout_3");
+        label = new QLabel(widget_3);
+        label->setObjectName("label");
+        QFont font3;
+        font3.setFamilies({QString::fromUtf8("Sitka")});
+        font3.setPointSize(16);
+        label->setFont(font3);
+        label->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        horizontalLayout_3->addWidget(label);
+
+        widget_5 = new QWidget(widget_3);
+        widget_5->setObjectName("widget_5");
+        sizePolicy.setHeightForWidth(widget_5->sizePolicy().hasHeightForWidth());
+        widget_5->setSizePolicy(sizePolicy);
+        widget_5->setMinimumSize(QSize(155, 0));
+        horizontalLayout_6 = new QHBoxLayout(widget_5);
+        horizontalLayout_6->setObjectName("horizontalLayout_6");
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName("horizontalLayout_5");
+        label_3 = new QLabel(widget_5);
+        label_3->setObjectName("label_3");
+        label_3->setMinimumSize(QSize(30, 30));
+        label_3->setMaximumSize(QSize(30, 30));
+        label_3->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-name-50.png")));
+        label_3->setScaledContents(true);
+
+        horizontalLayout_5->addWidget(label_3);
+
+        label_2 = new QLabel(widget_5);
+        label_2->setObjectName("label_2");
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("Sitka")});
+        font4.setPointSize(17);
+        label_2->setFont(font4);
+        label_2->setStyleSheet(QString::fromUtf8("color:white;\n"
+"padding-left:10px;"));
+
+        horizontalLayout_5->addWidget(label_2);
+
+
+        horizontalLayout_6->addLayout(horizontalLayout_5);
+
+
+        horizontalLayout_3->addWidget(widget_5);
+
+
+        horizontalLayout_4->addLayout(horizontalLayout_3);
+
 
         verticalLayout->addWidget(widget_3);
 
@@ -513,6 +573,9 @@ public:
         Help_Center_4->setText(QCoreApplication::translate("AddVolunteerName", "Help Center", nullptr));
         label_31->setText(QString());
         pushButton_6->setText(QCoreApplication::translate("AddVolunteerName", "LOG OUT", nullptr));
+        label->setText(QCoreApplication::translate("AddVolunteerName", "Add Volunteer and Assign ", nullptr));
+        label_3->setText(QString());
+        label_2->setText(QCoreApplication::translate("AddVolunteerName", "ADMIN", nullptr));
         Savevolunteers->setText(QCoreApplication::translate("AddVolunteerName", "Save", nullptr));
     } // retranslateUi
 

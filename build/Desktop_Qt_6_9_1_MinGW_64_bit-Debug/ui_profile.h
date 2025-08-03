@@ -12,12 +12,14 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -92,15 +94,7 @@ public:
     QLabel *label;
     QSpacerItem *horizontalSpacer_6;
     QSpacerItem *horizontalSpacer_5;
-    QWidget *widget_6;
-    QHBoxLayout *horizontalLayout_6;
-    QHBoxLayout *horizontalLayout_5;
-    QSpacerItem *horizontalSpacer_3;
-    QLabel *label_4;
-    QSpacerItem *horizontalSpacer_4;
-    QLabel *label_3;
-    QSpacerItem *horizontalSpacer_8;
-    QSpacerItem *horizontalSpacer_7;
+    QTableView *userview;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -563,56 +557,10 @@ public:
 
         verticalLayout_3->addWidget(widget_5);
 
-        widget_6 = new QWidget(widget_4);
-        widget_6->setObjectName("widget_6");
-        horizontalLayout_6 = new QHBoxLayout(widget_6);
-        horizontalLayout_6->setObjectName("horizontalLayout_6");
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName("horizontalLayout_5");
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+        userview = new QTableView(widget_4);
+        userview->setObjectName("userview");
 
-        horizontalLayout_5->addItem(horizontalSpacer_3);
-
-        label_4 = new QLabel(widget_6);
-        label_4->setObjectName("label_4");
-        sizePolicy2.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
-        label_4->setSizePolicy(sizePolicy2);
-        label_4->setMinimumSize(QSize(80, 80));
-        label_4->setMaximumSize(QSize(80, 80));
-        label_4->setPixmap(QPixmap(QString::fromUtf8(":/resources/event (1).png")));
-        label_4->setScaledContents(true);
-
-        horizontalLayout_5->addWidget(label_4);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer_4);
-
-        label_3 = new QLabel(widget_6);
-        label_3->setObjectName("label_3");
-        QFont font5;
-        font5.setFamilies({QString::fromUtf8("Rockwell")});
-        font5.setPointSize(26);
-        label_3->setFont(font5);
-        label_3->setStyleSheet(QString::fromUtf8("color:white;\n"
-"padding-left:30px;"));
-        label_3->setAlignment(Qt::AlignmentFlag::AlignCenter);
-
-        horizontalLayout_5->addWidget(label_3);
-
-        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer_8);
-
-        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer_7);
-
-
-        horizontalLayout_6->addLayout(horizontalLayout_5);
-
-
-        verticalLayout_3->addWidget(widget_6);
+        verticalLayout_3->addWidget(userview);
 
 
         verticalLayout_4->addLayout(verticalLayout_3);
@@ -664,8 +612,6 @@ public:
         label_6->setText(QCoreApplication::translate("Profile", "ADMIN", nullptr));
         label_2->setText(QString());
         label->setText(QCoreApplication::translate("Profile", "WELCOME ADMIN.", nullptr));
-        label_4->setText(QString());
-        label_3->setText(QCoreApplication::translate("Profile", "Thank you for choosing us!!", nullptr));
     } // retranslateUi
 
 };

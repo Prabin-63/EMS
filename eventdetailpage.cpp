@@ -1,4 +1,6 @@
 #include "eventdetailpage.h"
+#include "ticketwindow.h"
+
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QScrollArea>
@@ -11,10 +13,6 @@
 EventDetailPage::EventDetailPage(int userId, QWidget *parent)
     : QWidget(parent), currentUserId(userId)
 {
-    qDebug() << "=== EventDetailPage Constructor Debug ===";
-    qDebug() << "Received userId parameter:" << userId;
-    qDebug() << "Stored currentUserId:" << this->currentUserId;
-
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
     QPushButton *backButton = new QPushButton("← Go Back", this);
@@ -41,6 +39,8 @@ EventDetailPage::EventDetailPage(int userId, QWidget *parent)
 
     scrollArea = new QScrollArea(this);
     scrollArea->setWidgetResizable(true);
+    scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    scrollArea->setStyleSheet("border: none;");
 
     subEventContainer = new QWidget();
     subEventLayout = new QVBoxLayout(subEventContainer);
@@ -56,10 +56,6 @@ EventDetailPage::EventDetailPage(int userId, QWidget *parent)
 void EventDetailPage::loadEventDetails(int eventId)
 {
     currentEventId = eventId;
-
-    qDebug() << "=== EventDetailPage LoadEventDetails Debug ===";
-    qDebug() << "Loading event details for userId:" << this->currentUserId;
-    qDebug() << "EventId:" << eventId;
 
     QSqlQuery eventQuery;
     eventQuery.prepare("SELECT name, venue, date, time, organizer_contact FROM events WHERE id = :id");
@@ -119,7 +115,7 @@ void EventDetailPage::loadEventDetails(int eventId)
                 bookBtn->setStyleSheet("background-color: gray; color: white; padding: 5px; border-radius: 4px;");
             }
 
-            connect(bookBtn, &QPushButton::clicked, this, [this, subEventId, bookBtn]() {
+            connect(bookBtn, &QPushButton::clicked, this, [=]() {
                 if (currentUserId == -1) {
                     QMessageBox::warning(this, "Not Logged In", "Please log in to book this sub-event.");
                     return;
@@ -131,7 +127,7 @@ void EventDetailPage::loadEventDetails(int eventId)
                 checkQuery.bindValue(":subevent_id", subEventId);
 
                 if (!checkQuery.exec()) {
-                    QMessageBox::critical(this, "Error", "Failed to check existing booking: " + checkQuery.lastError().text());
+                    QMessageBox::critical(this, "Error", "Failed to check booking: " + checkQuery.lastError().text());
                     return;
                 }
 
@@ -141,29 +137,8 @@ void EventDetailPage::loadEventDetails(int eventId)
                     return;
                 }
 
-                QSqlQuery validateUser;
-                validateUser.prepare("SELECT COUNT(*) FROM users WHERE id = :uid");
-                validateUser.bindValue(":uid", this->currentUserId);
-                if (validateUser.exec() && validateUser.next()) {
-                    if (validateUser.value(0).toInt() == 0) {
-                        QMessageBox::critical(this, "Error", "User ID does not exist in database.");
-                        return;
-                    }
-                }
-
-                QSqlQuery validateSubEvent;
-                validateSubEvent.prepare("SELECT COUNT(*) FROM places WHERE id = :seid");
-                validateSubEvent.bindValue(":seid", subEventId);
-                if (validateSubEvent.exec() && validateSubEvent.next()) {
-                    if (validateSubEvent.value(0).toInt() == 0) {
-                        QMessageBox::critical(this, "Error", "Sub-event ID does not exist in database.");
-                        return;
-                    }
-                }
-
                 QSqlQuery bookingQuery;
-                bookingQuery.prepare("INSERT INTO booking (id, event_id, subevent_id) "
-                                     "VALUES (:user_id, :event_id, :subevent_id)");
+                bookingQuery.prepare("INSERT INTO booking (id, event_id, subevent_id) VALUES (:user_id, :event_id, :subevent_id)");
                 bookingQuery.bindValue(":user_id", currentUserId);
                 bookingQuery.bindValue(":event_id", currentEventId);
                 bookingQuery.bindValue(":subevent_id", subEventId);
@@ -173,6 +148,27 @@ void EventDetailPage::loadEventDetails(int eventId)
                     bookBtn->setText("Booked");
                     bookBtn->setEnabled(false);
                     bookBtn->setStyleSheet("background-color: gray; color: white; padding: 5px; border-radius: 4px;");
+
+                    QString userName = "User";
+                    QSqlQuery nameQuery;
+                    nameQuery.prepare("SELECT name FROM users WHERE id = :id");
+                    nameQuery.bindValue(":id", currentUserId);
+                    if (nameQuery.exec() && nameQuery.next()) {
+                        userName = nameQuery.value(0).toString();
+                    }
+
+                    // ✅ Create and show ticket window
+                    ticketwindow *ticket = new ticketwindow(
+                        userName,
+                        eventNameLabel->text(),
+                        subName,
+                        subLocation,
+                        subTime,
+                        nullptr // Important! No parent = standalone dialog
+                        );
+                    ticket->setAttribute(Qt::WA_DeleteOnClose);
+                    ticket->show();
+                    qDebug() << "✅ Ticket window opened!";
                 } else {
                     QMessageBox::critical(this, "Booking Failed", "Could not complete booking: " + bookingQuery.lastError().text());
                 }

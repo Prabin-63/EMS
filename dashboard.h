@@ -13,6 +13,8 @@
 
 class login;
 class Profile;
+
+class HelpCenter;
 namespace Ui {
 class dashboard;
 }
@@ -55,6 +57,7 @@ private:
      QVBoxLayout *volunteerLayout = nullptr;
 
 
+
     int userId;
     int eventId;
 
@@ -65,8 +68,8 @@ private:
     void ViewVolunteersWidget();
     void createVolunteerLineChart(int eventId);
     void loadVolunteerNames(int eventId);
-    void loadSubeventTable(int eventId);
-     void loadsubev();
+    void loadSubEventTable(int eventId);
+    void createBookingBarChart(int eventId);
 
 
 
