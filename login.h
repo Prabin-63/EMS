@@ -7,6 +7,7 @@
 #include "userdashboard.h"
 #include<userdashboard.h>
 class dashboard;
+class UserDashboard;
 
 namespace Ui {
 class login;  // lowercase 'login' to match ui_login.h
