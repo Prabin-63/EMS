@@ -10,6 +10,7 @@
 #include<QLabel>
 #include<ticketwindow.h>
 class ticketwindow;
+class login;
 
 namespace Ui {
 class UserDashboard;
@@ -26,7 +27,7 @@ public:
 
 private slots:
     void on_pushButton_2_clicked();
-
+     void on_Logout_clicked();
 private:
     Ui::UserDashboard *ui;
     QVBoxLayout *eventLayout;
@@ -34,7 +35,7 @@ private:
     QScrollArea *scrollArea;
      QLabel *greetingLabel;
     ticketwindow *tickets;
-
+    login *loginWindow;
     int currentUserId;
 int currentEventId;    // Stores logged-in user ID
 
