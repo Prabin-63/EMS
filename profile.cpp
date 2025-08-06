@@ -32,8 +32,8 @@ Profile::~Profile()
 
 void Profile::on_dashboard_2_clicked()
 {
-    dash->show();  // Show the main dashboard window again
-    this->close(); // Close the profile window
+    dash->show();
+    this->close();
 }
 
 void Profile::loadUsers()
@@ -56,7 +56,7 @@ void Profile::loadUsers()
 
     ui->userview->setModel(userModel);
     ui->userview->setEditTriggers(QAbstractItemView::NoEditTriggers); // Read-only
-    ui->userview->hideColumn(4); // Hide password column
+    ui->userview->hideColumn(4);
 
     ui->userview->resizeColumnsToContents();
     ui->userview->horizontalHeader()->setStretchLastSection(true);
@@ -92,7 +92,7 @@ void Profile::loadUsers()
 
 void Profile::on_Booking_clicked()
 {
-    book=new Booking();
+    book=new Booking(dash);
     book->show();
     this->close();
 
@@ -109,7 +109,7 @@ void Profile::on_Managing_clicked()
 
 void Profile::on_Help_Center_clicked()
 {
-    help=new HelpCenter();
+    help=new HelpCenter(dash);
     help->show();
     this->close();
 }

@@ -6,6 +6,8 @@
 #include <QVBoxLayout>
 #include <QVector>
 
+
+
 namespace Ui {
 class AddVolunteerName;
 }
@@ -22,11 +24,15 @@ private slots:
     void on_Savevolunteers_clicked();
     void assignVolunteersToSubevents();
 
+
+
 private:
     Ui::AddVolunteerName *ui;
     QVector<QLineEdit*> lineEdits;
 
     QVBoxLayout *layout;
+
+
     int currentEventId; // ✅ to store the event ID
 
     void setupVolunteerFields();

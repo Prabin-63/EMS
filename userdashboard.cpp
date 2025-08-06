@@ -1,6 +1,5 @@
 #include "userdashboard.h"
 #include "ui_userdashboard.h"
-
 #include <QPushButton>
 #include <QSqlQuery>
 #include <QSqlError>
@@ -11,37 +10,34 @@
 #include <QScrollArea>
 #include <QLabel>
 #include <QFrame>
+#include "ticketwindow.h"
 
 UserDashboard::UserDashboard(int userId, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::UserDashboard),
-    currentUserId(userId)
+    currentUserId(userId),
+    currentEventId(-1)
 {
     ui->setupUi(this);
 
-    // Fetch user's actual name from DB and set to existing QLabel Nameuser
-    QString userName = "User";  // fallback default
+    // Fetch user name
+    QString userName = "User";
     QSqlQuery query;
     query.prepare("SELECT name FROM users WHERE id = :id");
     query.bindValue(":id", currentUserId);
     if (query.exec() && query.next()) {
         userName = query.value("name").toString();
-    } else {
-        qDebug() << "Failed to get user name for userId" << currentUserId << ":" << query.lastError().text();
     }
     ui->Nameuser->setText("Hi " + userName);
 
-    // Setup scroll area for main event list
+    // Setup scroll area
     scrollArea = new QScrollArea(this);
     scrollArea->setWidgetResizable(true);
-    scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     scrollArea->setMinimumWidth(500);
 
     eventWidget = new QWidget();
     eventLayout = new QVBoxLayout(eventWidget);
     eventLayout->setAlignment(Qt::AlignTop);
-    eventWidget->setLayout(eventLayout);
-
     scrollArea->setWidget(eventWidget);
 
     QHBoxLayout *wrapperLayout = new QHBoxLayout();
@@ -52,7 +48,6 @@ UserDashboard::UserDashboard(int userId, QWidget *parent)
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->addLayout(wrapperLayout);
     mainLayout->addStretch();
-
     ui->eventContainer->setLayout(mainLayout);
 
     loadEvents();
@@ -65,7 +60,7 @@ UserDashboard::~UserDashboard()
 
 void UserDashboard::loadEvents()
 {
-    // Clear old widgets
+    // Clear previous widgets
     QLayoutItem *child;
     while ((child = eventLayout->takeAt(0)) != nullptr) {
         delete child->widget();
@@ -74,7 +69,6 @@ void UserDashboard::loadEvents()
 
     QSqlQuery query("SELECT id, name FROM events");
     if (!query.exec()) {
-        qDebug() << "Failed to fetch events:" << query.lastError().text();
         QMessageBox::critical(this, "Error", "Unable to load events.");
         return;
     }
@@ -86,18 +80,8 @@ void UserDashboard::loadEvents()
         QPushButton *eventButton = new QPushButton(name, this);
         eventButton->setFixedWidth(400);
         eventButton->setStyleSheet(
-            "QPushButton {"
-            "  padding: 12px; "
-            "  font-size: 14px; "
-            "  background-color: white; "
-            "  border: 1px solid #ccc; "
-            "  border-radius: 6px;"
-            "}"
-            "QPushButton:hover {"
-            "  background-color: #465C88; "
-            "  border: 1px solid #999;"
-            "  color:white;"
-            "}"
+            "QPushButton { padding: 12px; font-size: 14px; background-color: white; border: 1px solid #ccc; border-radius: 6px; }"
+            "QPushButton:hover { background-color: #465C88; border: 1px solid #999; color:white; }"
             );
 
         QHBoxLayout *hLayout = new QHBoxLayout();
@@ -107,10 +91,8 @@ void UserDashboard::loadEvents()
 
         QWidget *container = new QWidget();
         container->setLayout(hLayout);
-
         eventLayout->addWidget(container);
 
-        // Open event details on click
         connect(eventButton, &QPushButton::clicked, this, [this, eventId]() {
             loadEventDetail(eventId);
         });
@@ -119,19 +101,14 @@ void UserDashboard::loadEvents()
 
 void UserDashboard::loadEventDetail(int eventId)
 {
-    // Clear old widgets
+    currentEventId = eventId;
+
     QLayoutItem *child;
     while ((child = eventLayout->takeAt(0)) != nullptr) {
         delete child->widget();
         delete child;
     }
 
-    // Debug: Verify we're using the correct userId
-    qDebug() << "=== LoadEventDetail Debug ===";
-    qDebug() << "Loading event details for userId:" << this->currentUserId;
-    qDebug() << "EventId:" << eventId;
-
-    // Query event details
     QSqlQuery eventQuery;
     eventQuery.prepare("SELECT name, venue, date, time, organizer_contact FROM events WHERE id = :id");
     eventQuery.bindValue(":id", eventId);
@@ -148,7 +125,6 @@ void UserDashboard::loadEventDetail(int eventId)
         return;
     }
 
-    // Top event details
     QLabel *eventTitle = new QLabel(eventName);
     eventTitle->setStyleSheet("font-size: 20px; font-weight: bold;");
     QLabel *venueLabel = new QLabel("Venue: " + venue);
@@ -160,13 +136,18 @@ void UserDashboard::loadEventDetail(int eventId)
     eventLayout->addWidget(dateLabel);
     eventLayout->addWidget(organizerLabel);
 
-    // Divider
     QFrame *line = new QFrame();
     line->setFrameShape(QFrame::HLine);
     line->setFrameShadow(QFrame::Sunken);
     eventLayout->addWidget(line);
 
-    // Sub-events
+    // Tickets button
+    QPushButton *ticketButton = new QPushButton("🎟️ View My Tickets");
+    ticketButton->setStyleSheet("background-color: #28a745; color: white; padding: 6px;");
+    ticketButton->setFixedWidth(200);
+    connect(ticketButton, &QPushButton::clicked, this, &UserDashboard::on_pushButton_2_clicked);
+    eventLayout->addWidget(ticketButton);
+
     QSqlQuery subQuery;
     subQuery.prepare("SELECT id, sub_event_name, location, time, contact_person FROM places WHERE event_id = :eid");
     subQuery.bindValue(":eid", eventId);
@@ -191,29 +172,17 @@ void UserDashboard::loadEventDetail(int eventId)
 
             QPushButton *bookBtn = new QPushButton("Book");
             bookBtn->setFixedWidth(100);
-            bookBtn->setStyleSheet(
-                "QPushButton {background-color: #0078D7; color: white; padding: 6px; border-radius: 4px;}"
-                "QPushButton:hover {background-color: #005A9E;}"
-                );
+            bookBtn->setStyleSheet("QPushButton {background-color: #0078D7; color: white; padding: 6px; border-radius: 4px;} QPushButton:hover {background-color: #005A9E;}");
 
-            // Check if user has already booked this sub-event
+            // Check existing booking
             bool alreadyBooked = false;
             QSqlQuery checkBooked;
-
-            // Debug: Check what columns exist in booking table
-            qDebug() << "=== Checking Existing Booking Debug ===";
-            qDebug() << "Checking for userId:" << this->currentUserId << "subEventId:" << subEventId;
-
-            // Use correct column name 'id' for user_id based on your database schema
             checkBooked.prepare("SELECT COUNT(*) FROM booking WHERE id = :user_id AND subevent_id = :subevent_id");
-            checkBooked.bindValue(":user_id", this->currentUserId);
+            checkBooked.bindValue(":user_id", currentUserId);
             checkBooked.bindValue(":subevent_id", subEventId);
 
             if (checkBooked.exec() && checkBooked.next() && checkBooked.value(0).toInt() > 0) {
                 alreadyBooked = true;
-                qDebug() << "User has already booked this sub-event";
-            } else if (!checkBooked.exec()) {
-                qDebug() << "Check booking query failed:" << checkBooked.lastError().text();
             }
 
             if (alreadyBooked) {
@@ -222,21 +191,13 @@ void UserDashboard::loadEventDetail(int eventId)
                 bookBtn->setStyleSheet("background-color: gray; color: white; padding: 6px; border-radius: 4px;");
             }
 
-            // Booking logic
-            connect(bookBtn, &QPushButton::clicked, this, [this, subEventId, eventId, bookBtn]() {
-                qDebug() << "=== BOOKING BUTTON CLICKED ===";
-                qDebug() << "Booking for userId:" << this->currentUserId;
-                qDebug() << "SubEventId:" << subEventId;
-                qDebug() << "EventId:" << eventId;
-
-                // Check for existing booking first
+            connect(bookBtn, &QPushButton::clicked, this, [=]() {
                 QSqlQuery checkQuery;
                 checkQuery.prepare("SELECT COUNT(*) FROM booking WHERE id = :user_id AND subevent_id = :subevent_id");
-                checkQuery.bindValue(":user_id", this->currentUserId);
+                checkQuery.bindValue(":user_id", currentUserId);
                 checkQuery.bindValue(":subevent_id", subEventId);
-
                 if (!checkQuery.exec()) {
-                    QMessageBox::critical(this, "Error", "Failed to check existing booking: " + checkQuery.lastError().text());
+                    QMessageBox::critical(this, "Error", "Check failed: " + checkQuery.lastError().text());
                     return;
                 }
 
@@ -246,45 +207,19 @@ void UserDashboard::loadEventDetail(int eventId)
                     return;
                 }
 
-                // Validate foreign keys existence
-                QSqlQuery validateUser;
-                validateUser.prepare("SELECT COUNT(*) FROM users WHERE id = :uid");
-                validateUser.bindValue(":uid", this->currentUserId);
-                if (validateUser.exec() && validateUser.next() && validateUser.value(0).toInt() == 0) {
-                    QMessageBox::critical(this, "Error", "User ID does not exist in database.");
-                    return;
-                }
-
-                QSqlQuery validateEvent;
-                validateEvent.prepare("SELECT COUNT(*) FROM events WHERE id = :eid");
-                validateEvent.bindValue(":eid", eventId);
-                if (validateEvent.exec() && validateEvent.next() && validateEvent.value(0).toInt() == 0) {
-                    QMessageBox::critical(this, "Error", "Event ID does not exist in database.");
-                    return;
-                }
-
-                QSqlQuery validateSubEvent;
-                validateSubEvent.prepare("SELECT COUNT(*) FROM places WHERE id = :seid");
-                validateSubEvent.bindValue(":seid", subEventId);
-                if (validateSubEvent.exec() && validateSubEvent.next() && validateSubEvent.value(0).toInt() == 0) {
-                    QMessageBox::critical(this, "Error", "Sub-event ID does not exist in database.");
-                    return;
-                }
-
-                // Insert booking
                 QSqlQuery bookQuery;
                 bookQuery.prepare("INSERT INTO booking (id, event_id, subevent_id) VALUES (?, ?, ?)");
-                bookQuery.addBindValue(this->currentUserId);
+                bookQuery.addBindValue(currentUserId);
                 bookQuery.addBindValue(eventId);
                 bookQuery.addBindValue(subEventId);
 
-                if (!bookQuery.exec()) {
-                    QMessageBox::critical(this, "Error", "Booking failed: " + bookQuery.lastError().text());
-                } else {
+                if (bookQuery.exec()) {
                     QMessageBox::information(this, "Success", "Booking confirmed!");
                     bookBtn->setText("Booked");
                     bookBtn->setEnabled(false);
                     bookBtn->setStyleSheet("background-color: gray; color: white; padding: 6px; border-radius: 4px;");
+                } else {
+                    QMessageBox::critical(this, "Error", "Booking failed: " + bookQuery.lastError().text());
                 }
             });
 
@@ -292,10 +227,21 @@ void UserDashboard::loadEventDetail(int eventId)
             subLayout->addStretch();
             subLayout->addWidget(bookBtn);
             subEventWidget->setLayout(subLayout);
-
             eventLayout->addWidget(subEventWidget);
         }
     } else {
-        QMessageBox::critical(this, "Error", "Failed to load sub-events: " + subQuery.lastError().text());
+        QMessageBox::critical(this, "Error", "Failed to load sub-events.");
     }
+}
+
+void UserDashboard::on_pushButton_2_clicked()
+{
+    if (currentEventId == -1) {
+        QMessageBox::warning(this, "No Event Selected", "Please select an event first.");
+        return;
+    }
+
+    ticketwindow *tickets = new ticketwindow(currentUserId, currentEventId);
+    tickets->setAttribute(Qt::WA_DeleteOnClose);
+    tickets->show();
 }

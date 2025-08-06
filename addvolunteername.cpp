@@ -8,6 +8,7 @@
 #include <QRandomGenerator>
 #include <algorithm>
 
+
 AddVolunteerName::AddVolunteerName(int eventId, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::AddVolunteerName)
@@ -16,6 +17,7 @@ AddVolunteerName::AddVolunteerName(int eventId, QWidget *parent)
     ui->setupUi(this);
     ui->scrollArea->setWidgetResizable(true);
     setupVolunteerFields();
+    this->showMaximized();
 }
 
 AddVolunteerName::~AddVolunteerName()
@@ -59,10 +61,10 @@ void AddVolunteerName::setupVolunteerFields()
         lineEdits.append(lineEdit);
     }
 
-    container->setMinimumHeight(totalVolunteers * 50);  // Ensure scrolling
+    container->setMinimumHeight(totalVolunteers * 50);
     container->setLayout(layout);
 
-    ui->scrollArea->setWidget(container);  // Set as scroll area's widget
+    ui->scrollArea->setWidget(container);
 }
 
 void AddVolunteerName::assignVolunteersToSubevents()
@@ -151,3 +153,6 @@ void AddVolunteerName::on_Savevolunteers_clicked()
     QMessageBox::information(this, "Success", "Volunteers saved successfully. Now assigning...");
     assignVolunteersToSubevents();
 }
+
+
+

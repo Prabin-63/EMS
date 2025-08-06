@@ -22,7 +22,7 @@ placemanage::placemanage(int userId, int eventId, QWidget *parent)
     userId(userId),
     eventId(eventId),
     dash(nullptr),
-    isInitialized(false) // ✅ Initially false
+    isInitialized(false)
 {
     ui->setupUi(this);
 
@@ -32,11 +32,11 @@ placemanage::placemanage(int userId, int eventId, QWidget *parent)
     }
 
     connect(ui->generateButton, &QPushButton::clicked, this, &placemanage::on_generateButton_clicked);
-    connect(ui->addSubEventButton, &QPushButton::clicked, this, &placemanage::on_addSubEventButton_clicked);
-    connect(ui->addOneSubEventButton, &QPushButton::clicked, this, &placemanage::on_addOneSubEventButton_clicked);
-    connect(ui->removeSubEventButton, &QPushButton::clicked, this, &placemanage::on_removeSubEventButton_clicked);
 
-    isInitialized = true; // ✅ Set true only after setup is complete
+
+
+
+    isInitialized = true;
 }
 
 placemanage::~placemanage()
@@ -118,7 +118,7 @@ void placemanage::on_generateButton_clicked()
 
 void placemanage::on_addSubEventButton_clicked()
 {
-    if (!isInitialized) return; // ✅ Prevent auto-trigger before UI ready
+    if (!isInitialized) return; // Prevent auto-trigger before UI ready
 
     if (eventId == -1) {
         QMessageBox::warning(this, "Missing Event ID", "Event ID is not set.");
@@ -264,7 +264,7 @@ void placemanage::on_Profile_2_clicked()
 
 void placemanage::on_Booking_clicked()
 {
-    book=new Booking();
+    book=new Booking(dash);
     book->show();
     this->close();
 }
@@ -272,7 +272,7 @@ void placemanage::on_Booking_clicked()
 
 void placemanage::on_Help_Center_clicked()
 {
-    help=new HelpCenter();
+    help=new HelpCenter(dash);
     help->show();
     this->close();
 }

@@ -39,12 +39,12 @@ template <> constexpr inline auto ticketwindow::qt_create_metaobjectdata<qt_meta
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "ticketwindow",
-        "downloadTicket",
+        "downloadAsPDF",
         ""
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'downloadTicket'
+        // Slot 'downloadAsPDF'
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
@@ -55,7 +55,7 @@ template <> constexpr inline auto ticketwindow::qt_create_metaobjectdata<qt_meta
             qt_methods, qt_properties, qt_enums);
 }
 Q_CONSTINIT const QMetaObject ticketwindow::staticMetaObject = { {
-    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
+    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
     qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12ticketwindowE_t>.stringdata,
     qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12ticketwindowE_t>.data,
     qt_static_metacall,
@@ -69,7 +69,7 @@ void ticketwindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
     auto *_t = static_cast<ticketwindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->downloadTicket(); break;
+        case 0: _t->downloadAsPDF(); break;
         default: ;
         }
     }
@@ -86,12 +86,12 @@ void *ticketwindow::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12ticketwindowE_t>.strings))
         return static_cast<void*>(this);
-    return QDialog::qt_metacast(_clname);
+    return QMainWindow::qt_metacast(_clname);
 }
 
 int ticketwindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QDialog::qt_metacall(_c, _id, _a);
+    _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {

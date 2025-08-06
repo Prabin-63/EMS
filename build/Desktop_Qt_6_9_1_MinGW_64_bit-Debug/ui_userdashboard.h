@@ -41,6 +41,7 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *pushButton;
+    QPushButton *pushButton_2;
     QSpacerItem *horizontalSpacer;
     QWidget *widget_7;
     QHBoxLayout *horizontalLayout_7;
@@ -131,10 +132,21 @@ public:
         QFont font;
         font.setPointSize(16);
         pushButton->setFont(font);
-        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 251, 255);\n"
-"border-radius:10px;"));
+        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(254, 173, 33);\n"
+"border-radius:10px;\n"
+"color:white;"));
 
         horizontalLayout_3->addWidget(pushButton);
+
+        pushButton_2 = new QPushButton(widget_5);
+        pushButton_2->setObjectName("pushButton_2");
+        pushButton_2->setMinimumSize(QSize(100, 30));
+        pushButton_2->setFont(font);
+        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: rgb(254, 173, 33);\n"
+"border-radius:10px;\n"
+"color:white;"));
+
+        horizontalLayout_3->addWidget(pushButton_2);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
@@ -144,7 +156,7 @@ public:
         widget_7->setObjectName("widget_7");
         sizePolicy.setHeightForWidth(widget_7->sizePolicy().hasHeightForWidth());
         widget_7->setSizePolicy(sizePolicy);
-        widget_7->setMinimumSize(QSize(300, 0));
+        widget_7->setMinimumSize(QSize(233, 0));
         horizontalLayout_7 = new QHBoxLayout(widget_7);
         horizontalLayout_7->setObjectName("horizontalLayout_7");
         horizontalLayout_6 = new QHBoxLayout();
@@ -155,6 +167,8 @@ public:
         label_2->setSizePolicy(sizePolicy2);
         label_2->setMinimumSize(QSize(30, 30));
         label_2->setMaximumSize(QSize(30, 30));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-profile-48.png")));
+        label_2->setScaledContents(true);
 
         horizontalLayout_6->addWidget(label_2);
 
@@ -165,6 +179,7 @@ public:
         font1.setPointSize(19);
         font1.setBold(true);
         Nameuser->setFont(font1);
+        Nameuser->setStyleSheet(QString::fromUtf8("color:white;"));
 
         horizontalLayout_6->addWidget(Nameuser);
 
@@ -241,7 +256,8 @@ public:
     {
         UserDashboard->setWindowTitle(QCoreApplication::translate("UserDashboard", "MainWindow", nullptr));
         pushButton->setText(QCoreApplication::translate("UserDashboard", "Logout", nullptr));
-        label_2->setText(QCoreApplication::translate("UserDashboard", "TextLabel", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("UserDashboard", "Ticket", nullptr));
+        label_2->setText(QString());
         Nameuser->setText(QCoreApplication::translate("UserDashboard", "TextLabel", nullptr));
     } // retranslateUi
 

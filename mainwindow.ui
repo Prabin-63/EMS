@@ -39,7 +39,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources.qrc">:/resources/Eventra  A Event Management system.jpg</pixmap>
+     <pixmap resource="resources.qrc">:/resources/e1.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -76,7 +76,7 @@ border:none;
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

@@ -55,6 +55,7 @@ private:
     login *loginWindow;
     HelpCenter *help;
      QVBoxLayout *volunteerLayout = nullptr;
+    dashboard *dash;
 
 
 

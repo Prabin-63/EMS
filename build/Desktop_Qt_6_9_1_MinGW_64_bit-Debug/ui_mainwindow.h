@@ -41,7 +41,7 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName("label");
         label->setGeometry(QRect(0, 0, 791, 471));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/resources/Eventra  A Event Management system.jpg")));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/resources/e1.jpg")));
         label->setScaledContents(true);
         Gotologin = new QPushButton(centralwidget);
         Gotologin->setObjectName("Gotologin");
@@ -56,7 +56,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 800, 18));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");

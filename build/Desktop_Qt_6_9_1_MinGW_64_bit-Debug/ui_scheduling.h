@@ -67,9 +67,6 @@ public:
     QSpacerItem *verticalSpacer_4;
     QWidget *widget_6;
     QHBoxLayout *horizontalLayout_13;
-    QHBoxLayout *horizontalLayout_12;
-    QLabel *label_7;
-    QPushButton *pushButton_6;
     QSpacerItem *verticalSpacer_3;
     QWidget *Rightsidebar;
     QGridLayout *gridLayout_2;
@@ -391,42 +388,6 @@ public:
         widget_6->setMinimumSize(QSize(0, 40));
         horizontalLayout_13 = new QHBoxLayout(widget_6);
         horizontalLayout_13->setObjectName("horizontalLayout_13");
-        horizontalLayout_12 = new QHBoxLayout();
-        horizontalLayout_12->setObjectName("horizontalLayout_12");
-        label_7 = new QLabel(widget_6);
-        label_7->setObjectName("label_7");
-        sizePolicy2.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
-        label_7->setSizePolicy(sizePolicy2);
-        label_7->setMinimumSize(QSize(20, 20));
-        label_7->setMaximumSize(QSize(20, 20));
-        label_7->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-log-out-48.png")));
-        label_7->setScaledContents(true);
-
-        horizontalLayout_12->addWidget(label_7);
-
-        pushButton_6 = new QPushButton(widget_6);
-        pushButton_6->setObjectName("pushButton_6");
-        QFont font2;
-        font2.setPointSize(11);
-        pushButton_6->setFont(font2);
-        pushButton_6->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"color:black;\n"
-"	\n"
-"	background-color: rgb(0, 251, 255);\n"
-"padding:5px;\n"
-"border:none;\n"
-"border-radius:7px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background-color: rgb(188, 0, 188);\n"
-"color:white;\n"
-"}"));
-
-        horizontalLayout_12->addWidget(pushButton_6);
-
-
-        horizontalLayout_13->addLayout(horizontalLayout_12);
-
 
         verticalLayout_2->addWidget(widget_6);
 
@@ -454,8 +415,9 @@ public:
         Contact->setObjectName("Contact");
         Contact->setMinimumSize(QSize(200, 30));
         Contact->setMaximumSize(QSize(500, 16777215));
-        QFont font3;
-        Contact->setFont(font3);
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("Sylfaen")});
+        Contact->setFont(font2);
         Contact->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
 "    background-color: rgba(255, 255, 255, 0.05);\n"
 "    color: white;\n"
@@ -494,7 +456,7 @@ public:
         sizePolicy1.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
         label_8->setSizePolicy(sizePolicy1);
         label_8->setMinimumSize(QSize(0, 40));
-        label_8->setFont(font3);
+        label_8->setFont(font2);
         label_8->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "    background-color: rgba(255, 255, 255, 0.05);\n"
 "    color: white;\n"
@@ -509,7 +471,9 @@ public:
         Time = new QTimeEdit(widget_7);
         Time->setObjectName("Time");
         Time->setMinimumSize(QSize(0, 40));
-        Time->setFont(font2);
+        QFont font3;
+        font3.setPointSize(11);
+        Time->setFont(font3);
         Time->setStyleSheet(QString::fromUtf8("QTimeEdit{\n"
 "   color:white;\n"
 "}"));
@@ -536,7 +500,7 @@ public:
         sizePolicy1.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
         label_9->setSizePolicy(sizePolicy1);
         label_9->setMinimumSize(QSize(0, 40));
-        label_9->setFont(font3);
+        label_9->setFont(font2);
         label_9->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "    background-color: rgba(255, 255, 255, 0.05);\n"
 "    color: white;\n"
@@ -551,7 +515,7 @@ public:
         Date = new QDateEdit(widget_8);
         Date->setObjectName("Date");
         Date->setMinimumSize(QSize(0, 40));
-        Date->setFont(font2);
+        Date->setFont(font3);
         Date->setStyleSheet(QString::fromUtf8("QDateEdit{\n"
 "   \n"
 "    color: white;\n"
@@ -572,7 +536,7 @@ public:
         Name->setSizePolicy(sizePolicy2);
         Name->setMinimumSize(QSize(200, 30));
         Name->setMaximumSize(QSize(500, 16777215));
-        Name->setFont(font3);
+        Name->setFont(font2);
         Name->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
 "    background-color: rgba(255, 255, 255, 0.05);\n"
 "    color: white;\n"
@@ -599,7 +563,10 @@ public:
         sizePolicy2.setHeightForWidth(Gotodash_subevent->sizePolicy().hasHeightForWidth());
         Gotodash_subevent->setSizePolicy(sizePolicy2);
         Gotodash_subevent->setMinimumSize(QSize(100, 30));
-        Gotodash_subevent->setFont(font2);
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("Maiandra GD")});
+        font4.setPointSize(11);
+        Gotodash_subevent->setFont(font4);
         Gotodash_subevent->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         Gotodash_subevent->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "color:black;\n"
@@ -620,7 +587,7 @@ public:
         Location->setSizePolicy(sizePolicy2);
         Location->setMinimumSize(QSize(200, 30));
         Location->setMaximumSize(QSize(500, 16777215));
-        Location->setFont(font3);
+        Location->setFont(font2);
         Location->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
 "    background-color: rgba(255, 255, 255, 0.05);\n"
 "    color: white;\n"
@@ -669,10 +636,10 @@ public:
         horizontalLayout_19->setObjectName("horizontalLayout_19");
         label_10 = new QLabel(Topbar);
         label_10->setObjectName("label_10");
-        QFont font4;
-        font4.setFamilies({QString::fromUtf8("Sitka")});
-        font4.setPointSize(17);
-        label_10->setFont(font4);
+        QFont font5;
+        font5.setFamilies({QString::fromUtf8("Sitka")});
+        font5.setPointSize(17);
+        label_10->setFont(font5);
         label_10->setStyleSheet(QString::fromUtf8("color:white;"));
 
         horizontalLayout_19->addWidget(label_10);
@@ -690,12 +657,14 @@ public:
         label_12->setObjectName("label_12");
         label_12->setMinimumSize(QSize(30, 30));
         label_12->setMaximumSize(QSize(30, 30));
+        label_12->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-name-50.png")));
+        label_12->setScaledContents(true);
 
         horizontalLayout_21->addWidget(label_12);
 
         label_11 = new QLabel(widget_9);
         label_11->setObjectName("label_11");
-        label_11->setFont(font4);
+        label_11->setFont(font5);
         label_11->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:10px;"));
 
@@ -755,8 +724,6 @@ public:
         Managing->setText(QCoreApplication::translate("scheduling", "Managing", nullptr));
         label_6->setText(QString());
         Help_Center->setText(QCoreApplication::translate("scheduling", "Help Center", nullptr));
-        label_7->setText(QString());
-        pushButton_6->setText(QCoreApplication::translate("scheduling", "LOG OUT", nullptr));
         Contact->setPlaceholderText(QCoreApplication::translate("scheduling", "Contact Number", nullptr));
         label_8->setText(QCoreApplication::translate("scheduling", "Time of Your Event ", nullptr));
         label_9->setText(QCoreApplication::translate("scheduling", "Date of your Event", nullptr));
@@ -764,7 +731,7 @@ public:
         Gotodash_subevent->setText(QCoreApplication::translate("scheduling", "Save", nullptr));
         Location->setPlaceholderText(QCoreApplication::translate("scheduling", "Location of Event", nullptr));
         label_10->setText(QCoreApplication::translate("scheduling", "Schedule Your Event", nullptr));
-        label_12->setText(QCoreApplication::translate("scheduling", "TextLabel", nullptr));
+        label_12->setText(QString());
         label_11->setText(QCoreApplication::translate("scheduling", "ADMIN", nullptr));
     } // retranslateUi
 

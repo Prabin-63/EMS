@@ -51,6 +51,10 @@ public:
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
+    QWidget *widget_7;
+    QHBoxLayout *horizontalLayout_8;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *pushButton_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -165,10 +169,16 @@ public:
 
         subEventScroll = new QScrollArea(widget_4);
         subEventScroll->setObjectName("subEventScroll");
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(subEventScroll->sizePolicy().hasHeightForWidth());
+        subEventScroll->setSizePolicy(sizePolicy2);
+        subEventScroll->setMinimumSize(QSize(0, 0));
         subEventScroll->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 610, 408));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 610, 364));
         verticalLayout_3 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_3->setObjectName("verticalLayout_3");
         verticalLayout = new QVBoxLayout();
@@ -179,6 +189,26 @@ public:
         subEventScroll->setWidget(scrollAreaWidgetContents);
 
         verticalLayout_2->addWidget(subEventScroll);
+
+        widget_7 = new QWidget(widget_4);
+        widget_7->setObjectName("widget_7");
+        sizePolicy1.setHeightForWidth(widget_7->sizePolicy().hasHeightForWidth());
+        widget_7->setSizePolicy(sizePolicy1);
+        widget_7->setMinimumSize(QSize(0, 40));
+        horizontalLayout_8 = new QHBoxLayout(widget_7);
+        horizontalLayout_8->setObjectName("horizontalLayout_8");
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName("horizontalLayout_5");
+        pushButton_2 = new QPushButton(widget_7);
+        pushButton_2->setObjectName("pushButton_2");
+
+        horizontalLayout_5->addWidget(pushButton_2);
+
+
+        horizontalLayout_8->addLayout(horizontalLayout_5);
+
+
+        verticalLayout_2->addWidget(widget_7);
 
 
         horizontalLayout->addWidget(widget_4);
@@ -203,11 +233,12 @@ public:
     void retranslateUi(QMainWindow *EventDetailPage)
     {
         EventDetailPage->setWindowTitle(QCoreApplication::translate("EventDetailPage", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("EventDetailPage", "PushButton", nullptr));
+        pushButton->setText(QCoreApplication::translate("EventDetailPage", "Ticket", nullptr));
         label_2->setText(QCoreApplication::translate("EventDetailPage", "TextLabel", nullptr));
         label_3->setText(QCoreApplication::translate("EventDetailPage", "TextLabel", nullptr));
         label->setText(QCoreApplication::translate("EventDetailPage", "TextLabel", nullptr));
         label_4->setText(QCoreApplication::translate("EventDetailPage", "TextLabel", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("EventDetailPage", "Ticket", nullptr));
     } // retranslateUi
 
 };

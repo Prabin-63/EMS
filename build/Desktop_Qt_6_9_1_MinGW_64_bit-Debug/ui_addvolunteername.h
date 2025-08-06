@@ -44,31 +44,16 @@ public:
     QPushButton *dashboard_5;
     QWidget *widget_18;
     QHBoxLayout *horizontalLayout_60;
-    QHBoxLayout *horizontalLayout_61;
-    QLabel *label_27;
-    QPushButton *Profile_4;
     QWidget *widget_19;
     QHBoxLayout *horizontalLayout_62;
-    QHBoxLayout *horizontalLayout_63;
-    QLabel *label_28;
-    QPushButton *Booking_4;
     QWidget *widget_20;
     QHBoxLayout *horizontalLayout_64;
-    QHBoxLayout *horizontalLayout_65;
-    QLabel *label_29;
-    QPushButton *Managing_4;
     QWidget *widget_21;
     QHBoxLayout *horizontalLayout_66;
-    QHBoxLayout *horizontalLayout_67;
-    QLabel *label_30;
-    QPushButton *Help_Center_4;
     QSpacerItem *verticalSpacer_6;
     QSpacerItem *verticalSpacer_7;
     QWidget *widget_22;
     QHBoxLayout *horizontalLayout_68;
-    QHBoxLayout *horizontalLayout_69;
-    QLabel *label_31;
-    QPushButton *pushButton_6;
     QSpacerItem *verticalSpacer_8;
     QVBoxLayout *verticalLayout_5;
     QWidget *widget_2;
@@ -87,6 +72,9 @@ public:
     QWidget *scrollAreaWidgetContents;
     QWidget *scrollContent;
     QWidget *widget_4;
+    QHBoxLayout *horizontalLayout_8;
+    QHBoxLayout *horizontalLayout_7;
+    QSpacerItem *horizontalSpacer;
     QPushButton *Savevolunteers;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -207,38 +195,6 @@ public:
         widget_18->setMinimumSize(QSize(0, 40));
         horizontalLayout_60 = new QHBoxLayout(widget_18);
         horizontalLayout_60->setObjectName("horizontalLayout_60");
-        horizontalLayout_61 = new QHBoxLayout();
-        horizontalLayout_61->setObjectName("horizontalLayout_61");
-        label_27 = new QLabel(widget_18);
-        label_27->setObjectName("label_27");
-        sizePolicy2.setHeightForWidth(label_27->sizePolicy().hasHeightForWidth());
-        label_27->setSizePolicy(sizePolicy2);
-        label_27->setMinimumSize(QSize(20, 20));
-        label_27->setMaximumSize(QSize(20, 20));
-        label_27->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-profile-48.png")));
-        label_27->setScaledContents(true);
-
-        horizontalLayout_61->addWidget(label_27);
-
-        Profile_4 = new QPushButton(widget_18);
-        Profile_4->setObjectName("Profile_4");
-        Profile_4->setFont(font1);
-        Profile_4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"color:white;\n"
-"	background-color: rgb(111, 111, 111);\n"
-"padding:5px;\n"
-"border:none;\n"
-"border-radius:7px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background-color: rgb(188, 0, 188);\n"
-"}"));
-
-        horizontalLayout_61->addWidget(Profile_4);
-
-
-        horizontalLayout_60->addLayout(horizontalLayout_61);
-
 
         verticalLayout_7->addWidget(widget_18);
 
@@ -249,38 +205,6 @@ public:
         widget_19->setMinimumSize(QSize(0, 40));
         horizontalLayout_62 = new QHBoxLayout(widget_19);
         horizontalLayout_62->setObjectName("horizontalLayout_62");
-        horizontalLayout_63 = new QHBoxLayout();
-        horizontalLayout_63->setObjectName("horizontalLayout_63");
-        label_28 = new QLabel(widget_19);
-        label_28->setObjectName("label_28");
-        sizePolicy2.setHeightForWidth(label_28->sizePolicy().hasHeightForWidth());
-        label_28->setSizePolicy(sizePolicy2);
-        label_28->setMinimumSize(QSize(20, 20));
-        label_28->setMaximumSize(QSize(20, 20));
-        label_28->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-booking-48.png")));
-        label_28->setScaledContents(true);
-
-        horizontalLayout_63->addWidget(label_28);
-
-        Booking_4 = new QPushButton(widget_19);
-        Booking_4->setObjectName("Booking_4");
-        Booking_4->setFont(font1);
-        Booking_4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"color:white;\n"
-"	background-color: rgb(111, 111, 111);\n"
-"padding:5px;\n"
-"border:none;\n"
-"border-radius:7px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background-color: rgb(188, 0, 188);\n"
-"}"));
-
-        horizontalLayout_63->addWidget(Booking_4);
-
-
-        horizontalLayout_62->addLayout(horizontalLayout_63);
-
 
         verticalLayout_7->addWidget(widget_19);
 
@@ -291,38 +215,6 @@ public:
         widget_20->setMinimumSize(QSize(0, 40));
         horizontalLayout_64 = new QHBoxLayout(widget_20);
         horizontalLayout_64->setObjectName("horizontalLayout_64");
-        horizontalLayout_65 = new QHBoxLayout();
-        horizontalLayout_65->setObjectName("horizontalLayout_65");
-        label_29 = new QLabel(widget_20);
-        label_29->setObjectName("label_29");
-        sizePolicy2.setHeightForWidth(label_29->sizePolicy().hasHeightForWidth());
-        label_29->setSizePolicy(sizePolicy2);
-        label_29->setMinimumSize(QSize(20, 20));
-        label_29->setMaximumSize(QSize(20, 20));
-        label_29->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-hierarchy-48.png")));
-        label_29->setScaledContents(true);
-
-        horizontalLayout_65->addWidget(label_29);
-
-        Managing_4 = new QPushButton(widget_20);
-        Managing_4->setObjectName("Managing_4");
-        Managing_4->setFont(font1);
-        Managing_4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"color:white;\n"
-"	background-color: rgb(111, 111, 111);\n"
-"padding:5px;\n"
-"border:none;\n"
-"border-radius:7px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background-color: rgb(188, 0, 188);\n"
-"}"));
-
-        horizontalLayout_65->addWidget(Managing_4);
-
-
-        horizontalLayout_64->addLayout(horizontalLayout_65);
-
 
         verticalLayout_7->addWidget(widget_20);
 
@@ -333,38 +225,6 @@ public:
         widget_21->setMinimumSize(QSize(0, 40));
         horizontalLayout_66 = new QHBoxLayout(widget_21);
         horizontalLayout_66->setObjectName("horizontalLayout_66");
-        horizontalLayout_67 = new QHBoxLayout();
-        horizontalLayout_67->setObjectName("horizontalLayout_67");
-        label_30 = new QLabel(widget_21);
-        label_30->setObjectName("label_30");
-        sizePolicy2.setHeightForWidth(label_30->sizePolicy().hasHeightForWidth());
-        label_30->setSizePolicy(sizePolicy2);
-        label_30->setMinimumSize(QSize(20, 20));
-        label_30->setMaximumSize(QSize(20, 20));
-        label_30->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-help-center-48.png")));
-        label_30->setScaledContents(true);
-
-        horizontalLayout_67->addWidget(label_30);
-
-        Help_Center_4 = new QPushButton(widget_21);
-        Help_Center_4->setObjectName("Help_Center_4");
-        Help_Center_4->setFont(font1);
-        Help_Center_4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"color:white;\n"
-"	background-color: rgb(111, 111, 111);\n"
-"padding:5px;\n"
-"border:none;\n"
-"border-radius:7px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background-color: rgb(188, 0, 188);\n"
-"}"));
-
-        horizontalLayout_67->addWidget(Help_Center_4);
-
-
-        horizontalLayout_66->addLayout(horizontalLayout_67);
-
 
         verticalLayout_7->addWidget(widget_21);
 
@@ -383,42 +243,6 @@ public:
         widget_22->setMinimumSize(QSize(0, 40));
         horizontalLayout_68 = new QHBoxLayout(widget_22);
         horizontalLayout_68->setObjectName("horizontalLayout_68");
-        horizontalLayout_69 = new QHBoxLayout();
-        horizontalLayout_69->setObjectName("horizontalLayout_69");
-        label_31 = new QLabel(widget_22);
-        label_31->setObjectName("label_31");
-        sizePolicy2.setHeightForWidth(label_31->sizePolicy().hasHeightForWidth());
-        label_31->setSizePolicy(sizePolicy2);
-        label_31->setMinimumSize(QSize(20, 20));
-        label_31->setMaximumSize(QSize(20, 20));
-        label_31->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-log-out-48.png")));
-        label_31->setScaledContents(true);
-
-        horizontalLayout_69->addWidget(label_31);
-
-        pushButton_6 = new QPushButton(widget_22);
-        pushButton_6->setObjectName("pushButton_6");
-        QFont font2;
-        font2.setPointSize(11);
-        pushButton_6->setFont(font2);
-        pushButton_6->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"color:black;\n"
-"	\n"
-"	background-color: rgb(0, 251, 255);\n"
-"padding:5px;\n"
-"border:none;\n"
-"border-radius:7px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background-color: rgb(188, 0, 188);\n"
-"color:white;\n"
-"}"));
-
-        horizontalLayout_69->addWidget(pushButton_6);
-
-
-        horizontalLayout_68->addLayout(horizontalLayout_69);
-
 
         verticalLayout_7->addWidget(widget_22);
 
@@ -456,10 +280,10 @@ public:
         horizontalLayout_3->setObjectName("horizontalLayout_3");
         label = new QLabel(widget_3);
         label->setObjectName("label");
-        QFont font3;
-        font3.setFamilies({QString::fromUtf8("Sitka")});
-        font3.setPointSize(16);
-        label->setFont(font3);
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("Sitka")});
+        font2.setPointSize(16);
+        label->setFont(font2);
         label->setStyleSheet(QString::fromUtf8("color:white;"));
 
         horizontalLayout_3->addWidget(label);
@@ -484,10 +308,10 @@ public:
 
         label_2 = new QLabel(widget_5);
         label_2->setObjectName("label_2");
-        QFont font4;
-        font4.setFamilies({QString::fromUtf8("Sitka")});
-        font4.setPointSize(17);
-        label_2->setFont(font4);
+        QFont font3;
+        font3.setFamilies({QString::fromUtf8("Sitka")});
+        font3.setPointSize(17);
+        label_2->setFont(font3);
         label_2->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:10px;"));
 
@@ -510,7 +334,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 574, 426));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 574, 422));
         scrollContent = new QWidget(scrollAreaWidgetContents);
         scrollContent->setObjectName("scrollContent");
         scrollContent->setGeometry(QRect(0, 0, 581, 461));
@@ -526,14 +350,41 @@ public:
         sizePolicy1.setHeightForWidth(widget_4->sizePolicy().hasHeightForWidth());
         widget_4->setSizePolicy(sizePolicy1);
         widget_4->setMinimumSize(QSize(0, 40));
+        horizontalLayout_8 = new QHBoxLayout(widget_4);
+        horizontalLayout_8->setObjectName("horizontalLayout_8");
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer);
+
         Savevolunteers = new QPushButton(widget_4);
         Savevolunteers->setObjectName("Savevolunteers");
-        Savevolunteers->setGeometry(QRect(530, 0, 60, 18));
-        Savevolunteers->setMinimumSize(QSize(60, 0));
-        Savevolunteers->setMaximumSize(QSize(60, 16777215));
-        Savevolunteers->setStyleSheet(QString::fromUtf8("background-color:rgb(55,55,55);\n"
+        sizePolicy2.setHeightForWidth(Savevolunteers->sizePolicy().hasHeightForWidth());
+        Savevolunteers->setSizePolicy(sizePolicy2);
+        Savevolunteers->setMinimumSize(QSize(140, 30));
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("Arial Rounded MT")});
+        font4.setPointSize(15);
+        font4.setBold(true);
+        Savevolunteers->setFont(font4);
+        Savevolunteers->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-color:rgb(55,55,55);\n"
 "color:white;\n"
-"border:none;"));
+"border:none;\n"
+"border-radius:10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"\n"
+"	background-color: rgb(255, 170, 255);\n"
+"color:black;\n"
+"}"));
+
+        horizontalLayout_7->addWidget(Savevolunteers);
+
+
+        horizontalLayout_8->addLayout(horizontalLayout_7);
+
 
         verticalLayout_2->addWidget(widget_4);
 
@@ -563,16 +414,6 @@ public:
         label_20->setText(QCoreApplication::translate("AddVolunteerName", "EVENTRA", nullptr));
         label_26->setText(QString());
         dashboard_5->setText(QCoreApplication::translate("AddVolunteerName", "DashBoard", nullptr));
-        label_27->setText(QString());
-        Profile_4->setText(QCoreApplication::translate("AddVolunteerName", "Profile", nullptr));
-        label_28->setText(QString());
-        Booking_4->setText(QCoreApplication::translate("AddVolunteerName", "Booking", nullptr));
-        label_29->setText(QString());
-        Managing_4->setText(QCoreApplication::translate("AddVolunteerName", "Managing", nullptr));
-        label_30->setText(QString());
-        Help_Center_4->setText(QCoreApplication::translate("AddVolunteerName", "Help Center", nullptr));
-        label_31->setText(QString());
-        pushButton_6->setText(QCoreApplication::translate("AddVolunteerName", "LOG OUT", nullptr));
         label->setText(QCoreApplication::translate("AddVolunteerName", "Add Volunteer and Assign ", nullptr));
         label_3->setText(QString());
         label_2->setText(QCoreApplication::translate("AddVolunteerName", "ADMIN", nullptr));

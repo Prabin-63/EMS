@@ -1,5 +1,4 @@
 #include "eventdetailpage.h"
-#include "ticketwindow.h"
 
 #include <QLabel>
 #include <QVBoxLayout>
@@ -9,21 +8,23 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QHBoxLayout>
 
 EventDetailPage::EventDetailPage(int userId, QWidget *parent)
     : QWidget(parent), currentUserId(userId)
 {
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    QHBoxLayout *outerLayout = new QHBoxLayout(this);
+    QVBoxLayout *mainLayout = new QVBoxLayout();
 
     QPushButton *backButton = new QPushButton("← Go Back", this);
     backButton->setStyleSheet("background-color: #d9534f; color: white; padding: 6px; font-weight: bold;");
     backButton->setFixedWidth(120);
-
     connect(backButton, &QPushButton::clicked, this, [this]() {
         emit backButtonClicked();
         this->close();
     });
-
     mainLayout->addWidget(backButton);
 
     eventNameLabel = new QLabel("Event Name", this);
@@ -43,6 +44,7 @@ EventDetailPage::EventDetailPage(int userId, QWidget *parent)
     scrollArea->setStyleSheet("border: none;");
 
     subEventContainer = new QWidget();
+    subEventContainer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     subEventLayout = new QVBoxLayout(subEventContainer);
     subEventLayout->setAlignment(Qt::AlignTop);
     subEventContainer->setLayout(subEventLayout);
@@ -50,7 +52,15 @@ EventDetailPage::EventDetailPage(int userId, QWidget *parent)
     scrollArea->setWidget(subEventContainer);
     mainLayout->addWidget(scrollArea);
 
-    setLayout(mainLayout);
+    mainLayout->addStretch();
+
+    QVBoxLayout *centeredColumn = new QVBoxLayout();
+    centeredColumn->addLayout(mainLayout);
+    centeredColumn->addStretch();
+
+    outerLayout->addStretch();
+    outerLayout->addLayout(centeredColumn);
+    outerLayout->addStretch();
 }
 
 void EventDetailPage::loadEventDetails(int eventId)
@@ -92,7 +102,7 @@ void EventDetailPage::loadEventDetails(int eventId)
             QWidget *subEventWidget = new QWidget();
             QHBoxLayout *subLayout = new QHBoxLayout(subEventWidget);
 
-            QLabel *details = new QLabel(subName + "\nLocation: " + subLocation + "\nTime: " + subTime + "\nContact: " + contact);
+            QLabel *details = new QLabel("<b>" + subName + "</b>\nLocation: " + subLocation + "\nTime: " + subTime + "\nContact: " + contact);
 
             QPushButton *bookBtn = new QPushButton("Book");
             bookBtn->setFixedWidth(100);
@@ -148,27 +158,6 @@ void EventDetailPage::loadEventDetails(int eventId)
                     bookBtn->setText("Booked");
                     bookBtn->setEnabled(false);
                     bookBtn->setStyleSheet("background-color: gray; color: white; padding: 5px; border-radius: 4px;");
-
-                    QString userName = "User";
-                    QSqlQuery nameQuery;
-                    nameQuery.prepare("SELECT name FROM users WHERE id = :id");
-                    nameQuery.bindValue(":id", currentUserId);
-                    if (nameQuery.exec() && nameQuery.next()) {
-                        userName = nameQuery.value(0).toString();
-                    }
-
-                    // ✅ Create and show ticket window
-                    ticketwindow *ticket = new ticketwindow(
-                        userName,
-                        eventNameLabel->text(),
-                        subName,
-                        subLocation,
-                        subTime,
-                        nullptr // Important! No parent = standalone dialog
-                        );
-                    ticket->setAttribute(Qt::WA_DeleteOnClose);
-                    ticket->show();
-                    qDebug() << "✅ Ticket window opened!";
                 } else {
                     QMessageBox::critical(this, "Booking Failed", "Could not complete booking: " + bookingQuery.lastError().text());
                 }

@@ -9,13 +9,16 @@
 #include <QDebug>
 #include<profile.h>
 #include<scheduling.h>
+#include<booking.h>
 
 #include<helpcenter.h>
 
-Booking::Booking(QWidget *parent) :
+Booking::Booking(dashboard *dashPtr,QWidget *parent) :
      QMainWindow(parent),
     ui(new Ui::Booking),
-    bookingModel(nullptr)
+    bookingModel(nullptr),
+dash(dashPtr),
+dashboardWindow(nullptr)
 {
     ui->setupUi(this);
 
@@ -92,7 +95,7 @@ void Booking::loadBookingTable()
 void Booking::refreshTable()
 {
     if (bookingModel) {
-        bookingModel->select();  // Reload data
+        bookingModel->select();
     }
 }
 
@@ -154,7 +157,7 @@ void Booking::on_Managing_clicked()
 
 void Booking::on_Help_Center_clicked()
 {
-    help =new HelpCenter();
+    help =new HelpCenter(dash);
     help->show();
     this->close();
 }

@@ -49,6 +49,10 @@ dashboard::dashboard(int userId, login *loginWindow, QWidget *parent)
     ui->volunteerSummaryWidget->setVisible(false);
     ui->subeventSummaryWidget->setVisible(false);
     ui->Viewvolunteers->setVisible(false);
+    ui->volunteerNamesWidget->setVisible(false);
+    ui->pieChartContainer->setVisible(false);
+    ui->widget_11->setVisible(false);
+    ui->chartContainer->setVisible(false);
 
 
 
@@ -154,18 +158,18 @@ void dashboard::createVolunteerLineChart(int eventId)
     chart->setTitle("Volunteers per Sub-Event");
     chart->legend()->hide();
 
-    series->setPen(QPen(QColor(188, 0, 188), 2));   // Purple pen, thickness 2
+    series->setPen(QPen(QColor(188, 0, 188), 2));
     series->setPointsVisible(true);
-    series->setColor(QColor(188, 0, 188));          // Also set color explicitly
+    series->setColor(QColor(188, 0, 188));
 
-    // Create chart and disable theme override
+
 
     chart->setTheme(QChart::ChartThemeLight);
 
-    // X-axis (Category)
+    // X-axis
     QCategoryAxis *axisX = new QCategoryAxis();
     axisX->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
-   axisX->setGridLinePen(QPen(Qt::NoPen));  // ❌ Hide grid lines
+   axisX->setGridLinePen(QPen(Qt::NoPen));
 
     for (int i = 0; i < subEventNames.size(); ++i) {
         axisX->append(subEventNames[i], i);
@@ -174,11 +178,11 @@ void dashboard::createVolunteerLineChart(int eventId)
     chart->addAxis(axisX, Qt::AlignBottom);
     series->attachAxis(axisX);
 
-    // Y-axis (Value)
+    // Y-axis
     QValueAxis *axisY = new QValueAxis();
     axisY->setTitleText("Volunteers");
     axisY->setLabelFormat("%d");
-    axisY->setGridLinePen(QPen(Qt::NoPen));  // ❌ Hide grid lines
+    axisY->setGridLinePen(QPen(Qt::NoPen));
 
     chart->addAxis(axisY, Qt::AlignLeft);
     series->attachAxis(axisY);
@@ -192,11 +196,12 @@ void dashboard::createVolunteerLineChart(int eventId)
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     ui->chartContainer->layout()->addWidget(chartView);
+    ui->chartContainer->setVisible(true);
 }
 
 void dashboard::loadVolunteerNames(int eventId)
 {
-    // 🧹 Remove old layout if exists
+    // Remove old layout if exists
     if (volunteerLayout) {
         QLayoutItem *item;
         while ((item = volunteerLayout->takeAt(0)) != nullptr) {
@@ -206,17 +211,17 @@ void dashboard::loadVolunteerNames(int eventId)
         delete volunteerLayout;
     }
 
-    // 🧱 Create a new layout
+    // Create a new layout
     volunteerLayout = new QVBoxLayout();
     volunteerLayout->setAlignment(Qt::AlignTop);
 
-    // 🏷️ Add title
+    //  Add title
     QLabel *titleLabel = new QLabel("Volunteers Name");
     titleLabel->setStyleSheet("color: white; font-size: 24px; font-weight: bold;");
     titleLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     volunteerLayout->addWidget(titleLabel);
 
-    // 📋 Load names from DB
+    //  Load names from DB
     QSqlQuery query;
     query.prepare("SELECT name FROM volunteers WHERE event_id = ?");
     query.addBindValue(eventId);
@@ -247,9 +252,11 @@ void dashboard::loadVolunteerNames(int eventId)
         volunteerLayout->addWidget(errorLabel);
     }
 
-    // 📌 Set new layout to the widget inside QScrollArea
+    //  Set new layout to the widget inside QScrollArea
     ui->volunteerNamesWidget->setLayout(volunteerLayout);
     ui->volunteerNamesWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    ui->volunteerNamesWidget->setVisible(true);
+    ui->widget_11->setVisible(true);
 }
 
 
@@ -264,7 +271,7 @@ void dashboard::loadSubEventTable(int eventId)
         return;
     }
 
-    ui->subEventTable->clear(); // 🧹 Reset headers too
+    ui->subEventTable->clear(); //  Reset headers
     ui->subEventTable->setRowCount(0);
     ui->subEventTable->setColumnCount(4);
     ui->subEventTable->setHorizontalHeaderLabels(QStringList() << "Sub-Event" << "Location" << "Time" << "Contact");
@@ -373,6 +380,7 @@ void dashboard::createBookingBarChart(int eventId) {
     }
 
     ui->pieChartContainer->layout()->addWidget(chartView);
+    ui->pieChartContainer->setVisible(true);
 }
 
 
@@ -456,7 +464,7 @@ void dashboard::on_Profile_clicked()
 }
 void dashboard::on_Booking_clicked()
 {
-    Booking* bt = new Booking();
+    Booking* bt = new Booking(dash);
     bt->show();
     this->close();
 }
@@ -469,6 +477,7 @@ void dashboard::on_Volunteer_clicked()
     }
     AddVolunteerName *volunteerPage = new AddVolunteerName(eventId);
     volunteerPage->show();
+    this->close();
 }
 
 
@@ -483,7 +492,7 @@ void dashboard::on_viewvolunteer_clicked()
 }
 void dashboard::on_Logout_clicked()
 {
-    this->hide();             // Hide dashboard
+    this->hide();
     if (loginWindow) {
         loginWindow->show();
     }        // Show login window again
@@ -493,7 +502,7 @@ void dashboard::on_Logout_clicked()
 
 void dashboard::on_Help_Center_clicked()
 {
-    help =new HelpCenter();
+    help =new HelpCenter(dash);
     help->show();
     this->close();
 }

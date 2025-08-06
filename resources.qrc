@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>resources/Eventra  A Event Management system.jpg</file>
+        <file>resources/e1.jpg</file>
         <file>resources/icons8-play-100.png</file>
         <file>resources/USER LOGIN (6).jpg</file>
         <file>resources/USER LOGIN.png</file>
@@ -8,7 +8,7 @@
         <file>resources/icons8-password-50.png</file>
         <file>resources/icons8-call-50.png</file>
         <file>resources/icons8-name-50.png</file>
-        <file>resources/Eventra__A_Event_Management_system-removebg-preview.png</file>
+        <file>resources/e.png</file>
         <file>resources/icons8-booking-48.png</file>
         <file>resources/icons8-dashboard-50.png</file>
         <file>resources/icons8-help-center-48.png</file>

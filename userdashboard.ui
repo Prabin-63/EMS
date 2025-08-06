@@ -123,11 +123,35 @@ border-radius:20px;</string>
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-color: rgb(0, 251, 255);
-border-radius:10px;</string>
+                   <string notr="true">background-color: rgb(254, 173, 33);
+border-radius:10px;
+color:white;</string>
                   </property>
                   <property name="text">
                    <string>Logout</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>16</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(254, 173, 33);
+border-radius:10px;
+color:white;</string>
+                  </property>
+                  <property name="text">
+                   <string>Ticket</string>
                   </property>
                  </widget>
                 </item>
@@ -154,7 +178,7 @@ border-radius:10px;</string>
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>300</width>
+                    <width>233</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -182,7 +206,13 @@ border-radius:10px;</string>
                         </size>
                        </property>
                        <property name="text">
-                        <string>TextLabel</string>
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="resources.qrc">:/resources/icons8-profile-48.png</pixmap>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
                        </property>
                       </widget>
                      </item>
@@ -194,6 +224,9 @@ border-radius:10px;</string>
                          <pointsize>19</pointsize>
                          <bold>true</bold>
                         </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color:white;</string>
                        </property>
                        <property name="text">
                         <string>TextLabel</string>
@@ -267,6 +300,8 @@ border-radius:10px;</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

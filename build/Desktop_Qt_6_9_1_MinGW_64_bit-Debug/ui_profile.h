@@ -67,8 +67,6 @@ public:
     QWidget *widget_13;
     QHBoxLayout *horizontalLayout_21;
     QHBoxLayout *horizontalLayout_22;
-    QLabel *label_14;
-    QPushButton *pushButton_6;
     QSpacerItem *verticalSpacer_3;
     QWidget *widget_2;
     QVBoxLayout *verticalLayout_2;
@@ -389,37 +387,6 @@ public:
         horizontalLayout_21->setObjectName("horizontalLayout_21");
         horizontalLayout_22 = new QHBoxLayout();
         horizontalLayout_22->setObjectName("horizontalLayout_22");
-        label_14 = new QLabel(widget_13);
-        label_14->setObjectName("label_14");
-        sizePolicy2.setHeightForWidth(label_14->sizePolicy().hasHeightForWidth());
-        label_14->setSizePolicy(sizePolicy2);
-        label_14->setMinimumSize(QSize(20, 20));
-        label_14->setMaximumSize(QSize(20, 20));
-        label_14->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-log-out-48.png")));
-        label_14->setScaledContents(true);
-
-        horizontalLayout_22->addWidget(label_14);
-
-        pushButton_6 = new QPushButton(widget_13);
-        pushButton_6->setObjectName("pushButton_6");
-        QFont font2;
-        font2.setPointSize(11);
-        pushButton_6->setFont(font2);
-        pushButton_6->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"color:black;\n"
-"	\n"
-"	background-color: rgb(0, 251, 255);\n"
-"padding:5px;\n"
-"border:none;\n"
-"border-radius:7px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background-color: rgb(188, 0, 188);\n"
-"color:white;\n"
-"}"));
-
-        horizontalLayout_22->addWidget(pushButton_6);
-
 
         horizontalLayout_21->addLayout(horizontalLayout_22);
 
@@ -452,9 +419,9 @@ public:
         horizontalLayout_7->setObjectName("horizontalLayout_7");
         label_5 = new QLabel(widget_3);
         label_5->setObjectName("label_5");
-        QFont font3;
-        font3.setPointSize(15);
-        label_5->setFont(font3);
+        QFont font2;
+        font2.setPointSize(15);
+        label_5->setFont(font2);
         label_5->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:20px;"));
 
@@ -482,7 +449,7 @@ public:
 
         label_6 = new QLabel(widget_7);
         label_6->setObjectName("label_6");
-        label_6->setFont(font3);
+        label_6->setFont(font2);
         label_6->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:20px;"));
 
@@ -533,10 +500,10 @@ public:
 
         label = new QLabel(widget_5);
         label->setObjectName("label");
-        QFont font4;
-        font4.setFamilies({QString::fromUtf8("Rockwell")});
-        font4.setPointSize(34);
-        label->setFont(font4);
+        QFont font3;
+        font3.setFamilies({QString::fromUtf8("Rockwell")});
+        font3.setPointSize(34);
+        label->setFont(font3);
         label->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:30px;"));
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
@@ -605,8 +572,6 @@ public:
         Managing->setText(QCoreApplication::translate("Profile", "Managing", nullptr));
         label_13->setText(QString());
         Help_Center->setText(QCoreApplication::translate("Profile", "Help Center", nullptr));
-        label_14->setText(QString());
-        pushButton_6->setText(QCoreApplication::translate("Profile", "LOG OUT", nullptr));
         label_5->setText(QCoreApplication::translate("Profile", "PROFILE", nullptr));
         label_7->setText(QString());
         label_6->setText(QCoreApplication::translate("Profile", "ADMIN", nullptr));

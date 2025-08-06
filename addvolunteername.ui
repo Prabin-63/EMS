@@ -201,68 +201,7 @@ QPushButton:hover{
                 <height>40</height>
                </size>
               </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_60">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_61">
-                 <item>
-                  <widget class="QLabel" name="label_27">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap resource="resources.qrc">:/resources/icons8-profile-48.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="Profile_4">
-                   <property name="font">
-                    <font>
-                     <family>Segoe Fluent Icons</family>
-                     <pointsize>10</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-color:white;
-	background-color: rgb(111, 111, 111);
-padding:5px;
-border:none;
-border-radius:7px;
-}
-QPushButton:hover{
-	background-color: rgb(188, 0, 188);
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Profile</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
+              <layout class="QHBoxLayout" name="horizontalLayout_60"/>
              </widget>
             </item>
             <item>
@@ -279,68 +218,7 @@ QPushButton:hover{
                 <height>40</height>
                </size>
               </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_62">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_63">
-                 <item>
-                  <widget class="QLabel" name="label_28">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap resource="resources.qrc">:/resources/icons8-booking-48.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="Booking_4">
-                   <property name="font">
-                    <font>
-                     <family>Segoe Fluent Icons</family>
-                     <pointsize>10</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-color:white;
-	background-color: rgb(111, 111, 111);
-padding:5px;
-border:none;
-border-radius:7px;
-}
-QPushButton:hover{
-	background-color: rgb(188, 0, 188);
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Booking</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
+              <layout class="QHBoxLayout" name="horizontalLayout_62"/>
              </widget>
             </item>
             <item>
@@ -357,68 +235,7 @@ QPushButton:hover{
                 <height>40</height>
                </size>
               </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_64">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_65">
-                 <item>
-                  <widget class="QLabel" name="label_29">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap resource="resources.qrc">:/resources/icons8-hierarchy-48.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="Managing_4">
-                   <property name="font">
-                    <font>
-                     <family>Segoe Fluent Icons</family>
-                     <pointsize>10</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-color:white;
-	background-color: rgb(111, 111, 111);
-padding:5px;
-border:none;
-border-radius:7px;
-}
-QPushButton:hover{
-	background-color: rgb(188, 0, 188);
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Managing</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
+              <layout class="QHBoxLayout" name="horizontalLayout_64"/>
              </widget>
             </item>
             <item>
@@ -435,68 +252,7 @@ QPushButton:hover{
                 <height>40</height>
                </size>
               </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_66">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_67">
-                 <item>
-                  <widget class="QLabel" name="label_30">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap resource="resources.qrc">:/resources/icons8-help-center-48.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="Help_Center_4">
-                   <property name="font">
-                    <font>
-                     <family>Segoe Fluent Icons</family>
-                     <pointsize>10</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-color:white;
-	background-color: rgb(111, 111, 111);
-padding:5px;
-border:none;
-border-radius:7px;
-}
-QPushButton:hover{
-	background-color: rgb(188, 0, 188);
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Help Center</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
+              <layout class="QHBoxLayout" name="horizontalLayout_66"/>
              </widget>
             </item>
             <item>
@@ -539,69 +295,7 @@ QPushButton:hover{
                 <height>40</height>
                </size>
               </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_68">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_69">
-                 <item>
-                  <widget class="QLabel" name="label_31">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap resource="resources.qrc">:/resources/icons8-log-out-48.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_6">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-color:black;
-	
-	background-color: rgb(0, 251, 255);
-padding:5px;
-border:none;
-border-radius:7px;
-}
-QPushButton:hover{
-	background-color: rgb(188, 0, 188);
-color:white;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>LOG OUT</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
+              <layout class="QHBoxLayout" name="horizontalLayout_68"/>
              </widget>
             </item>
             <item>
@@ -748,7 +442,7 @@ padding-left:10px;</string>
                 <x>0</x>
                 <y>0</y>
                 <width>574</width>
-                <height>426</height>
+                <height>422</height>
                </rect>
               </property>
               <widget class="QWidget" name="scrollContent" native="true">
@@ -780,36 +474,64 @@ padding-left:10px;</string>
              <height>40</height>
             </size>
            </property>
-           <widget class="QPushButton" name="Savevolunteers">
-            <property name="geometry">
-             <rect>
-              <x>530</x>
-              <y>0</y>
-              <width>60</width>
-              <height>18</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>60</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>60</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color:rgb(55,55,55);
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="Savevolunteers">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>140</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Arial Rounded MT</family>
+                  <pointsize>15</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+background-color:rgb(55,55,55);
 color:white;
-border:none;</string>
-            </property>
-            <property name="text">
-             <string>Save</string>
-            </property>
-           </widget>
+border:none;
+border-radius:10px;
+}
+QPushButton:hover{
+
+	background-color: rgb(255, 170, 255);
+color:black;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Save</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>

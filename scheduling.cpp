@@ -10,16 +10,16 @@
 #include "sessionmanager.h"
 #include <placemanage.h>
 #include <dashboard.h>
-#include<profile.h>
-#include<booking.h>
-#include<helpcenter.h>
+#include <profile.h>
+#include <booking.h>
+#include <helpcenter.h>
 
 scheduling::scheduling(dashboard *dash, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::scheduling),
     place_manage(nullptr),
     dashboardWindow(nullptr),
-    dash(dash), //
+    dash(dash),
     prof(nullptr)
 {
     ui->setupUi(this);
@@ -42,7 +42,8 @@ void scheduling::on_Gotodash_subevent_clicked()
     QString time = ui->Time->text().trimmed();
     QString contact = ui->Contact->text().trimmed();
 
-    // Validate fields
+    // Validate inputs before inserting
+
     if (name.isEmpty() || venue.isEmpty() || date.isEmpty() || time.isEmpty() || contact.isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill in all fields.");
         return;
@@ -73,13 +74,13 @@ void scheduling::on_Gotodash_subevent_clicked()
         return;
     }
 
-    // Ensure DB is open
+    // Check database connection
     if (!QSqlDatabase::database().isOpen()) {
         QMessageBox::critical(this, "Database Error", "Database connection is not open.");
         return;
     }
 
-    // Prepare and execute SQL query
+    // Insert event
     QSqlQuery query;
     query.prepare("INSERT INTO events (user_id, name, venue, date, time, organizer_contact) "
                   "VALUES (:user_id, :name, :venue, :date, :time, :contact)");
@@ -96,14 +97,7 @@ void scheduling::on_Gotodash_subevent_clicked()
         return;
     }
 
-
-    // Get last inserted ID
-
-
-      qint64 lastId = query.lastInsertId().toLongLong();
-      query.finish();
-      query.clear();
-
+    qint64 lastId = query.lastInsertId().toLongLong();
 
     // Show success message
     QMessageBox::information(this, "Success", "Event scheduled successfully!");
@@ -115,21 +109,24 @@ void scheduling::on_Gotodash_subevent_clicked()
     ui->Time->clear();
     ui->Contact->clear();
 
-    // Ask to manage subevent
+    // Ask to manage sub-events
     QMessageBox::StandardButton reply = QMessageBox::question(this,
                                                               "Manage Sub Event",
                                                               "Do you want to manage sub event?",
                                                               QMessageBox::Yes | QMessageBox::No);
 
     if (reply == QMessageBox::Yes) {
+        // Delete old placemanage window if exists
         if (place_manage) {
             delete place_manage;
+            place_manage = nullptr;
         }
+        // Create new placemanage window passing userId and last inserted event ID
         place_manage = new placemanage(userId, static_cast<int>(lastId));
         place_manage->show();
-        this->close();
+        this->close();  // Close current scheduling window only if placemanage opens
     }
-    // If "No", just stay on the current window or optionally close.
+    // If "No", just stay on the current window (don’t close or open anything else)
 }
 
 void scheduling::on_dashboard_2_clicked()
@@ -150,25 +147,21 @@ void scheduling::on_dashboard_2_clicked()
 
 void scheduling::on_Profile_clicked()
 {
-
-    prof=new Profile(dash);
+    prof = new Profile(dash);
     prof->show();
     this->close();
 }
 
-
 void scheduling::on_Booking_clicked()
 {
-    book=new Booking();
+    book = new Booking(dash);
     book->show();
     this->close();
 }
 
-
 void scheduling::on_Help_Center_clicked()
 {
-    help=new HelpCenter();
+    help = new HelpCenter(dash);
     help->show();
     this->close();
 }
-

@@ -512,69 +512,7 @@ QPushButton:hover{
              <height>40</height>
             </size>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_13">
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_12">
-              <item>
-               <widget class="QLabel" name="label_7">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="resources.qrc">:/resources/icons8-log-out-48.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_6">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-color:black;
-	
-	background-color: rgb(0, 251, 255);
-padding:5px;
-border:none;
-border-radius:7px;
-}
-QPushButton:hover{
-	background-color: rgb(188, 0, 188);
-color:white;
-}</string>
-                </property>
-                <property name="text">
-                 <string>LOG OUT</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
+           <layout class="QHBoxLayout" name="horizontalLayout_13"/>
           </widget>
          </item>
          <item>
@@ -619,6 +557,7 @@ color:white;
               </property>
               <property name="font">
                <font>
+                <family>Sylfaen</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -683,6 +622,7 @@ color:black;
                    </property>
                    <property name="font">
                     <font>
+                     <family>Sylfaen</family>
                      <pointsize>-1</pointsize>
                     </font>
                    </property>
@@ -759,6 +699,7 @@ color:black;
                    </property>
                    <property name="font">
                     <font>
+                     <family>Sylfaen</family>
                      <pointsize>-1</pointsize>
                     </font>
                    </property>
@@ -826,6 +767,7 @@ color:black;
               </property>
               <property name="font">
                <font>
+                <family>Sylfaen</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -870,6 +812,7 @@ color:black;
               </property>
               <property name="font">
                <font>
+                <family>Maiandra GD</family>
                 <pointsize>11</pointsize>
                </font>
               </property>
@@ -915,6 +858,7 @@ color:white;
               </property>
               <property name="font">
                <font>
+                <family>Sylfaen</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1034,7 +978,13 @@ border-radius:20px;
                       </size>
                      </property>
                      <property name="text">
-                      <string>TextLabel</string>
+                      <string/>
+                     </property>
+                     <property name="pixmap">
+                      <pixmap resource="resources.qrc">:/resources/icons8-name-50.png</pixmap>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>

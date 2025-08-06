@@ -25,7 +25,7 @@ class Booking : public QMainWindow   // <-- Change back to QMainWindow
     Q_OBJECT
 
 public:
-    explicit Booking(QWidget *parent = nullptr);
+    explicit Booking(dashboard *dashPtr,QWidget *parent = nullptr);
     ~Booking();
 
 private slots:

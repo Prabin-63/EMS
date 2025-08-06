@@ -17,7 +17,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_Gotologin_clicked()
 {
     this->close();
-    if (!log_in) { // avoid multiple windows
+    if (!log_in) {
         log_in = new login(this);
     }
     log_in->show();

@@ -7,7 +7,7 @@
 #include "sessionmanager.h"
 #include "dashboard.h"
 #include "signup.h"
-#include "userdashboard.h"   // Use quotes and correct filename
+#include "userdashboard.h"
 
 login::login(QWidget *parent)
     : QMainWindow(parent)
@@ -66,7 +66,7 @@ void login::on_Gotodash_clicked()
         SessionManager::instance().setUserId(userId);
         qDebug() << "Session user ID set to:" << SessionManager::instance().getUserId();
 
-        udash = new UserDashboard(userId);        // Correct class name with uppercase letters
+        udash = new UserDashboard(userId);
         ui->Emailid->clear();
         ui->Password->clear();
         udash->show();

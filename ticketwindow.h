@@ -1,28 +1,27 @@
 #ifndef TICKETWINDOW_H
 #define TICKETWINDOW_H
 
-#include <QDialog>
-#include <QString>
+#include <QMainWindow>
+#include <QScrollArea>
+#include <QVBoxLayout>
+#include <QPushButton>
 
-class QLabel;
-class QPushButton;
-
-class ticketwindow : public QDialog
+class ticketwindow : public QMainWindow
 {
     Q_OBJECT
+
 public:
-    explicit ticketwindow(QString userName,
-                          QString eventName,
-                          QString subEventName,
-                          QString location,
-                          QString time,
-                          QWidget *parent = nullptr);
+    explicit ticketwindow(int userId, int eventId, QWidget *parent = nullptr);
 
 private slots:
-    void downloadTicket();
+    void downloadAsPDF();
 
 private:
-    QLabel *ticketArea;
+    int userId;
+    int eventId;
+
+    QScrollArea *scrollArea;
+    QVBoxLayout *mainLayout;
     QPushButton *downloadButton;
 };
 

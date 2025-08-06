@@ -19,7 +19,7 @@ class HelpCenter : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit HelpCenter(QWidget *parent = nullptr);
+    explicit HelpCenter(dashboard *dashPtr,QWidget *parent = nullptr);
     ~HelpCenter();
 
 private slots:

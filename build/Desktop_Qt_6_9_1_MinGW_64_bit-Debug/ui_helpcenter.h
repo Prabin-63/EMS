@@ -67,9 +67,6 @@ public:
     QSpacerItem *verticalSpacer_4;
     QWidget *widget_14;
     QHBoxLayout *horizontalLayout_21;
-    QHBoxLayout *horizontalLayout_22;
-    QLabel *label_14;
-    QPushButton *pushButton_6;
     QSpacerItem *verticalSpacer_3;
     QWidget *widget_2;
     QVBoxLayout *verticalLayout_2;
@@ -441,42 +438,6 @@ public:
         widget_14->setMinimumSize(QSize(0, 40));
         horizontalLayout_21 = new QHBoxLayout(widget_14);
         horizontalLayout_21->setObjectName("horizontalLayout_21");
-        horizontalLayout_22 = new QHBoxLayout();
-        horizontalLayout_22->setObjectName("horizontalLayout_22");
-        label_14 = new QLabel(widget_14);
-        label_14->setObjectName("label_14");
-        sizePolicy2.setHeightForWidth(label_14->sizePolicy().hasHeightForWidth());
-        label_14->setSizePolicy(sizePolicy2);
-        label_14->setMinimumSize(QSize(20, 20));
-        label_14->setMaximumSize(QSize(20, 20));
-        label_14->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-log-out-48.png")));
-        label_14->setScaledContents(true);
-
-        horizontalLayout_22->addWidget(label_14);
-
-        pushButton_6 = new QPushButton(widget_14);
-        pushButton_6->setObjectName("pushButton_6");
-        QFont font2;
-        font2.setPointSize(11);
-        pushButton_6->setFont(font2);
-        pushButton_6->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"color:black;\n"
-"	\n"
-"	background-color: rgb(0, 251, 255);\n"
-"padding:5px;\n"
-"border:none;\n"
-"border-radius:7px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background-color: rgb(188, 0, 188);\n"
-"color:white;\n"
-"}"));
-
-        horizontalLayout_22->addWidget(pushButton_6);
-
-
-        horizontalLayout_21->addLayout(horizontalLayout_22);
-
 
         verticalLayout_7->addWidget(widget_14);
 
@@ -512,10 +473,10 @@ public:
         horizontalLayout_23->setObjectName("horizontalLayout_23");
         label_28 = new QLabel(widget_3);
         label_28->setObjectName("label_28");
-        QFont font3;
-        font3.setFamilies({QString::fromUtf8("Sitka")});
-        font3.setPointSize(17);
-        label_28->setFont(font3);
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("Sitka")});
+        font2.setPointSize(17);
+        label_28->setFont(font2);
         label_28->setStyleSheet(QString::fromUtf8("color:white;"));
 
         horizontalLayout_23->addWidget(label_28);
@@ -538,7 +499,7 @@ public:
 
         label_29 = new QLabel(widget_26);
         label_29->setObjectName("label_29");
-        label_29->setFont(font3);
+        label_29->setFont(font2);
         label_29->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:10px;"));
 
@@ -587,9 +548,9 @@ public:
 
         label_3 = new QLabel(widget_8);
         label_3->setObjectName("label_3");
-        QFont font4;
-        font4.setPointSize(16);
-        label_3->setFont(font4);
+        QFont font3;
+        font3.setPointSize(16);
+        label_3->setFont(font3);
         label_3->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:20px;"));
 
@@ -659,7 +620,7 @@ public:
 
         label_6 = new QLabel(widget_17);
         label_6->setObjectName("label_6");
-        label_6->setFont(font4);
+        label_6->setFont(font3);
         label_6->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:20px;"));
 
@@ -729,7 +690,7 @@ public:
 
         label_17 = new QLabel(widget_20);
         label_17->setObjectName("label_17");
-        label_17->setFont(font4);
+        label_17->setFont(font3);
         label_17->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:20px;"));
 
@@ -802,7 +763,7 @@ public:
 
         label_21 = new QLabel(widget_24);
         label_21->setObjectName("label_21");
-        label_21->setFont(font4);
+        label_21->setFont(font3);
         label_21->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:20px;"));
 
@@ -911,8 +872,6 @@ public:
         Managing->setText(QCoreApplication::translate("HelpCenter", "Managing", nullptr));
         label_13->setText(QString());
         Help_Center->setText(QCoreApplication::translate("HelpCenter", "Help Center", nullptr));
-        label_14->setText(QString());
-        pushButton_6->setText(QCoreApplication::translate("HelpCenter", "LOG OUT", nullptr));
         label_28->setText(QCoreApplication::translate("HelpCenter", "Help Center", nullptr));
         label_30->setText(QCoreApplication::translate("HelpCenter", "TextLabel", nullptr));
         label_29->setText(QCoreApplication::translate("HelpCenter", "ADMIN", nullptr));

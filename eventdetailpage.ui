@@ -99,7 +99,7 @@ border-radius:20px;</string>
             <item>
              <widget class="QPushButton" name="pushButton">
               <property name="text">
-               <string>PushButton</string>
+               <string>Ticket</string>
               </property>
              </widget>
             </item>
@@ -170,6 +170,18 @@ border-radius:20px;</string>
          </item>
          <item>
           <widget class="QScrollArea" name="subEventScroll">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="widgetResizable">
             <bool>true</bool>
            </property>
@@ -179,7 +191,7 @@ border-radius:20px;</string>
               <x>0</x>
               <y>0</y>
               <width>610</width>
-              <height>408</height>
+              <height>364</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -188,6 +200,35 @@ border-radius:20px;</string>
              </item>
             </layout>
            </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widget_7" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QPushButton" name="pushButton_2">
+                <property name="text">
+                 <string>Ticket</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>

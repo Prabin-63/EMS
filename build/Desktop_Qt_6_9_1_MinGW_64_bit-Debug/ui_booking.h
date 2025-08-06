@@ -65,9 +65,6 @@ public:
     QSpacerItem *verticalSpacer_2;
     QWidget *widget_7;
     QHBoxLayout *horizontalLayout_14;
-    QHBoxLayout *horizontalLayout_13;
-    QLabel *label_7;
-    QPushButton *Logout;
     QSpacerItem *verticalSpacer_3;
     QWidget *widget;
     QVBoxLayout *verticalLayout_3;
@@ -371,41 +368,6 @@ public:
         widget_7->setMinimumSize(QSize(0, 40));
         horizontalLayout_14 = new QHBoxLayout(widget_7);
         horizontalLayout_14->setObjectName("horizontalLayout_14");
-        horizontalLayout_13 = new QHBoxLayout();
-        horizontalLayout_13->setObjectName("horizontalLayout_13");
-        label_7 = new QLabel(widget_7);
-        label_7->setObjectName("label_7");
-        label_7->setMinimumSize(QSize(20, 20));
-        label_7->setMaximumSize(QSize(20, 20));
-        label_7->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-log-out-48.png")));
-        label_7->setScaledContents(true);
-
-        horizontalLayout_13->addWidget(label_7);
-
-        Logout = new QPushButton(widget_7);
-        Logout->setObjectName("Logout");
-        QFont font2;
-        font2.setPointSize(11);
-        font2.setBold(false);
-        Logout->setFont(font2);
-        Logout->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"color:black;\n"
-"	\n"
-"	background-color: rgb(0, 251, 255);\n"
-"padding:5px;\n"
-"border:none;\n"
-"border-radius:7px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	background-color: rgb(188, 0, 188);\n"
-"color:white;\n"
-"}"));
-
-        horizontalLayout_13->addWidget(Logout);
-
-
-        horizontalLayout_14->addLayout(horizontalLayout_13);
-
 
         verticalLayout->addWidget(widget_7);
 
@@ -438,10 +400,10 @@ public:
         horizontalLayout_16->setObjectName("horizontalLayout_16");
         label_8 = new QLabel(widget_10);
         label_8->setObjectName("label_8");
-        QFont font3;
-        font3.setFamilies({QString::fromUtf8("Sitka")});
-        font3.setPointSize(22);
-        label_8->setFont(font3);
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("Sitka")});
+        font2.setPointSize(22);
+        label_8->setFont(font2);
         label_8->setStyleSheet(QString::fromUtf8("color:white;"));
 
         horizontalLayout_16->addWidget(label_8);
@@ -451,9 +413,9 @@ public:
         sizePolicy.setHeightForWidth(widget_8->sizePolicy().hasHeightForWidth());
         widget_8->setSizePolicy(sizePolicy);
         widget_8->setMinimumSize(QSize(138, 0));
-        QFont font4;
-        font4.setPointSize(19);
-        widget_8->setFont(font4);
+        QFont font3;
+        font3.setPointSize(19);
+        widget_8->setFont(font3);
         horizontalLayout_21 = new QHBoxLayout(widget_8);
         horizontalLayout_21->setObjectName("horizontalLayout_21");
         horizontalLayout_20 = new QHBoxLayout();
@@ -466,16 +428,18 @@ public:
         sizePolicy4.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
         label_10->setSizePolicy(sizePolicy4);
         label_10->setMinimumSize(QSize(30, 30));
-        label_10->setMaximumSize(QSize(30, 16777215));
+        label_10->setMaximumSize(QSize(30, 30));
+        label_10->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-name-50.png")));
+        label_10->setScaledContents(true);
 
         horizontalLayout_20->addWidget(label_10);
 
         label_9 = new QLabel(widget_8);
         label_9->setObjectName("label_9");
-        QFont font5;
-        font5.setFamilies({QString::fromUtf8("Sitka")});
-        font5.setPointSize(17);
-        label_9->setFont(font5);
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("Sitka")});
+        font4.setPointSize(17);
+        label_9->setFont(font4);
         label_9->setStyleSheet(QString::fromUtf8("color:white;\n"
 "padding-left:10px;"));
 
@@ -582,13 +546,11 @@ public:
         Managing->setText(QCoreApplication::translate("Booking", "Managing", nullptr));
         label_6->setText(QString());
         Help_Center->setText(QCoreApplication::translate("Booking", "Help Center", nullptr));
-        label_7->setText(QString());
-        Logout->setText(QCoreApplication::translate("Booking", "LOG OUT", nullptr));
         label_8->setText(QCoreApplication::translate("Booking", "Booked Events", nullptr));
         label_10->setText(QString());
-        label_9->setText(QCoreApplication::translate("Booking", "Admin", nullptr));
-        btnRefresh->setText(QCoreApplication::translate("Booking", "btnRefresh", nullptr));
-        btnExport->setText(QCoreApplication::translate("Booking", "btnExport", nullptr));
+        label_9->setText(QCoreApplication::translate("Booking", "ADMIN", nullptr));
+        btnRefresh->setText(QCoreApplication::translate("Booking", "Refresh", nullptr));
+        btnExport->setText(QCoreApplication::translate("Booking", "Export", nullptr));
     } // retranslateUi
 
 };

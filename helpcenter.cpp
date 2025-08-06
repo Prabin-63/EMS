@@ -5,9 +5,10 @@
 #include<scheduling.h>
 #include<Booking.h>
 
-HelpCenter::HelpCenter(QWidget *parent)
+HelpCenter::HelpCenter(dashboard *dashPtr,QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::HelpCenter)
+    , ui(new Ui::HelpCenter),
+    dash(dashPtr)
 {
     ui->setupUi(this);
     this->showMaximized();
@@ -28,7 +29,7 @@ void HelpCenter::on_Profile_2_clicked()
 
 void HelpCenter::on_Booking_clicked()
 {
-    book=new Booking();
+    book=new Booking(dash);
     book->show();
     this->close();
 }
