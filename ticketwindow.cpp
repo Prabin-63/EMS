@@ -44,7 +44,7 @@ ticketwindow::ticketwindow(int userId, int eventId, QWidget *parent)
     query.bindValue(":eventId", eventId);
 
     if (!query.exec()) {
-        QLabel *errorLabel = new QLabel("❌ Error loading tickets: " + query.lastError().text());
+        QLabel *errorLabel = new QLabel("Error loading tickets: " + query.lastError().text());
         mainLayout->addWidget(errorLabel);
     } else {
         int count = 0;
@@ -55,7 +55,7 @@ ticketwindow::ticketwindow(int userId, int eventId, QWidget *parent)
             QString location = query.value("location").toString();
             QString time = query.value("time").toString();
 
-            // === Ticket UI starts ===
+
             QFrame *ticket = new QFrame();
             ticket->setStyleSheet(R"(
                 QFrame {
@@ -69,7 +69,7 @@ ticketwindow::ticketwindow(int userId, int eventId, QWidget *parent)
             ticketLayout->setContentsMargins(0, 0, 0, 0);
             ticketLayout->setSpacing(0);
 
-            // LEFT PANEL
+
             QFrame *leftPanel = new QFrame();
             leftPanel->setFixedWidth(400);
             leftPanel->setStyleSheet(R"(
@@ -98,14 +98,14 @@ ticketwindow::ticketwindow(int userId, int eventId, QWidget *parent)
             leftLayout->addWidget(subEventLabel);
             leftLayout->addStretch();
 
-            // RIGHT PANEL
+
             QFrame *rightPanel = new QFrame();
             rightPanel->setStyleSheet("background-color: #EEEEEE; border-top-right-radius: 18px; border-bottom-right-radius: 18px;");
             QHBoxLayout *rightLayout = new QHBoxLayout(rightPanel);
             rightLayout->setContentsMargins(20, 20, 20, 20);
             rightLayout->setSpacing(20);
 
-            // Details layout (left inside right panel)
+
             QVBoxLayout *detailsLayout = new QVBoxLayout();
             detailsLayout->setSpacing(10);
 
@@ -122,7 +122,7 @@ ticketwindow::ticketwindow(int userId, int eventId, QWidget *parent)
             detailsLayout->addWidget(timeLabel);
             detailsLayout->addStretch();
 
-            // Logo (right inside right panel)
+
             QLabel *logo = new QLabel();
             logo->setPixmap(QPixmap(":/resources/e1.png").scaled(200, 200, Qt::KeepAspectRatio, Qt::SmoothTransformation));
             logo->setAlignment(Qt::AlignRight | Qt::AlignTop);
@@ -130,7 +130,7 @@ ticketwindow::ticketwindow(int userId, int eventId, QWidget *parent)
             rightLayout->addLayout(detailsLayout);
             rightLayout->addWidget(logo);
 
-            // Combine panels
+
             ticketLayout->addWidget(leftPanel);
             ticketLayout->addWidget(rightPanel);
 
@@ -139,7 +139,7 @@ ticketwindow::ticketwindow(int userId, int eventId, QWidget *parent)
         }
 
         if (count == 0) {
-            QLabel *noTicket = new QLabel("ℹ️ No bookings found for this event.");
+            QLabel *noTicket = new QLabel("No bookings found for this event.");
             noTicket->setStyleSheet("color: #666;");
             mainLayout->addWidget(noTicket);
         }
@@ -149,7 +149,7 @@ ticketwindow::ticketwindow(int userId, int eventId, QWidget *parent)
     scrollArea->setWidget(scrollContent);
     outerLayout->addWidget(scrollArea);
 
-    downloadButton = new QPushButton("📄 Download All Tickets as PDF");
+    downloadButton = new QPushButton("Download All Tickets as PDF");
     downloadButton->setStyleSheet("background-color: #007bff; color: white; font-weight: bold; padding: 12px; border-radius: 8px;");
     connect(downloadButton, &QPushButton::clicked, this, &ticketwindow::downloadAsPDF);
 
@@ -169,12 +169,12 @@ void ticketwindow::downloadAsPDF()
 
     QPainter painter;
     if (!painter.begin(&printer)) {
-        qDebug() << "❌ Could not start printing";
+        qDebug() << "ould not start printing";
         return;
     }
 
     this->render(&painter);
     painter.end();
 
-    qDebug() << "✅ PDF saved to:" << filePath;
+    qDebug() << "PDF saved to:" << filePath;
 }

@@ -58,13 +58,13 @@ void signup::onSignupClicked()
                   "VALUES (?, ?, ?, ?, ?)");
     query.addBindValue(name);
     query.addBindValue(email);
-    query.addBindValue(email); // using email as username
+    query.addBindValue(email);
     query.addBindValue(hashedPassword);
     query.addBindValue(phone);
 
     if (query.exec()) {
         QMessageBox::information(this, "Success", "Account created successfully!");
-        this->close(); // close the signup window
+        this->close();
     } else {
         QMessageBox::critical(this, "Database Error", query.lastError().text());
     }

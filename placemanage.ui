@@ -557,7 +557,13 @@ border-radius:20px;
                       </size>
                      </property>
                      <property name="text">
-                      <string>TextLabel</string>
+                      <string/>
+                     </property>
+                     <property name="pixmap">
+                      <pixmap resource="resources.qrc">:/resources/icons8-name-50.png</pixmap>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>

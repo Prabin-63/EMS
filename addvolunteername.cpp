@@ -8,11 +8,11 @@
 #include <QRandomGenerator>
 #include <algorithm>
 
-
-AddVolunteerName::AddVolunteerName(int eventId, QWidget *parent)
+AddVolunteerName::AddVolunteerName(int eventId, int userId, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::AddVolunteerName)
     , currentEventId(eventId)
+    , currentUserId(userId)
 {
     ui->setupUi(this);
     ui->scrollArea->setWidgetResizable(true);
@@ -46,9 +46,8 @@ int AddVolunteerName::getTotalVolunteersFromDB()
 
 void AddVolunteerName::setupVolunteerFields()
 {
-    // Create a container widget that holds all QLineEdits
     QWidget *container = new QWidget(this);
-    layout = new QVBoxLayout(container);  // Set layout directly on container
+    layout = new QVBoxLayout(container);
 
     int totalVolunteers = getTotalVolunteersFromDB();
 
@@ -56,14 +55,12 @@ void AddVolunteerName::setupVolunteerFields()
         QLineEdit *lineEdit = new QLineEdit(this);
         lineEdit->setPlaceholderText(QString("Enter name of volunteer %1").arg(i + 1));
         lineEdit->setStyleSheet("color: white; background-color: grey; padding: 6px; font-size: 16px;");
-
         layout->addWidget(lineEdit);
         lineEdits.append(lineEdit);
     }
 
     container->setMinimumHeight(totalVolunteers * 50);
     container->setLayout(layout);
-
     ui->scrollArea->setWidget(container);
 }
 
@@ -72,7 +69,6 @@ void AddVolunteerName::assignVolunteersToSubevents()
     QVector<int> volunteerIds;
     QSqlQuery query;
 
-    // 1. Get unassigned volunteers
     query.prepare("SELECT id FROM volunteers WHERE event_id = :eventId AND assigned_place_id IS NULL");
     query.bindValue(":eventId", currentEventId);
     if (query.exec()) {
@@ -89,11 +85,9 @@ void AddVolunteerName::assignVolunteersToSubevents()
         return;
     }
 
-    // 2. Shuffle volunteers
     std::shuffle(volunteerIds.begin(), volunteerIds.end(), *QRandomGenerator::global());
 
-    // 3. Get places with volunteer needs
-    QVector<QPair<int, int>> places; // <place_id, required_count>
+    QVector<QPair<int, int>> places;
     query.prepare("SELECT id, required_volunteers FROM places WHERE event_id = :eventId");
     query.bindValue(":eventId", currentEventId);
     if (query.exec()) {
@@ -107,7 +101,6 @@ void AddVolunteerName::assignVolunteersToSubevents()
         return;
     }
 
-    // 4. Assign volunteers
     int vIndex = 0;
     QSqlQuery updateQuery;
     for (const auto& place : places) {
@@ -154,5 +147,9 @@ void AddVolunteerName::on_Savevolunteers_clicked()
     assignVolunteersToSubevents();
 }
 
-
-
+void AddVolunteerName::on_dashboard_5_clicked()
+{
+    dash = new dashboard(currentUserId);
+    dash->show();
+    this->close();
+}

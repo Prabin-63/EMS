@@ -16,10 +16,10 @@ public:
     int getEventId() const { return eventId; }
 
 private:
-    SessionManager() = default;  // Private constructor for singleton
+    SessionManager() = default;
 
-    int userId = -1;    // No user logged in by default
-    int eventId = -1;   // No event selected by default
+    int userId = -1;
+    int eventId = -1;
 };
 
 #endif // SESSIONMANAGER_H

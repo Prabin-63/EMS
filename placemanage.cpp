@@ -45,7 +45,7 @@ placemanage::~placemanage()
     delete ui;
 }
 
-// Helper function
+
 void placemanage::styleLineEdit(QLineEdit* lineEdit, const QString& placeholder)
 {
     lineEdit->setPlaceholderText(placeholder);
@@ -63,7 +63,7 @@ void placemanage::on_generateButton_clicked()
         return;
     }
 
-    // Clear existing
+
     QLayoutItem *child;
     while ((child = layout->takeAt(0)) != nullptr) {
         if (child->widget()) {
@@ -118,7 +118,7 @@ void placemanage::on_generateButton_clicked()
 
 void placemanage::on_addSubEventButton_clicked()
 {
-    if (!isInitialized) return; // Prevent auto-trigger before UI ready
+    if (!isInitialized) return;
 
     if (eventId == -1) {
         QMessageBox::warning(this, "Missing Event ID", "Event ID is not set.");

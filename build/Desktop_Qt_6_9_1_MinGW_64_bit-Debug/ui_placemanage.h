@@ -413,6 +413,8 @@ public:
         label_4->setObjectName("label_4");
         label_4->setMinimumSize(QSize(30, 30));
         label_4->setMaximumSize(QSize(30, 30));
+        label_4->setPixmap(QPixmap(QString::fromUtf8(":/resources/icons8-name-50.png")));
+        label_4->setScaledContents(true);
 
         horizontalLayout_9->addWidget(label_4);
 
@@ -645,7 +647,7 @@ public:
         label_13->setText(QString());
         Help_Center->setText(QCoreApplication::translate("placemanage", "Help Center", nullptr));
         label_2->setText(QCoreApplication::translate("placemanage", "Manage your Sub event", nullptr));
-        label_4->setText(QCoreApplication::translate("placemanage", "TextLabel", nullptr));
+        label_4->setText(QString());
         label_3->setText(QCoreApplication::translate("placemanage", "ADMIN", nullptr));
         label->setText(QCoreApplication::translate("placemanage", "How many subevents do you want to manage?", nullptr));
         generateButton->setText(QCoreApplication::translate("placemanage", "Generate", nullptr));

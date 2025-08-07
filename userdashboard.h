@@ -20,7 +20,7 @@ class UserDashboard : public QMainWindow
     Q_OBJECT
 
 public:
-    // Constructor now takes userId and optional parent
+
     explicit UserDashboard(int userId, QWidget *parent = nullptr);
     ~UserDashboard();
 
@@ -36,10 +36,10 @@ private:
     ticketwindow *tickets;
 
     int currentUserId;
-int currentEventId;    // Stores logged-in user ID
+int currentEventId;
 
     void loadEvents();
-    void loadEventDetail(int eventId);   // To fetch and show events as buttons
+    void loadEventDetail(int eventId);
 };
 
 #endif // USERDASHBOARD_H

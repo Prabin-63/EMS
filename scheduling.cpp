@@ -42,7 +42,7 @@ void scheduling::on_Gotodash_subevent_clicked()
     QString time = ui->Time->text().trimmed();
     QString contact = ui->Contact->text().trimmed();
 
-    // Validate inputs before inserting
+
 
     if (name.isEmpty() || venue.isEmpty() || date.isEmpty() || time.isEmpty() || contact.isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill in all fields.");
@@ -67,20 +67,20 @@ void scheduling::on_Gotodash_subevent_clicked()
         return;
     }
 
-    // Get logged-in user ID
+
     int userId = SessionManager::instance().getUserId();
     if (userId == -1) {
         QMessageBox::critical(this, "Session Error", "No user is logged in.");
         return;
     }
 
-    // Check database connection
+
     if (!QSqlDatabase::database().isOpen()) {
         QMessageBox::critical(this, "Database Error", "Database connection is not open.");
         return;
     }
 
-    // Insert event
+
     QSqlQuery query;
     query.prepare("INSERT INTO events (user_id, name, venue, date, time, organizer_contact) "
                   "VALUES (:user_id, :name, :venue, :date, :time, :contact)");
@@ -99,34 +99,34 @@ void scheduling::on_Gotodash_subevent_clicked()
 
     qint64 lastId = query.lastInsertId().toLongLong();
 
-    // Show success message
+
     QMessageBox::information(this, "Success", "Event scheduled successfully!");
 
-    // Clear input fields
+
     ui->Name->clear();
     ui->Location->clear();
     ui->Date->clear();
     ui->Time->clear();
     ui->Contact->clear();
 
-    // Ask to manage sub-events
+
     QMessageBox::StandardButton reply = QMessageBox::question(this,
                                                               "Manage Sub Event",
                                                               "Do you want to manage sub event?",
                                                               QMessageBox::Yes | QMessageBox::No);
 
     if (reply == QMessageBox::Yes) {
-        // Delete old placemanage window if exists
+
         if (place_manage) {
             delete place_manage;
             place_manage = nullptr;
         }
-        // Create new placemanage window passing userId and last inserted event ID
+
         place_manage = new placemanage(userId, static_cast<int>(lastId));
         place_manage->show();
-        this->close();  // Close current scheduling window only if placemanage opens
+        this->close();
     }
-    // If "No", just stay on the current window (don’t close or open anything else)
+
 }
 
 void scheduling::on_dashboard_2_clicked()

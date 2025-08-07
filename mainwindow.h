@@ -21,7 +21,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    login *log_in = nullptr;   // declare pointer for login window
+    login *log_in = nullptr;
 };
 
 #endif // MAINWINDOW_H

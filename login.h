@@ -9,7 +9,7 @@
 class dashboard;
 
 namespace Ui {
-class login;  // lowercase 'login' to match ui_login.h
+class login;
 }
 
 class login : public QMainWindow
@@ -25,7 +25,7 @@ private slots:
     void on_Gotodash_clicked();
 
 private:
-    Ui::login *ui;  // match lowercase here
+    Ui::login *ui;
     signup* sign_up;
     dashboard *dash;
     UserDashboard *udash;

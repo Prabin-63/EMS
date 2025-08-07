@@ -47,7 +47,7 @@ void Profile::loadUsers()
     userModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
     userModel->select();
 
-    // Set readable headers
+
     userModel->setHeaderData(0, Qt::Horizontal, "ID");
     userModel->setHeaderData(1, Qt::Horizontal, "Name");
     userModel->setHeaderData(2, Qt::Horizontal, "Email");
@@ -55,16 +55,16 @@ void Profile::loadUsers()
     userModel->setHeaderData(5, Qt::Horizontal, "Phone");
 
     ui->userview->setModel(userModel);
-    ui->userview->setEditTriggers(QAbstractItemView::NoEditTriggers); // Read-only
+    ui->userview->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->userview->hideColumn(4);
 
     ui->userview->resizeColumnsToContents();
     ui->userview->horizontalHeader()->setStretchLastSection(true);
-    // Stretch all columns to fill space equally
+
     ui->userview->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
 
-    // Optional style
+
     ui->userview->setAlternatingRowColors(true);
     ui->userview->setStyleSheet(
         "QTableView {"

@@ -16,7 +16,7 @@ public:
     ~signup();
 
 private slots:
-    void onSignupClicked(); // Add this line
+    void onSignupClicked();
 
 private:
     Ui::signup *ui;

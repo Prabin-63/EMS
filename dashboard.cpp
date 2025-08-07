@@ -8,7 +8,7 @@
 #include<helpcenter.h>
 
 
-// Qt Charts
+
 #include <QtCharts/QChartView>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QCategoryAxis>
@@ -125,7 +125,7 @@ void dashboard::ViewVolunteersWidget()
 
 void dashboard::createVolunteerLineChart(int eventId)
 {
-    // Clear any existing chart
+
     QLayoutItem *child;
     while ((child = ui->chartContainer->layout()->takeAt(0)) != nullptr) {
         if (child->widget()) {
@@ -152,7 +152,7 @@ void dashboard::createVolunteerLineChart(int eventId)
         }
     }
 
-    // Create chart and set basic properties
+
     QChart *chart = new QChart();
     chart->addSeries(series);
     chart->setTitle("Volunteers per Sub-Event");
@@ -166,7 +166,7 @@ void dashboard::createVolunteerLineChart(int eventId)
 
     chart->setTheme(QChart::ChartThemeLight);
 
-    // X-axis
+
     QCategoryAxis *axisX = new QCategoryAxis();
     axisX->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
    axisX->setGridLinePen(QPen(Qt::NoPen));
@@ -178,7 +178,7 @@ void dashboard::createVolunteerLineChart(int eventId)
     chart->addAxis(axisX, Qt::AlignBottom);
     series->attachAxis(axisX);
 
-    // Y-axis
+
     QValueAxis *axisY = new QValueAxis();
     axisY->setTitleText("Volunteers");
     axisY->setLabelFormat("%d");
@@ -187,12 +187,12 @@ void dashboard::createVolunteerLineChart(int eventId)
     chart->addAxis(axisY, Qt::AlignLeft);
     series->attachAxis(axisY);
 
-    // Set background color
-    chart->setBackgroundBrush(QBrush(QColor("rgb(55,55,55)")));      // Outer background
-    chart->setPlotAreaBackgroundBrush(QBrush(QColor("rgb(55,55,55)")));   // Plot background
+
+    chart->setBackgroundBrush(QBrush(QColor("rgb(55,55,55)")));
+    chart->setPlotAreaBackgroundBrush(QBrush(QColor("rgb(55,55,55)")));
     chart->setPlotAreaBackgroundVisible(true);
 
-    // Chart view and layout
+
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     ui->chartContainer->layout()->addWidget(chartView);
@@ -201,7 +201,7 @@ void dashboard::createVolunteerLineChart(int eventId)
 
 void dashboard::loadVolunteerNames(int eventId)
 {
-    // Remove old layout if exists
+
     if (volunteerLayout) {
         QLayoutItem *item;
         while ((item = volunteerLayout->takeAt(0)) != nullptr) {
@@ -211,17 +211,17 @@ void dashboard::loadVolunteerNames(int eventId)
         delete volunteerLayout;
     }
 
-    // Create a new layout
+
     volunteerLayout = new QVBoxLayout();
     volunteerLayout->setAlignment(Qt::AlignTop);
 
-    //  Add title
+
     QLabel *titleLabel = new QLabel("Volunteers Name");
     titleLabel->setStyleSheet("color: white; font-size: 24px; font-weight: bold;");
     titleLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     volunteerLayout->addWidget(titleLabel);
 
-    //  Load names from DB
+
     QSqlQuery query;
     query.prepare("SELECT name FROM volunteers WHERE event_id = ?");
     query.addBindValue(eventId);
@@ -246,13 +246,13 @@ void dashboard::loadVolunteerNames(int eventId)
         }
 
     } else {
-        QLabel *errorLabel = new QLabel("⚠️ Error loading volunteers.");
+        QLabel *errorLabel = new QLabel(" Error loading volunteers.");
         errorLabel->setStyleSheet("color: red;");
         errorLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
         volunteerLayout->addWidget(errorLabel);
     }
 
-    //  Set new layout to the widget inside QScrollArea
+
     ui->volunteerNamesWidget->setLayout(volunteerLayout);
     ui->volunteerNamesWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     ui->volunteerNamesWidget->setVisible(true);
@@ -267,11 +267,11 @@ void dashboard::loadSubEventTable(int eventId)
     query.addBindValue(eventId);
 
     if (!query.exec()) {
-        qDebug() << "❌ Failed to load sub-events:" << query.lastError().text();
+        qDebug() << " Failed to load sub-events:" << query.lastError().text();
         return;
     }
 
-    ui->subEventTable->clear(); //  Reset headers
+    ui->subEventTable->clear();
     ui->subEventTable->setRowCount(0);
     ui->subEventTable->setColumnCount(4);
     ui->subEventTable->setHorizontalHeaderLabels(QStringList() << "Sub-Event" << "Location" << "Time" << "Contact");
@@ -310,7 +310,7 @@ void dashboard::createBookingBarChart(int eventId) {
     QStringList categories;
 
     if (!query.exec()) {
-        qDebug() << "❌ Failed to load booking data:" << query.lastError().text();
+        qDebug() << "Failed to load booking data:" << query.lastError().text();
         return;
     }
 
@@ -322,7 +322,7 @@ void dashboard::createBookingBarChart(int eventId) {
     }
 
     if (barSet->count() == 0) {
-        qDebug() << "ℹ️ No bookings found for event ID:" << eventId;
+        qDebug() << "No bookings found for event ID:" << eventId;
         return;
     }
 
@@ -332,7 +332,7 @@ void dashboard::createBookingBarChart(int eventId) {
 
     QChart *chart = new QChart();
     chart->addSeries(series);
-    chart->setTitle("📊 Bookings per Sub-Event");
+    chart->setTitle("Bookings per Sub-Event");
     chart->setAnimationOptions(QChart::SeriesAnimations);
     chart->legend()->setVisible(false);
 
@@ -366,7 +366,7 @@ void dashboard::createBookingBarChart(int eventId) {
     chartView->setMaximumSize(400, 300);
     chartView->setMinimumSize(200, 150);
 
-    // Clear old chart if any
+
     if (ui->pieChartContainer->layout() == nullptr) {
         QVBoxLayout *layout = new QVBoxLayout(ui->pieChartContainer);
         layout->setContentsMargins(0, 0, 0, 0);
@@ -475,7 +475,7 @@ void dashboard::on_Volunteer_clicked()
         qDebug() << "No event selected for adding volunteers";
         return;
     }
-    AddVolunteerName *volunteerPage = new AddVolunteerName(eventId);
+    AddVolunteerName *volunteerPage = new AddVolunteerName(eventId,userId);
     volunteerPage->show();
     this->close();
 }
@@ -485,7 +485,7 @@ void dashboard::on_Volunteer_clicked()
 
 void dashboard::on_viewvolunteer_clicked()
 {
-    int eventIdToPass = this->eventId; // Assuming you have `eventId` as a member in dashboard class
+    int eventIdToPass = this->eventId;
 
     ViewVolunteer *viewDialog = new ViewVolunteer(eventIdToPass, this);
     viewDialog->exec();
@@ -495,7 +495,7 @@ void dashboard::on_Logout_clicked()
     this->hide();
     if (loginWindow) {
         loginWindow->show();
-    }        // Show login window again
+    }
 }
 
 
