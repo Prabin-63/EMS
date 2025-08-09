@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     if (!connectDatabase()) {
-        return -1; // exit app if DB connection fails
+        return -1;
     }
 
     MainWindow w;

@@ -32,6 +32,7 @@ Profile::~Profile()
 
 void Profile::on_dashboard_2_clicked()
 {
+    dash = new dashboard(userId);
     dash->show();
     this->close();
 }

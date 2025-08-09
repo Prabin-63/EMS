@@ -40,6 +40,7 @@ private:
     Booking *book;
     scheduling *schedule;
     HelpCenter *help;
+    int userId = -1;
 };
 
 #endif // PROFILE_H
