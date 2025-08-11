@@ -11,7 +11,9 @@
 #include <QLabel>
 #include <QFrame>
 #include "ticketwindow.h"
+
 #include "login.h"
+
 
 UserDashboard::UserDashboard(int userId, QWidget *parent)
     : QMainWindow(parent),
@@ -250,6 +252,9 @@ void UserDashboard::on_Logout_clicked()
 {
     this->hide();
 
+
+
     login *loginWindow = new login();
     loginWindow->show();
-}
+    }        // Show login window again
+
