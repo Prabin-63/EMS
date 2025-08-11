@@ -11,11 +11,12 @@
 #include<booking.h>
 #include<scheduling.h>
 #include<helpcenter.h>
-Profile::Profile(dashboard *dash, QWidget *parent) :
+Profile::Profile(dashboard *dashptr, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Profile),
-    dash(dash),
-    userModel(nullptr)
+    userModel(nullptr),
+    dash(dashptr),
+    dashboardWindow(nullptr)
 {
     ui->setupUi(this);
     this->showMaximized();
@@ -30,12 +31,23 @@ Profile::~Profile()
     }
 }
 
+
 void Profile::on_dashboard_2_clicked()
 {
-    dash = new dashboard(userId);
-    dash->show();
-    this->close();
+    int userId = SessionManager::instance().getUserId();
+    if (userId == -1) {
+        QMessageBox::critical(this, "Session Error", "No user is logged in.");
+        return;
+    }
+
+    if (!dashboardWindow) {
+        dashboardWindow = new dashboard(userId);
+    }
+
+    dashboardWindow->show();
+    this->hide();
 }
+
 
 void Profile::loadUsers()
 {

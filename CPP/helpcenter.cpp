@@ -3,12 +3,13 @@
 #include<profile.h>
 #include<dashboard.h>
 #include<scheduling.h>
-#include<Booking.h>
+#include <booking.h>
 
 HelpCenter::HelpCenter(dashboard *dashPtr,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HelpCenter),
-    dash(dashPtr)
+    dash(dashPtr),
+dashboardWindow(nullptr)
 {
     ui->setupUi(this);
     this->showMaximized();
@@ -43,10 +44,21 @@ void HelpCenter::on_Managing_clicked()
 }
 
 
+
 void HelpCenter::on_dashboard_2_clicked()
 {
-    dash = new dashboard(userId);
-    dash->show();
-    this->close();
+    int userId = SessionManager::instance().getUserId();
+    if (userId == -1) {
+        QMessageBox::critical(this, "Session Error", "No user is logged in.");
+        return;
+    }
+
+    if (!dashboardWindow) {
+        dashboardWindow = new dashboard(userId);
+    }
+
+    dashboardWindow->show();
+    this->hide();
 }
+
 

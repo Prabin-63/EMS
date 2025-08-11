@@ -5,6 +5,8 @@
 #include <QSqlTableModel>
 #include<booking.h>
 #include<scheduling.h>
+#include "dashboard.h"
+#include <QMessageBox>
 
 #include<helpcenter.h>
 class dashboard;
@@ -34,13 +36,14 @@ private slots:
 
 private:
     Ui::Profile *ui;
-    dashboard *dash;
     QSqlTableModel *userModel;
     void loadUsers();
     Booking *book;
+    dashboard *dash;
     scheduling *schedule;
     HelpCenter *help;
     int userId = -1;
+    dashboard *dashboardWindow ;
 };
 
 #endif // PROFILE_H

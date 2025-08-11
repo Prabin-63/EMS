@@ -6,6 +6,8 @@
 #include<dashboard.h>
 #include<scheduling.h>
 #include<booking.h>
+#include "dashboard.h"
+#include <QMessageBox>
 
 class Profile;
 class dashboard;
@@ -35,6 +37,7 @@ private:
     Ui::HelpCenter *ui;
     Profile *prof;
     dashboard *dash;
+    dashboard *dashboardWindow ;
     scheduling *schedule;
     Booking *book;
      int userId = -1;
