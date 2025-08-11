@@ -11,6 +11,7 @@
 #include<ticketwindow.h>
 #include <login.h>
 class ticketwindow;
+class login;
 
 namespace Ui {
 class UserDashboard;
@@ -21,13 +22,17 @@ class UserDashboard : public QMainWindow
     Q_OBJECT
 
 public:
-    // Constructor now takes userId and optional parent
+
     explicit UserDashboard(int userId, QWidget *parent = nullptr);
     ~UserDashboard();
 
 private slots:
     void on_pushButton_2_clicked();
+
+
+
     void on_Logout_clicked();
+
 
 private:
     Ui::UserDashboard *ui;
@@ -38,10 +43,10 @@ private:
     ticketwindow *tickets;
     login *loginWindow;
     int currentUserId;
-int currentEventId;    // Stores logged-in user ID
+int currentEventId;
 
     void loadEvents();
-    void loadEventDetail(int eventId);   // To fetch and show events as buttons
+    void loadEventDetail(int eventId);
 };
 
 #endif // USERDASHBOARD_H

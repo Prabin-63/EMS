@@ -42,3 +42,11 @@ void HelpCenter::on_Managing_clicked()
     this->close();
 }
 
+
+void HelpCenter::on_dashboard_2_clicked()
+{
+    dash = new dashboard(userId);
+    dash->show();
+    this->close();
+}
+

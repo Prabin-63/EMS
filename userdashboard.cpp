@@ -11,7 +11,9 @@
 #include <QLabel>
 #include <QFrame>
 #include "ticketwindow.h"
-#include<login.h>
+
+#include "login.h"
+
 
 UserDashboard::UserDashboard(int userId, QWidget *parent)
     : QMainWindow(parent),
@@ -21,7 +23,7 @@ UserDashboard::UserDashboard(int userId, QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Fetch user name
+
     QString userName = "User";
     QSqlQuery query;
     query.prepare("SELECT name FROM users WHERE id = :id");
@@ -31,7 +33,7 @@ UserDashboard::UserDashboard(int userId, QWidget *parent)
     }
     ui->Nameuser->setText("Hi " + userName);
 
-    // Setup scroll area
+
     scrollArea = new QScrollArea(this);
     scrollArea->setWidgetResizable(true);
     scrollArea->setMinimumWidth(500);
@@ -61,7 +63,7 @@ UserDashboard::~UserDashboard()
 
 void UserDashboard::loadEvents()
 {
-    // Clear previous widgets
+
     QLayoutItem *child;
     while ((child = eventLayout->takeAt(0)) != nullptr) {
         delete child->widget();
@@ -142,7 +144,7 @@ void UserDashboard::loadEventDetail(int eventId)
     line->setFrameShadow(QFrame::Sunken);
     eventLayout->addWidget(line);
 
-    // Tickets button
+
     QPushButton *ticketButton = new QPushButton("🎟️ View My Tickets");
     ticketButton->setStyleSheet("background-color: #28a745; color: white; padding: 6px;");
     ticketButton->setFixedWidth(200);
@@ -175,7 +177,7 @@ void UserDashboard::loadEventDetail(int eventId)
             bookBtn->setFixedWidth(100);
             bookBtn->setStyleSheet("QPushButton {background-color: #0078D7; color: white; padding: 6px; border-radius: 4px;} QPushButton:hover {background-color: #005A9E;}");
 
-            // Check existing booking
+
             bool alreadyBooked = false;
             QSqlQuery checkBooked;
             checkBooked.prepare("SELECT COUNT(*) FROM booking WHERE id = :user_id AND subevent_id = :subevent_id");
@@ -249,6 +251,9 @@ void UserDashboard::on_pushButton_2_clicked()
 void UserDashboard::on_Logout_clicked()
 {
     this->hide();
+
+
+
     login *loginWindow = new login();
     loginWindow->show();
     }        // Show login window again

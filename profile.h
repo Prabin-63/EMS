@@ -9,7 +9,7 @@
 #include<helpcenter.h>
 class dashboard;
 class scheduling;
-class HelpCenter;    // Forward declaration
+class HelpCenter;
 
 namespace Ui {
 class Profile;
@@ -24,7 +24,7 @@ public:
     ~Profile();
 
 private slots:
-    void on_dashboard_2_clicked();  // Button to go back to dashboard
+    void on_dashboard_2_clicked();
 
     void on_Booking_clicked();
 
@@ -34,12 +34,13 @@ private slots:
 
 private:
     Ui::Profile *ui;
-    dashboard *dash;  // Pointer to original dashboard
+    dashboard *dash;
     QSqlTableModel *userModel;
     void loadUsers();
     Booking *book;
     scheduling *schedule;
     HelpCenter *help;
+    int userId = -1;
 };
 
 #endif // PROFILE_H

@@ -18,7 +18,7 @@ signals:
     void backButtonClicked();
 private:
     int currentEventId;
-    int currentUserId;  // Store the user ID
+    int currentUserId;
 
     QLabel *eventNameLabel;
     QLabel *venueLabel;

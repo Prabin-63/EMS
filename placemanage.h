@@ -46,7 +46,7 @@ private:
     Ui::placemanage *ui;
     int userId;
     int eventId;
-    dashboard* dash = nullptr; // combined declaration & initialization
+    dashboard* dash = nullptr;
     bool isInitialized;
     Profile *prof;
     Booking *book;

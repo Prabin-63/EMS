@@ -19,23 +19,22 @@ ViewVolunteer::ViewVolunteer(int eventId, QWidget *parent)
 
     qDebug() << "ViewVolunteer opened with eventId =" << currentEventId;
 
-    // Layout for volunteer labels
     layout = new QVBoxLayout();
     layout->setAlignment(Qt::AlignTop | Qt::AlignHCenter);
 
-    // Horizontal layout to center content horizontally
+
     QHBoxLayout *hLayout = new QHBoxLayout();
     hLayout->addStretch();
     hLayout->addLayout(layout);
     hLayout->addStretch();
 
-    // Vertical layout to center everything vertically
+
     QVBoxLayout *vLayout = new QVBoxLayout();
     vLayout->addStretch();
     vLayout->addLayout(hLayout);
     vLayout->addStretch();
 
-    // Optional: wrap inside a scroll area
+
     QWidget *scrollContent = new QWidget();
     scrollContent->setLayout(vLayout);
 
@@ -44,7 +43,7 @@ ViewVolunteer::ViewVolunteer(int eventId, QWidget *parent)
     scrollArea->setWidget(scrollContent);
     scrollArea->setStyleSheet("background-color: black; border: none;");
 
-    // Set final layout of dialog
+
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(scrollArea);
 
@@ -61,9 +60,9 @@ void ViewVolunteer::loadVolunteersBySubevent()
 {
     QSqlQuery debugQuery;
 
-    // Log all volunteers
+
     debugQuery.exec("SELECT id, name, event_id, assigned_place_id FROM volunteers");
-    qDebug() << "📋 Volunteers Table:";
+    qDebug() << " Volunteers Table:";
     while (debugQuery.next()) {
         qDebug() << "  ID:" << debugQuery.value(0).toInt()
         << "Name:" << debugQuery.value(1).toString()
@@ -71,16 +70,16 @@ void ViewVolunteer::loadVolunteersBySubevent()
         << "Assigned Place ID:" << debugQuery.value(3).toInt();
     }
 
-    // Log all places
+
     debugQuery.exec("SELECT id, sub_event_name, event_id FROM places");
-    qDebug() << "🏠 Places Table:";
+    qDebug() << " Places Table:";
     while (debugQuery.next()) {
         qDebug() << "  ID:" << debugQuery.value(0).toInt()
         << "Sub Event:" << debugQuery.value(1).toString()
         << "Event ID:" << debugQuery.value(2).toInt();
     }
 
-    // Map of sub_event_name to volunteer list
+
     QMap<QString, QStringList> subeventVolunteers;
 
     QSqlQuery query;
@@ -93,7 +92,7 @@ void ViewVolunteer::loadVolunteersBySubevent()
     query.bindValue(":eventId", currentEventId);
 
     if (!query.exec()) {
-        qDebug() << "❌ SQL Query Error:" << query.lastError().text();
+        qDebug() << "SQL Query Error:" << query.lastError().text();
         return;
     }
 
@@ -105,19 +104,19 @@ void ViewVolunteer::loadVolunteersBySubevent()
         count++;
     }
 
-    qDebug() << "✅ Total Volunteers Matched:" << count;
+    qDebug() << "Total Volunteers Matched:" << count;
 
     if (count == 0) {
-        layout->addWidget(new QLabel("⚠️ No volunteer assignments found."));
+        layout->addWidget(new QLabel(" No volunteer assignments found."));
         return;
     }
 
-    // Display each subevent and its volunteers vertically
+
     for (auto it = subeventVolunteers.begin(); it != subeventVolunteers.end(); ++it) {
         QString subEvent = it.key();
         QStringList names = it.value();
 
-        // Create vertical bullet list
+
         QString namesList = names.join("<br>&nbsp;&nbsp;&nbsp;&bull;&nbsp;");
         QString labelText = QString("<b>%1:</b><br>&nbsp;&nbsp;&nbsp;&bull;&nbsp;%2")
                                 .arg(subEvent, namesList);

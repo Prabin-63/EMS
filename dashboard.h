@@ -13,6 +13,7 @@
 
 class login;
 class Profile;
+class AddVolunteerName;
 
 class HelpCenter;
 namespace Ui {

@@ -22,10 +22,10 @@ dashboardWindow(nullptr)
 {
     ui->setupUi(this);
 
-    // Style the whole widget
+
     this->setStyleSheet("background-color: #fdfdfd;");
 
-    // Style table
+
     ui->tableView->setAlternatingRowColors(true);
     ui->tableView->setStyleSheet(
         "QTableView {"
@@ -45,11 +45,11 @@ dashboardWindow(nullptr)
         );
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 
-    // Connect buttons
+
     connect(ui->btnRefresh, &QPushButton::clicked, this, &Booking::refreshTable);
     connect(ui->btnExport, &QPushButton::clicked, this, &Booking::exportToCSV);
 
-    // Load bookings initially
+
     loadBookingTable();
 
     this->showMaximized();
@@ -69,14 +69,14 @@ void Booking::loadBookingTable()
     bookingModel = new QSqlRelationalTableModel(this);
     bookingModel->setTable("booking");
 
-    // Replace IDs with readable names
+
     bookingModel->setRelation(1, QSqlRelation("users", "id", "name"));
     bookingModel->setRelation(2, QSqlRelation("events", "id", "name"));
     bookingModel->setRelation(3, QSqlRelation("places", "id", "sub_event_name"));
     bookingModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
     bookingModel->select();
 
-    // Set column headers
+
     bookingModel->setHeaderData(0, Qt::Horizontal, "Booking ID");
     bookingModel->setHeaderData(1, Qt::Horizontal, "User");
     bookingModel->setHeaderData(2, Qt::Horizontal, "Event");
@@ -86,7 +86,7 @@ void Booking::loadBookingTable()
     ui->tableView->setModel(bookingModel);
     ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
     ui->tableView->resizeColumnsToContents();
-    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  // Read-only
+    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
@@ -113,7 +113,7 @@ void Booking::exportToCSV()
 
     QTextStream out(&file);
 
-    // Write headers
+
     for (int col = 0; col < bookingModel->columnCount(); ++col) {
         out << bookingModel->headerData(col, Qt::Horizontal).toString();
         if (col < bookingModel->columnCount() - 1)
@@ -121,7 +121,7 @@ void Booking::exportToCSV()
     }
     out << "\n";
 
-    // Write data
+
     for (int row = 0; row < bookingModel->rowCount(); ++row) {
         for (int col = 0; col < bookingModel->columnCount(); ++col) {
             out << bookingModel->data(bookingModel->index(row, col)).toString();

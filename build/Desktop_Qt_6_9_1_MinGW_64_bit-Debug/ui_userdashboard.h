@@ -40,7 +40,7 @@ public:
     QWidget *widget_5;
     QHBoxLayout *horizontalLayout_5;
     QHBoxLayout *horizontalLayout_3;
-    QPushButton *pushButton;
+    QPushButton *Logout;
     QPushButton *pushButton_2;
     QSpacerItem *horizontalSpacer;
     QWidget *widget_7;
@@ -121,22 +121,22 @@ public:
         horizontalLayout_5->setObjectName("horizontalLayout_5");
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        pushButton = new QPushButton(widget_5);
-        pushButton->setObjectName("pushButton");
+        Logout = new QPushButton(widget_5);
+        Logout->setObjectName("Logout");
         QSizePolicy sizePolicy2(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy2);
-        pushButton->setMinimumSize(QSize(100, 30));
+        sizePolicy2.setHeightForWidth(Logout->sizePolicy().hasHeightForWidth());
+        Logout->setSizePolicy(sizePolicy2);
+        Logout->setMinimumSize(QSize(100, 30));
         QFont font;
         font.setPointSize(16);
-        pushButton->setFont(font);
-        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(254, 173, 33);\n"
+        Logout->setFont(font);
+        Logout->setStyleSheet(QString::fromUtf8("background-color: rgb(254, 173, 33);\n"
 "border-radius:10px;\n"
 "color:white;"));
 
-        horizontalLayout_3->addWidget(pushButton);
+        horizontalLayout_3->addWidget(Logout);
 
         pushButton_2 = new QPushButton(widget_5);
         pushButton_2->setObjectName("pushButton_2");
@@ -206,7 +206,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1238, 536));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1184, 438));
         verticalLayout_4 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_4->setObjectName("verticalLayout_4");
         verticalLayout_3 = new QVBoxLayout();
@@ -241,7 +241,7 @@ public:
         UserDashboard->setCentralWidget(centralwidget);
         menubar = new QMenuBar(UserDashboard);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1444, 18));
+        menubar->setGeometry(QRect(0, 0, 1444, 43));
         UserDashboard->setMenuBar(menubar);
         statusbar = new QStatusBar(UserDashboard);
         statusbar->setObjectName("statusbar");
@@ -255,7 +255,7 @@ public:
     void retranslateUi(QMainWindow *UserDashboard)
     {
         UserDashboard->setWindowTitle(QCoreApplication::translate("UserDashboard", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("UserDashboard", "Logout", nullptr));
+        Logout->setText(QCoreApplication::translate("UserDashboard", "Logout", nullptr));
         pushButton_2->setText(QCoreApplication::translate("UserDashboard", "Ticket", nullptr));
         label_2->setText(QString());
         Nameuser->setText(QCoreApplication::translate("UserDashboard", "TextLabel", nullptr));

@@ -20,7 +20,7 @@ namespace Ui {
 class Booking;
 }
 
-class Booking : public QMainWindow   // <-- Change back to QMainWindow
+class Booking : public QMainWindow
 {
     Q_OBJECT
 

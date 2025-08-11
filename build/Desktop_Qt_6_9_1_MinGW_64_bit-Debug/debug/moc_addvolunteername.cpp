@@ -42,13 +42,13 @@ template <> constexpr inline auto AddVolunteerName::qt_create_metaobjectdata<qt_
         "AddVolunteerName",
         "on_Savevolunteers_clicked",
         "",
-        "assignVolunteersToSubevents"
+        "on_dashboard_5_clicked"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Slot 'on_Savevolunteers_clicked'
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'assignVolunteersToSubevents'
+        // Slot 'on_dashboard_5_clicked'
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
@@ -74,7 +74,7 @@ void AddVolunteerName::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->on_Savevolunteers_clicked(); break;
-        case 1: _t->assignVolunteersToSubevents(); break;
+        case 1: _t->on_dashboard_5_clicked(); break;
         default: ;
         }
     }

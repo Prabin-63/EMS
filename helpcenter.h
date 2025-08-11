@@ -29,12 +29,15 @@ private slots:
 
     void on_Managing_clicked();
 
+    void on_dashboard_2_clicked();
+
 private:
     Ui::HelpCenter *ui;
     Profile *prof;
     dashboard *dash;
     scheduling *schedule;
     Booking *book;
+     int userId = -1;
 
 };
 

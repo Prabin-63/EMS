@@ -41,7 +41,7 @@ void login::on_Gotodash_clicked()
     }
 
     if (email == "admin" && pass == "Admin") {
-        // Admin goes directly to dashboard with userId = 0
+
         SessionManager::instance().setUserId(0);
         dash = new dashboard(0,this);
         dash->show();
